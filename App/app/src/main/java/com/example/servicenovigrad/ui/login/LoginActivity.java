@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.example.servicenovigrad.R;
 import com.example.servicenovigrad.ui.login.LoginViewModel;
 import com.example.servicenovigrad.ui.login.LoginViewModelFactory;
 import com.example.servicenovigrad.databinding.ActivityLoginBinding;
+import com.example.servicenovigrad.createAccount;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -132,5 +134,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void onCreateAccount(View v){
+        startActivity(new Intent(LoginActivity.this, createAccount.class));
     }
 }
