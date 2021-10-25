@@ -10,4 +10,11 @@
     <string name="login_failed">"Login failed"</string>
     <string name="prompt_username">Nom d\'utilisateur</string>
     <string name="CreateAccountBtn"><u>Créer un compte</u></string>
+    <string name="prompt_prenom">Prénom</string>
+    <string name="prompt_nomDeFamille">Nom de famille</string>
+    <string name="prompt_nomUtilisateur">Nom d\'utilisateur</string>
+    <string name="aa" />
+    <string name="prompt_donnerMotDePasse1">Mot de passe</string>
+    <string name="prompt_donnerMotDePasse2">Confirmer le mot de passe</string>
+    <string name="action_creerCompte">Créer un compte</string>
 </resources>
