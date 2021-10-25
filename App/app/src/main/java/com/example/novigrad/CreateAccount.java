@@ -1,10 +1,10 @@
-package com.example.servicenovigrad;
+package com.example.novigrad;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class createAccount extends AppCompatActivity {
+public class CreateAccount extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

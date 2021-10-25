@@ -1,4 +1,4 @@
-package com.example.servicenovigrad;
+package com.example.novigrad;
 
 import org.junit.Test;
 
