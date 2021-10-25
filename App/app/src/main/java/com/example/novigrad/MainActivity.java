@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,5 +18,10 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateAccount(View view){
         Intent intent = new Intent(getApplicationContext(), CreateAccount.class);
         startActivityForResult(intent, 0);
+    }
+
+    public void onLogin(View view) {
+        //still needs to add restrictions on login (if password is correct or user exists)
+       startActivity(new Intent(MainActivity.this, WelcomePage.class));
     }
 }
