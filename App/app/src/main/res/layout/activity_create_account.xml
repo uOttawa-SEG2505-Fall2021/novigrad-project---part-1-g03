@@ -170,7 +170,7 @@
             android:layout_marginLeft="90dp"
             android:layout_marginRight="90dp"
             android:backgroundTint="@color/teal_700"
-            android:enabled="false"
+            android:enabled="true"
             android:text="@string/action_creerCompte"
             android:textAlignment="center"
             android:onClick="onCreateAcc"

@@ -40,44 +40,36 @@ public class MainActivity extends AppCompatActivity {
         EditText usernameET = (EditText) findViewById(R.id.username);
         String username = usernameET.getText().toString();
 
-        EditText passwordET = (EditText) findViewById(R.id.password);
-        String password = usernameET.getText().toString();
+        EditText passwordET = findViewById(R.id.password);
+        String password = passwordET.getText().toString();
 
         final String[] dbPassword = new String[1];
 
         // infoChecks[0] is username existence, infoChecks[1] is password correctness
-        final boolean[] infoChecks = new boolean[2];
+        final boolean[] infoCheck = new boolean[1];
         final UserAccount[] user = new UserAccount[1];
 
         myRef.child("users").child(username).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    infoChecks[0] = true;
                     user[0] = snapshot.getValue(UserAccount.class);
+                    if (user[0].getMotDePasse().compareTo(password) == 0) {
+                        Intent myIntent = new Intent(MainActivity.this, WelcomePage.class);
+                        myIntent.putExtra("userId", username);
+                        startActivity(myIntent);
+                    } else {
+                        //wrong password
+                    }
                 }
                 else {
-                    //feedback stuff
+                    //account does not exist
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-        if(infoChecks[0]){
-            infoChecks[1] = (user[0].getMotDePasse().compareTo(password) == 0);
 
-        } else {
-            usernameET.setText("");
-        }
-
-       if(infoChecks[1]) {
-           Intent myIntent = new Intent(MainActivity.this, WelcomePage.class);
-           myIntent.putExtra("userId", username);
-           myIntent.putExtra("acctype", user[0].getAccountType());
-           startActivity(myIntent);
-       } else {
-           passwordET.setText("");
-       }
     }
 }

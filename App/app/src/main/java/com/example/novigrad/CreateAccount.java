@@ -62,33 +62,38 @@ public class CreateAccount extends AppCompatActivity {
 
         if(password.compareTo(rePassword) != 0) matchingPass = false;
 
+        //to use inside class
+        int finalAcctype = acctype;
+        boolean finalAllInfo = allInfo;
+        boolean finalMatchingPass = matchingPass;
+
         myRef.child("users").child(username).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    usernameAvail[0] = false;
+                if (!snapshot.exists()) {
+                    if (finalAllInfo && finalMatchingPass) {
+                        //figure out good way of doing id
+                        UserAccount user;
+                        if (finalAcctype == 0) {
+                            user = new ClientAccount(0, prenom, nom, username, password);
+                        } else {
+                            user = new EmployeeAccount(0, prenom, nom, username, password);
+                        }
+
+                        myRef.child("users").child(username).setValue(user);
+                        Intent myIntent = new Intent(CreateAccount.this, WelcomePage.class);
+                        myIntent.putExtra("userId", username);
+                        startActivity(myIntent);
+                    } else {
+                        //missing info or passwords don't match
+                    }
+                } else {
+                    // username already taken
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-        if(allInfo && matchingPass && usernameAvail[0]) {
-            //figure out good way of doing id
-            UserAccount user;
-            if(acctype == 0) {
-                user = new ClientAccount(0, prenom, nom, username, password);
-            } else {
-                user = new EmployeeAccount(0, prenom, nom, username, password);
-            }
-
-            myRef.child("users").child(username).setValue(user);
-            Intent myIntent = new Intent(CreateAccount.this, WelcomePage.class);
-            startActivity(myIntent);
-
-        } else {
-            Intent myIntent = new Intent(CreateAccount.this, MainActivity.class);
-            startActivity(myIntent);
-        }
     }
 }
