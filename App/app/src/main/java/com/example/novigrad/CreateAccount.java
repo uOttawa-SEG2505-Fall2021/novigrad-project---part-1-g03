@@ -64,7 +64,8 @@ public class CreateAccount extends AppCompatActivity {
 
         myRef.child("users").child(username).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void
+            onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     usernameAvail[0] = false;
                 }
