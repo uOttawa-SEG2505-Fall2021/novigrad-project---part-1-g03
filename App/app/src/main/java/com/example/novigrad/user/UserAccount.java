@@ -1,0 +1,139 @@
+package com.example.novigrad.user;
+
+public class UserAccount
+{
+
+    //------------------------
+    // MEMBER VARIABLES
+    //------------------------
+
+    //UserAccount Attributes
+    private int accountType;
+    private int id;
+    private String prenom;
+    private String nomDeFamille;
+    private String nomDeUtiliseur;
+    private String motDePasse;
+
+    //------------------------
+    // CONSTRUCTOR
+    //------------------------
+
+    //blank constructor so that UserAccount can be written to Firebase
+    public UserAccount(){}
+
+    public UserAccount(int aAccountType, int aId, String aPrenom, String aNomDeFamille, String aNomDeUtiliseur, String aMotDePasse)
+    {
+        accountType = aAccountType;
+        id = aId;
+        prenom = aPrenom;
+        nomDeFamille = aNomDeFamille;
+        nomDeUtiliseur = aNomDeUtiliseur;
+        motDePasse = aMotDePasse;
+    }
+
+    //------------------------
+    // INTERFACE
+    //------------------------
+
+    public boolean setAccountType(int aAccountType)
+    {
+        boolean wasSet = false;
+        accountType = aAccountType;
+        wasSet = true;
+        return wasSet;
+    }
+
+    public boolean setId(int aId)
+    {
+        boolean wasSet = false;
+        id = aId;
+        wasSet = true;
+        return wasSet;
+    }
+
+    public boolean setPrenom(String aPrenom)
+    {
+        boolean wasSet = false;
+        prenom = aPrenom;
+        wasSet = true;
+        return wasSet;
+    }
+
+    public boolean setNomDeFamille(String aNomDeFamille)
+    {
+        boolean wasSet = false;
+        nomDeFamille = aNomDeFamille;
+        wasSet = true;
+        return wasSet;
+    }
+
+    public boolean setNomDeUtiliseur(String aNomDeUtiliseur)
+    {
+        boolean wasSet = false;
+        nomDeUtiliseur = aNomDeUtiliseur;
+        wasSet = true;
+        return wasSet;
+    }
+
+    public boolean setMotDePasse(String aMotDePasse)
+    {
+        boolean wasSet = false;
+        motDePasse = aMotDePasse;
+        wasSet = true;
+        return wasSet;
+    }
+
+    /**
+     * 0 for admin, 1 for employee, 2 for client dans le constructeur
+     */
+    public int getAccountType()
+    {
+        return accountType;
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public String getPrenom()
+    {
+        return prenom;
+    }
+
+    public String getNomDeFamille()
+    {
+        return nomDeFamille;
+    }
+
+    public String getNomDeUtiliseur()
+    {
+        return nomDeUtiliseur;
+    }
+
+    public String getMotDePasse()
+    {
+        return motDePasse;
+    }
+
+    public void delete()
+    {}
+
+    // line 12 "model.ump"
+    protected void ConnectToAccount(String nomDeUtiliseur, String motDePasse){
+
+    }
+
+
+    public String toString()
+    {
+        return super.toString() + "["+
+                "accountType" + ":" + getAccountType()+ "," +
+                "id" + ":" + getId()+ "," +
+                "prenom" + ":" + getPrenom()+ "," +
+                "nomDeFamille" + ":" + getNomDeFamille()+ "," +
+                "nomDeUtiliseur" + ":" + getNomDeUtiliseur()+ "," +
+                "motDePasse" + ":" + getMotDePasse()+ "]";
+    }
+}

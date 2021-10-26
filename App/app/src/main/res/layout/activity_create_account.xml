@@ -107,7 +107,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="5dp" />
 
         <EditText
             android:id="@+id/motDepasse2"
@@ -126,7 +126,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="5dp" />
 
         <TextView
             android:id="@+id/typeText"
@@ -161,7 +161,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="5dp" />
 
         <Button
             android:id="@+id/Creer"
@@ -173,6 +173,7 @@
             android:enabled="false"
             android:text="@string/action_creerCompte"
             android:textAlignment="center"
+            android:onClick="onCreateAcc"
             android:textColor="@color/white" />
 
     </LinearLayout>
