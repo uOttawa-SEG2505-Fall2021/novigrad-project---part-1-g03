@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,10 +60,17 @@ public class MainActivity extends AppCompatActivity {
                         myIntent.putExtra("userId", username);
                         startActivity(myIntent);
                     } else {
+
+
+                        Toast.makeText(getApplicationContext(), "erreur mot de passe incorrect ", Toast.LENGTH_LONG).show();
                         //wrong password
                     }
                 }
                 else {
+
+                    Toast.makeText(getApplicationContext(), "erreur ce compte n'existe pas ", Toast.LENGTH_LONG).show();
+
+
                     //account does not exist
                 }
             }
