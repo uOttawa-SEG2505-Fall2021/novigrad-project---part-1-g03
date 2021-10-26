@@ -40,7 +40,7 @@ public class WelcomePage extends AppCompatActivity {
                 user = snapshot.getValue(UserAccount.class);
                 String acctype;
                 if(user.getAccountType() == 0) acctype = "client";
-                if(user.getAccountType() == 1) acctype = "employé";
+                else if(user.getAccountType() == 1) acctype = "employé";
                 else acctype = "administrateur";
                 welcomeMessage.setText("Bonjour " + user.getPrenom() +"!\n Bienvenue à Service Novigrad \n Vous êtes connecté en tant que " + acctype + ".");
             }
