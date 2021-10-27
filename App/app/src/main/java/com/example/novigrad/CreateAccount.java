@@ -22,8 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CreateAccount extends AppCompatActivity {
 
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference myRef = database.getReference();
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final DatabaseReference dbRef = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class CreateAccount extends AppCompatActivity {
     }
 
     // Méthode de Samy qui vérifie si une chaîne de charactères contient des chiffres
-    public boolean noNumbers(String str){
+    private boolean noNumbers(String str){
         char[] chars = str.toCharArray();
         for(char c : chars){
             if(Character.isDigit(c)){
@@ -47,9 +47,6 @@ public class CreateAccount extends AppCompatActivity {
         int acctype = -1;
         boolean allInfo = true;
         boolean matchingPass = true;
-        final boolean[] usernameAvail = {true};
-
-        boolean validNames = true;
 
         EditText usernameET = (EditText) findViewById(R.id.nomUtilisateur);
         EditText passwordET = (EditText) findViewById(R.id.motDepasse);
@@ -92,12 +89,12 @@ public class CreateAccount extends AppCompatActivity {
             //password does not match
             Toast.makeText(getApplicationContext(), "Les deux mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
             return;
-        } else if(noNumbers(prenom) == false || noNumbers(nom) == false){
+        } else if(!noNumbers(prenom) || !noNumbers(nom)){
             Toast.makeText(getApplicationContext(), "Le nom et prénom ne doivent pas contenir des chiffres", Toast.LENGTH_LONG).show();
             return;
         }
 
-        myRef.child("users").child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        dbRef.child("users").child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> snapshot) {
                 if (!snapshot.getResult().exists()) {
@@ -109,7 +106,7 @@ public class CreateAccount extends AppCompatActivity {
                         user = new EmployeeAccount(0, prenom, nom, username, password);
                     }
 
-                    myRef.child("users").child(username).setValue(user);
+                    dbRef.child("users").child(username).setValue(user);
                     Intent myIntent = new Intent(CreateAccount.this, MainActivity.class);
                     myIntent.putExtra("userId", username);
                     startActivity(myIntent);
