@@ -31,12 +31,25 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
     }
 
+    // Méthode de Samy qui vérifie si une chaîne de charactères contient des chiffres
+    public boolean noNumbers(String str){
+        char[] chars = str.toCharArray();
+        for(char c : chars){
+            if(Character.isDigit(c)){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void onCreateAcc(View view) {
         String username, password, rePassword, prenom, nom;
         int acctype = -1;
         boolean allInfo = true;
         boolean matchingPass = true;
         final boolean[] usernameAvail = {true};
+
+        boolean validNames = true;
 
         EditText usernameET = (EditText) findViewById(R.id.nomUtilisateur);
         EditText passwordET = (EditText) findViewById(R.id.motDepasse);
@@ -53,6 +66,7 @@ public class CreateAccount extends AppCompatActivity {
         if (username.compareTo("") == 0 || password.compareTo("") == 0 || rePassword.compareTo("") == 0 || nom.compareTo("") == 0 || prenom.compareTo("") == 0) {
             allInfo = false;
         }
+
 
         int choice = acctypeRG.getCheckedRadioButtonId();
         if (choice == R.id.radio_button_client) {
@@ -77,6 +91,9 @@ public class CreateAccount extends AppCompatActivity {
         } else if (!matchingPass) {
             //password does not match
             Toast.makeText(getApplicationContext(), "Les deux mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
+            return;
+        } else if(noNumbers(prenom) == false || noNumbers(nom) == false){
+            Toast.makeText(getApplicationContext(), "Le nom et prénom ne doivent pas contenir des chiffres", Toast.LENGTH_LONG).show();
             return;
         }
 
