@@ -1,6 +1,6 @@
 package com.example.novigrad.user;
 
-public class UserAccount
+public abstract class UserAccount
 {
 
     //------------------------
@@ -85,7 +85,8 @@ public class UserAccount
     }
 
     /**
-     * 0 for admin, 1 for employee, 2 for client dans le constructeur
+     * 2 pour admin, 1 pour employee, 0 pour client 
+     * (devrait être implémenté dans les constructeur des sous-classes)
      */
     public int getAccountType()
     {
@@ -116,15 +117,6 @@ public class UserAccount
     {
         return motDePasse;
     }
-
-    public void delete()
-    {}
-
-    // line 12 "model.ump"
-    protected void ConnectToAccount(String nomDeUtiliseur, String motDePasse){
-
-    }
-
 
     public String toString()
     {
