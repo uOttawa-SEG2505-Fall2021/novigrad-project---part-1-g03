@@ -57,9 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
         myRef.child("users").child(username).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     user[0] = snapshot.getValue(UserAccount.class);
+                    assert user[0] != null;
                     if (user[0].getMotDePasse().compareTo(password) == 0) {
                         Intent myIntent = new Intent(MainActivity.this, WelcomePage.class);
                         myIntent.putExtra("userId", username);
