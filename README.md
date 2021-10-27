@@ -8,6 +8,6 @@ Membres de l'équipe:
 -	Othniel Tiendrebeogo (othnielt), 300084968
 
 
-Compte administrateur pré-créé:
-Nom d'utilisateur: admin1
+Compte administrateur pré-créé:\
+Nom d'utilisateur: admin1\
 Mot de passe: password123
