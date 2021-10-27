@@ -36,7 +36,7 @@ public class CreateAccount extends AppCompatActivity {
         int acctype = -1;
         boolean allInfo = true;
         boolean matchingPass = true;
-        final boolean[] usernameAvail = { true };
+        final boolean[] usernameAvail = {true};
 
         EditText usernameET = (EditText) findViewById(R.id.nomUtilisateur);
         EditText passwordET = (EditText) findViewById(R.id.motDepasse);
@@ -46,15 +46,13 @@ public class CreateAccount extends AppCompatActivity {
         RadioGroup acctypeRG = (RadioGroup) findViewById(R.id.radioButton_choix);
 
         username = usernameET.getText().toString();
-        if(username.compareTo("") == 0) allInfo = false;
         password = passwordET.getText().toString();
-        if(password.compareTo("") == 0) allInfo = false;
         rePassword = rePasswordET.getText().toString();
-        if(rePassword.compareTo("") == 0) allInfo = false;
         nom = nomET.getText().toString();
-        if(nom.compareTo("") == 0) allInfo = false;
         prenom = prenomET.getText().toString();
-        if(prenom.compareTo("") == 0) allInfo = false;
+        if (username.compareTo("") == 0 || password.compareTo("") == 0 || rePassword.compareTo("") == 0 || nom.compareTo("") == 0 || prenom.compareTo("") == 0) {
+            allInfo = false;
+        }
 
         int choice = acctypeRG.getCheckedRadioButtonId();
         if (choice == R.id.radio_button_client) {
@@ -65,44 +63,44 @@ public class CreateAccount extends AppCompatActivity {
             allInfo = false;
         }
 
-        if(password.compareTo(rePassword) != 0) matchingPass = false;
+        if (password.compareTo(rePassword) != 0) {
+            matchingPass = false;
+        }
 
         //to use inside class
         int finalAcctype = acctype;
-        boolean finalAllInfo = allInfo;
-        boolean finalMatchingPass = matchingPass;
 
-        myRef.child("users").child(username).addValueEventListener(new ValueEventListener() {
+        if (!allInfo) {
+            // missing text fields
+            Toast.makeText(getApplicationContext(), "Il y a des champs de textes manquants", Toast.LENGTH_LONG).show();
+            return;
+        } else if (!matchingPass) {
+            //password does not match
+            Toast.makeText(getApplicationContext(), "Les deux mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        myRef.child("users").child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (!snapshot.exists()) {
-                    if (finalAllInfo && finalMatchingPass) {
-                        //figure out good way of doing id
-                        UserAccount user;
-                        if (finalAcctype == 0) {
-                            user = new ClientAccount(0, prenom, nom, username, password);
-                        } else {
-                            user = new EmployeeAccount(0, prenom, nom, username, password);
-                        }
-
-                        myRef.child("users").child(username).setValue(user);
-                        Intent myIntent = new Intent(CreateAccount.this, WelcomePage.class);
-                        myIntent.putExtra("userId", username);
-                        startActivity(myIntent);
+            public void onComplete(@NonNull Task<DataSnapshot> snapshot) {
+                if (!snapshot.getResult().exists()) {
+                    //figure out good way of doing id
+                    UserAccount user;
+                    if (finalAcctype == 0) {
+                        user = new ClientAccount(0, prenom, nom, username, password);
+                    } else {
+                        user = new EmployeeAccount(0, prenom, nom, username, password);
                     }
-                } else if (!finalAllInfo){
-                    // missing text fields
-                    Toast.makeText(getApplicationContext(), "Il y a des champs de textes manquants", Toast.LENGTH_LONG).show();
-                } else if (!finalMatchingPass){
-                    //password does not match
-                    Toast.makeText(getApplicationContext(), "Les deux mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
+
+                    myRef.child("users").child(username).setValue(user);
+                    Intent myIntent = new Intent(CreateAccount.this, MainActivity.class);
+                    myIntent.putExtra("userId", username);
+                    startActivity(myIntent);
                 } else {
                     // username already taken
                     Toast.makeText(getApplicationContext(), "Le nom d'utilisateur choisi existe déjà", Toast.LENGTH_LONG).show();
                 }
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
         });
 
     }

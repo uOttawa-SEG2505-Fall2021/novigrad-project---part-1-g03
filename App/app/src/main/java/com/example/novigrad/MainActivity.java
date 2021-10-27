@@ -44,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         EditText passwordET = findViewById(R.id.password);
         String password = passwordET.getText().toString();
 
+        if (username.equals("") || password.equals("")) {
+            Toast.makeText(getApplicationContext(), "Erreur, s'il vous plait entrez le nom d'utilisateur ET mot de passe!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         final String[] dbPassword = new String[1];
 
         // infoChecks[0] is username existence, infoChecks[1] is password correctness
