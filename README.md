@@ -9,5 +9,5 @@ Membres de l'équipe:
 
 
 Compte administrateur pré-créé:
-  Nom d'utilisateur: admin1
-  Mot de passe: password123
+Nom d'utilisateur: admin1
+Mot de passe: password123
