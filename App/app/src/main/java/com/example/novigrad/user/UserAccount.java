@@ -1,6 +1,6 @@
 package com.example.novigrad.user;
 
-public abstract class UserAccount
+public class UserAccount
 {
 
     //------------------------

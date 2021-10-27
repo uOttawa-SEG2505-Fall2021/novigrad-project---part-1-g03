@@ -63,7 +63,6 @@
             android:hint="@string/prompt_nomDeFamille"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
-            android:inputType="textPassword"
             android:minHeight="48dp"
             android:selectAllOnFocus="true"
             android:textColor="@color/white"

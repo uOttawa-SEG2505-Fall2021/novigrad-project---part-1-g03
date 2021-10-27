@@ -60,18 +60,14 @@ public class MainActivity extends AppCompatActivity {
                         myIntent.putExtra("userId", username);
                         startActivity(myIntent);
                     } else {
-
-
-                        Toast.makeText(getApplicationContext(), "erreur mot de passe incorrect ", Toast.LENGTH_LONG).show();
                         //wrong password
+                        Toast.makeText(getApplicationContext(), "Erreur, le mot de passe est incorrect ", Toast.LENGTH_LONG).show();
                     }
                 }
                 else {
-
-                    Toast.makeText(getApplicationContext(), "erreur ce compte n'existe pas ", Toast.LENGTH_LONG).show();
-
-
                     //account does not exist
+                    Toast.makeText(getApplicationContext(), "Erreur, ce compte n'existe pas ", Toast.LENGTH_LONG).show();
+
                 }
             }
             @Override

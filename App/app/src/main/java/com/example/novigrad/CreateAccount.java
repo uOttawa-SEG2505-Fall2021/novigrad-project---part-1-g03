@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.novigrad.user.*;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -56,9 +57,13 @@ public class CreateAccount extends AppCompatActivity {
         if(prenom.compareTo("") == 0) allInfo = false;
 
         int choice = acctypeRG.getCheckedRadioButtonId();
-        if(choice == R.id.radio_button_client) acctype = 0;
-        else if (choice == R.id.radio_button_empoyee) acctype = 1;
-        else allInfo = false;
+        if (choice == R.id.radio_button_client) {
+            acctype = 0;
+        } else if (choice == R.id.radio_button_empoyee) {
+            acctype = 1;
+        } else {
+            allInfo = false;
+        }
 
         if(password.compareTo(rePassword) != 0) matchingPass = false;
 
@@ -84,11 +89,16 @@ public class CreateAccount extends AppCompatActivity {
                         Intent myIntent = new Intent(CreateAccount.this, WelcomePage.class);
                         myIntent.putExtra("userId", username);
                         startActivity(myIntent);
-                    } else {
-                        //missing info or passwords don't match
                     }
+                } else if (!finalAllInfo){
+                    // missing text fields
+                    Toast.makeText(getApplicationContext(), "Il y a des champs de textes manquants", Toast.LENGTH_LONG).show();
+                } else if (!finalMatchingPass){
+                    //password does not match
+                    Toast.makeText(getApplicationContext(), "Les deux mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
                 } else {
                     // username already taken
+                    Toast.makeText(getApplicationContext(), "Le nom d'utilisateur choisi existe déjà", Toast.LENGTH_LONG).show();
                 }
             }
             @Override
