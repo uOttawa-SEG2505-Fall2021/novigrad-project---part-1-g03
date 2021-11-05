@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Novigrad">
         <activity
+            android:name=".AddService"
+            android:exported="true" />
+        <activity
             android:name=".WelcomePage"
             android:exported="true" />
         <activity

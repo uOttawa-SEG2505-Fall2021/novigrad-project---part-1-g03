@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -15,10 +14,8 @@ import com.example.novigrad.user.*;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class CreateAccount extends AppCompatActivity {
 
@@ -48,11 +45,11 @@ public class CreateAccount extends AppCompatActivity {
         boolean allInfo = true;
         boolean matchingPass = true;
 
-        EditText usernameET = (EditText) findViewById(R.id.nomUtilisateur);
+        EditText usernameET = (EditText) findViewById(R.id.docRequis);
         EditText passwordET = (EditText) findViewById(R.id.motDepasse);
         EditText rePasswordET = (EditText) findViewById(R.id.motDepasse2);
-        EditText prenomET = (EditText) findViewById(R.id.prenom);
-        EditText nomET = (EditText) findViewById(R.id.nomDeFamille);
+        EditText prenomET = (EditText) findViewById(R.id.NomService);
+        EditText nomET = (EditText) findViewById(R.id.infoRequises);
         RadioGroup acctypeRG = (RadioGroup) findViewById(R.id.radioButton_choix);
 
         username = usernameET.getText().toString();

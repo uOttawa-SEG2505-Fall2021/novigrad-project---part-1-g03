@@ -19,4 +19,9 @@
     <string name="action_creerCompte">Créer un compte</string>
     <string name="badAccountTypeFoundErrorText">Il y a un erreur! On ne sait pas quel type de compte vous avez! S\'il vous plait contacter nous pour que nous puissions trouvez l\'erreur.</string>
     <string name="loginSuccess">Bonjour %1$s!\n Bienvenue à Service Novigrad! \n Vous êtes connecté en tant que %2$s.</string>
+    <string name="prompt_nomService">Nom du service</string>
+    <string name="prompt_infoRequises">Informations requises</string>
+    <string name="prompt_docRequis">Document requis</string>
+    <string name="action_ajouter">Ajouter</string>
+    <string name="prompt_entrerInfoRequis">Veuillez entrer les informations requises</string>
 </resources>
