@@ -26,6 +26,12 @@ public class CreateAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+
+    }
+
+    public void returnToLogin(View view) {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivityForResult(intent, 0);
     }
 
     // Méthode de Samy qui vérifie si une chaîne de charactères contient des chiffres
