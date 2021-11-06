@@ -109,7 +109,7 @@
                 android:backgroundTint="@color/cardview_dark_background"
                 android:gravity="top"
 
-                android:hint="@string/prompt_entrerInfoRequis"
+                android:hint="@string/prompt_entrerDocRequis"
                 android:inputType="textMultiLine|textNoSuggestions"
                 android:maxLines="50"
                 android:padding="10dp"
