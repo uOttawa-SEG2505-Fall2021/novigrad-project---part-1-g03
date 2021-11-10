@@ -44,6 +44,7 @@
                 android:layout_height="30dp" />
 
             <EditText
+                android:inputType="textNoSuggestions"
                 android:id="@+id/NomService"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
