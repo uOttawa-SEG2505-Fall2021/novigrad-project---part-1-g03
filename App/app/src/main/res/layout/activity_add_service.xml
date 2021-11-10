@@ -74,7 +74,7 @@
             <EditText
                 android:id="@+id/box"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="65dp"
                 android:layout_margin="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
@@ -102,7 +102,7 @@
             <EditText
                 android:id="@+id/box2"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="65dp"
                 android:layout_margin="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
