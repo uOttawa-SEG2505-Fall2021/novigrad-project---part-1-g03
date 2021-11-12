@@ -63,7 +63,7 @@ public class AddService extends AppCompatActivity {
         }
         
         if(nameContainsDigit){
-            Toast.makeText(this, "Le nom de service  ne devrait pas contenir de chiffres", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Le nom de service ne devrait pas contenir de chiffres", Toast.LENGTH_LONG).show();
         }
         else if(!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(infos) && !TextUtils.isEmpty(docs)) {
             String id = databaseServices.push().getKey();
