@@ -10,14 +10,16 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.novigrad.user.*;
+import com.example.novigrad.user.ClientAccount;
+import com.example.novigrad.user.EmployeeAccount;
+import com.example.novigrad.user.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class CreateAccount extends AppCompatActivity {
+public class CreateAccountPage extends AppCompatActivity {
 
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference dbRef = database.getReference();
@@ -30,7 +32,7 @@ public class CreateAccount extends AppCompatActivity {
     }
 
     public void returnToLogin(View view) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), LoginPage.class);
         startActivityForResult(intent, 0);
     }
 
@@ -110,7 +112,7 @@ public class CreateAccount extends AppCompatActivity {
                     }
 
                     dbRef.child("users").child(username).setValue(user);
-                    Intent myIntent = new Intent(CreateAccount.this, MainActivity.class);
+                    Intent myIntent = new Intent(CreateAccountPage.this, LoginPage.class);
                     myIntent.putExtra("userId", username);
                     startActivity(myIntent);
                 } else {

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1C1B1B"
-    tools:context=".AccountDeletion">
+    tools:context=".AccountDeletionPage">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
-                android:text="Gestion des comptes"
+                android:text="@string/gestion_comptes"
                 android:textColor="@color/white"
                 android:textSize="28dp"
                 android:textStyle="bold" />
@@ -47,6 +47,17 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
+
+
+            <ListView
+
+                android:id="@+id/listViewAccounts"
+                android:layout_width="match_parent"
+                android:layout_height="571dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:divider="#1C1B1B"
+                android:dividerHeight="20dp" />
 
         </LinearLayout>
     </ScrollView>

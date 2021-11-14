@@ -11,11 +11,11 @@ import java.util.List;
 
 public class ServiceList extends ArrayAdapter<Service> {
 
-    private Activity context;
+    private final Activity context;
     List<Service> services;
 
     public ServiceList(Activity context, List<Service> services) {
-        super(context, R.layout.layout_service_list, services);
+        super(context, R.layout.layout_item_list, services);
         this.context = context;
         this.services = services;
     }
@@ -23,8 +23,8 @@ public class ServiceList extends ArrayAdapter<Service> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.layout_service_list, null,true);
-        TextView serviceName = (TextView) listViewItem.findViewById(R.id.serviceName);
+        View listViewItem = inflater.inflate(R.layout.layout_item_list, null,true);
+        TextView serviceName = (TextView) listViewItem.findViewById(R.id.listItemName);
 
         Service service = services.get(position);
         serviceName.setText(service.getNomService());

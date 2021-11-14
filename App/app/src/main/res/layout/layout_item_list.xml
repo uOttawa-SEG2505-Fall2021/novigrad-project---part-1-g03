@@ -3,11 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="20dp"
-    android:background="#1C1B1B"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/serviceName"
+        android:id="@+id/listItemName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_services"

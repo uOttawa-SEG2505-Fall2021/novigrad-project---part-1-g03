@@ -16,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class AdminMain extends AppCompatActivity {
+public class AdminPage extends AppCompatActivity {
 
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference dbRef = database.getReference();
@@ -49,7 +49,7 @@ public class AdminMain extends AppCompatActivity {
         ServiceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), Services.class);
+                Intent intent = new Intent(getApplicationContext(), ServicesPage.class);
                 startActivityForResult(intent, 0);
             }
         });
@@ -57,7 +57,7 @@ public class AdminMain extends AppCompatActivity {
         AccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), AccountDeletion.class);
+                Intent intent = new Intent(getApplicationContext(), AccountDeletionPage.class);
                 startActivityForResult(intent, 0);
             }
         });

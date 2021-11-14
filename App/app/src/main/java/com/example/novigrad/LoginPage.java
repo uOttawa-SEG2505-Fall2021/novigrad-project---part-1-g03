@@ -6,13 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.novigrad.user.AdminAccount;
 import com.example.novigrad.user.UserAccount;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginPage extends AppCompatActivity {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef = database.getReference();
@@ -32,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCreateAccount(View view){
-        Intent intent = new Intent(getApplicationContext(), CreateAccount.class);
+        Intent intent = new Intent(getApplicationContext(), CreateAccountPage.class);
         startActivityForResult(intent, 0);
     }
 
@@ -63,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
                     assert user[0] != null;
                     if (user[0].getMotDePasse().compareTo(password) == 0) {
                         if (user[0].getAccountType()==2){
-                            Intent myIntent = new Intent(MainActivity.this, AdminMain.class);
+                            Intent myIntent = new Intent(LoginPage.this, AdminPage.class);
                             myIntent.putExtra("userId", username);
                             startActivity(myIntent);
                         } else {
-                            Intent myIntent = new Intent(MainActivity.this, WelcomePage.class);
+                            Intent myIntent = new Intent(LoginPage.this, WelcomePage.class);
                             myIntent.putExtra("userId", username);
                             startActivity(myIntent);
                         }

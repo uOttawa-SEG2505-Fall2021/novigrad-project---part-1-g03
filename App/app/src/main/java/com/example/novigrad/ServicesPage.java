@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Services extends AppCompatActivity {
+public class ServicesPage extends AppCompatActivity {
 
     ListView listViewServices;
     List<Service> services;
@@ -51,7 +51,7 @@ public class Services extends AppCompatActivity {
                     Service service = postSnapshot.getValue(Service.class);
                     services.add(service);
                 }
-                ServiceList servicesAdapter = new ServiceList(Services.this, services);
+                ServiceList servicesAdapter = new ServiceList(ServicesPage.this, services);
                 listViewServices.setAdapter(servicesAdapter);
             }
 
