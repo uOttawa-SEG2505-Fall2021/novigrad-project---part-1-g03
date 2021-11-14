@@ -7,27 +7,29 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.novigrad.user.UserAccount;
+
 import java.util.List;
 
-public class ServiceList extends ArrayAdapter<Service> {
+public class AccountList extends ArrayAdapter<UserAccount> {
 
     private Activity context;
-    List<Service> services;
+    List<UserAccount> accounts;
 
-    public ServiceList(Activity context, List<Service> services) {
-        super(context, R.layout.layout_item_list, services);
+    public AccountList(Activity context, List<UserAccount> accounts) {
+        super(context, R.layout.layout_item_list, accounts);
         this.context = context;
-        this.services = services;
+        this.accounts = accounts;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem = inflater.inflate(R.layout.layout_item_list, null,true);
-        TextView serviceName = (TextView) listViewItem.findViewById(R.id.listItemName);
+        TextView AccountName = (TextView) listViewItem.findViewById(R.id.listItemName);
 
-        Service service = services.get(position);
-        serviceName.setText(service.getNomService());
+        UserAccount account = accounts.get(position);
+        AccountName.setText(account.getNomDeUtiliseur());
         return listViewItem;
     }
 }

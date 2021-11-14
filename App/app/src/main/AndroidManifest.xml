@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Novigrad">
         <activity
-            android:name=".AccountDeletion"
+            android:name=".AccountDeletionPage"
             android:exported="true" />
         <activity
-            android:name=".Services"
+            android:name=".ServicesPage"
             android:exported="true" />
         <activity
-            android:name=".AdminMain"
+            android:name=".AdminPage"
             android:exported="true" />
         <activity
             android:name=".AddService"
@@ -25,10 +25,10 @@
             android:name=".WelcomePage"
             android:exported="true" />
         <activity
-            android:name=".CreateAccount"
+            android:name=".CreateAccountPage"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
