@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Novigrad">
         <activity
+            android:name=".ModifyServicePage"
+            android:exported="false" />
+        <activity
             android:name=".AccountDeletionPage"
             android:exported="true" />
         <activity

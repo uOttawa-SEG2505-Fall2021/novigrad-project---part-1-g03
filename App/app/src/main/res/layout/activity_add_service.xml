@@ -33,7 +33,7 @@
                 android:id="@+id/appDescriptionAdService"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ajouter un service"
+                android:text="@string/ajouter_un_service"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="25dp"
@@ -44,8 +44,8 @@
                 android:layout_height="30dp" />
 
             <EditText
-                android:inputType="textNoSuggestions"
                 android:id="@+id/NomService"
+                android:inputType="textNoSuggestions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
-                android:text="Information Requises"
+                android:text="@string/information_requises"
                 android:textColor="@color/white"
                 android:textSize="20dp" />
 
@@ -96,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
-                android:text="Documents Requis"
+                android:text="@string/documents_requis"
                 android:textColor="@color/white"
                 android:textSize="20dp" />
 
