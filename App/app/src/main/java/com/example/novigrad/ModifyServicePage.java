@@ -1,6 +1,5 @@
 package com.example.novigrad;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -94,8 +93,8 @@ public class ModifyServicePage extends AppCompatActivity {
 
     public void onDelete(View view) {
         AlertDialog.Builder alert = new AlertDialog.Builder(ModifyServicePage.this);
-        alert.setTitle("Alert!!");
-        alert.setMessage("Est-ce-que tu veux supprimer cette compte? Cette action ne peut pas être renversée!");
+        alert.setTitle("Attention!!");
+        alert.setMessage("Êtes-vous sûr de vouloir supprimer ce service? Cette action ne peut pas être renversée!");
         alert.setPositiveButton("OUI", new DialogInterface.OnClickListener() {
 
             @Override

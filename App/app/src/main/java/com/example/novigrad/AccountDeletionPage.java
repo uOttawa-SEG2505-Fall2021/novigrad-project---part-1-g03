@@ -62,8 +62,8 @@ public class AccountDeletionPage extends AppCompatActivity {
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
                         AlertDialog.Builder alert = new AlertDialog.Builder(AccountDeletionPage.this);
-                        alert.setTitle("Alert!!");
-                        alert.setMessage("Est-ce-que tu veux supprimer cette compte? Cette action ne peut pas être renversée!");
+                        alert.setTitle("Attention!!");
+                        alert.setMessage("Êtes-vous sûr de vouloir supprimer ce compte? Cette action ne peut pas être renversée!");
                         alert.setPositiveButton("OUI", new DialogInterface.OnClickListener() {
 
                             @Override
