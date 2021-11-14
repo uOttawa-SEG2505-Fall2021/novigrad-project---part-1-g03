@@ -74,7 +74,7 @@ public class AccountDeletionPage extends AppCompatActivity {
                                 UserAccount userToBeDeleted = accounts.get(position);
                                 databaseUsers.child(userToBeDeleted.getNomDeUtiliseur()).removeValue();
 
-                                Toast.makeText( getApplicationContext(), "Supprimage de compte réussi!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText( getApplicationContext(), "Suppression du compte réussi!", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
 
                             }
