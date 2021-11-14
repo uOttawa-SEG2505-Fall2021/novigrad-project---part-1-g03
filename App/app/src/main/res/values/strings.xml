@@ -31,6 +31,16 @@
     <string name="phrase_services">Liste des services offerts</string>
     <string name="plusDeDétails">(Cliquez longtemps sur un service pour le modifier ou le supprimer)</string>
     <string name="gestion_comptes">Gestion des comptes</string>
-    <string name="deleteAccountDesc">Nom utilisateur: %1$s \r\n Type de compte: %2$s</string>
+    <string name="deleteAccountDesc">Nom utilisateur: %1$s \n Type de compte: %2$s</string>
+    <string name="modifier_la_service">Modifier la service</string>
+    <string name="modifier">Modifier</string>
+    <string name="supprimer">Supprimer</string>
+    <string name="retourner">Retourner</string>
+    <string name="nom_de_service">Nom de Service:</string>
+    <string name="documents_requis_de_service">Documents Requis de Service:</string>
+    <string name="info_de_service">Info de Service:</string>
+    <string name="information_requises">Information Requises</string>
+    <string name="documents_requis">Documents Requis</string>
+    <string name="ajouter_un_service">Ajouter un service</string>
 
 </resources>
