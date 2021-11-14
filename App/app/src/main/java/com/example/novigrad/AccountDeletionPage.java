@@ -1,9 +1,15 @@
 package com.example.novigrad;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.novigrad.user.UserAccount;
 import com.google.firebase.database.DataSnapshot;
@@ -44,12 +50,49 @@ public class AccountDeletionPage extends AppCompatActivity {
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     UserAccount account = postSnapshot.getValue(UserAccount.class);
-                    if (account.getAccountType() == 0 || account.getAccountType() == 1) {
+                    if (account.getAccountType() == 0 || account.getAccountType() == 1) { // devrait avoir seulement les comptes employee et client
                         accounts.add(account);
                     }
                 }
                 AccountList accountAdapter = new AccountList(AccountDeletionPage.this, accounts);
                 listViewAccounts.setAdapter(accountAdapter);
+                listViewAccounts.setLongClickable(true);
+                listViewAccounts.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        AlertDialog.Builder alert = new AlertDialog.Builder(AccountDeletionPage.this);
+                        alert.setTitle("Alert!!");
+                        alert.setMessage("Est-ce-que tu veux supprimer cette compte? Cette action ne peut pas être renversée!");
+                        alert.setPositiveButton("OUI", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //delete account here
+
+                                //get account to be deleted
+                                UserAccount userToBeDeleted = accounts.get(position);
+                                databaseUsers.child(userToBeDeleted.getNomDeUtiliseur()).removeValue();
+
+                                Toast.makeText( getApplicationContext(), "Supprimage de compte réussi!", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+
+                            }
+                        });
+                        alert.setNegativeButton("NON", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                        alert.show();
+
+                        return true;
+
+                    }
+                });
             }
 
             @Override

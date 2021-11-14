@@ -29,7 +29,7 @@ public class AccountList extends ArrayAdapter<UserAccount> {
         TextView AccountName = (TextView) listViewItem.findViewById(R.id.listItemName);
 
         UserAccount account = accounts.get(position);
-        AccountName.setText(account.getNomDeUtiliseur());
+        AccountName.setText(String.format(context.getString(R.string.deleteAccountDesc), account.getNomDeUtiliseur(),(account.getAccountType() == 0 ? "Client" : "Employee")) );
         return listViewItem;
     }
 }
