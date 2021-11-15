@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,28 +68,41 @@ public class ModifyServicePage extends AppCompatActivity {
         String docs = serviceDocsEdit.getText().toString().trim();
         String infos = serviceInfoEdit.getText().toString().trim();
 
+        Service updatedService = new Service(nom, infos, docs);
+        if (Service.verifyService(updatedService, getApplicationContext())) {
 
-        char[] chars = nom.toCharArray();
-        boolean nameContainsDigit = false;
+            databaseServices.addValueEventListener(new ValueEventListener() {
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-        for (char c : chars) {
-            if (Character.isDigit(c)) {
-                nameContainsDigit = true;
-                break;
-            }
+                    boolean duplicateService = false;
+
+                    //check if there's a duplicate
+                    for(DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        Service service = postSnapshot.getValue(Service.class);
+                        if (service.getNomService().toLowerCase().equals(updatedService.getNomService().toLowerCase())) {
+                            duplicateService = true;
+                        }
+                    }
+
+                    if (!duplicateService) {
+
+                        Service updatedService = new Service(nom, infos, docs);
+                        databaseServices.child(serviceId).setValue(updatedService);
+
+                        Toast.makeText(getApplicationContext(), "Service modifié", Toast.LENGTH_LONG).show();
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Erreur: Ce service existe déjà", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
         }
-
-        if (nameContainsDigit) {
-            Toast.makeText(this, "Le nom de service ne devrait pas contenir de chiffres", Toast.LENGTH_LONG).show();
-        } else if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(infos) && !TextUtils.isEmpty(docs)) {
-            Service updatedService = new Service(nom, infos, docs);
-            databaseServices.child(serviceId).setValue(updatedService);
-
-            Toast.makeText(this, "Service modifié", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, "Il y a des champs de textes vides", Toast.LENGTH_LONG).show();
-        }
-
     }
 
     public void onDelete(View view) {
@@ -104,7 +118,7 @@ public class ModifyServicePage extends AppCompatActivity {
                 //get account to be deleted
                 databaseServices.child(serviceId).removeValue();
 
-                Toast.makeText( getApplicationContext(), "Supprimage de service réussi!", Toast.LENGTH_SHORT).show();
+                Toast.makeText( getApplicationContext(), "Suppression du service réussi!", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
                 onReturn(view);
             }
