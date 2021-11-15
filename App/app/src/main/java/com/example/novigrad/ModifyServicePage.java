@@ -79,7 +79,7 @@ public class ModifyServicePage extends AppCompatActivity {
                     //check if there's a duplicate
                     for(DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                         Service service = postSnapshot.getValue(Service.class);
-                        if (service.getNomService().equals(updatedService.getNomService())) {
+                        if (service.getNomService().toLowerCase().equals(updatedService.getNomService().toLowerCase())) {
                             duplicateService = true;
                         }
                     }
@@ -92,7 +92,7 @@ public class ModifyServicePage extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Service modifié", Toast.LENGTH_LONG).show();
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "Erreur: Service avec le meme nom trouvee", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Erreur: Ce service existe déjà", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -118,7 +118,7 @@ public class ModifyServicePage extends AppCompatActivity {
                 //get account to be deleted
                 databaseServices.child(serviceId).removeValue();
 
-                Toast.makeText( getApplicationContext(), "Supprimage de service réussi!", Toast.LENGTH_SHORT).show();
+                Toast.makeText( getApplicationContext(), "Suppression du service réussi!", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
                 onReturn(view);
             }
