@@ -103,25 +103,6 @@ public class ModifyServicePage extends AppCompatActivity {
             });
 
         }
-
-//        char[] chars = nom.toCharArray();
-//        boolean nameContainsDigit = false;
-//
-//        for (char c : chars) {
-//            if (Character.isDigit(c)) {
-//                nameContainsDigit = true;
-//                break;
-//            }
-//        }
-//
-//        if (nameContainsDigit) {
-//            Toast.makeText(this, "Le nom de service ne devrait pas contenir de chiffres", Toast.LENGTH_LONG).show();
-//        } else if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(infos) && !TextUtils.isEmpty(docs)) {
-//
-//        } else {
-//            Toast.makeText(this, "Il y a des champs de textes vides", Toast.LENGTH_LONG).show();
-//        }
-
     }
 
     public void onDelete(View view) {
