@@ -35,6 +35,14 @@ public class ServicesPage extends AppCompatActivity {
         services = new ArrayList<>();
 
         databaseServices = FirebaseDatabase.getInstance().getReference("services");
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras != null && extras.getString("errorMsg") != null) {
+                Toast.makeText(getApplicationContext(), extras.getString("errorMsg"), Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
 
     public void onAddService(View view){

@@ -27,9 +27,9 @@ public class ModifyServicePage extends AppCompatActivity {
     private String serviceInfo;
     private String serviceId;
 
-    private EditText serviceNameEdit ;
-    private EditText serviceDocsEdit ;
-    private EditText serviceInfoEdit ;
+    private EditText serviceNameEdit;
+    private EditText serviceDocsEdit;
+    private EditText serviceInfoEdit;
 
     private DatabaseReference databaseServices;
 
@@ -45,6 +45,18 @@ public class ModifyServicePage extends AppCompatActivity {
                 serviceDocs = extras.getString("serviceDocs");
                 serviceInfo = extras.getString("serviceInfo");
                 serviceId = extras.getString("serviceId");
+            } else {
+                //Cette code ici devrait jamais s'exécuter
+                // S'il exécute, il y a des problèmes avec l'information transmise dans la page précédente
+
+                //assigner des valeurs vides pour éviter les erreurs
+                serviceName = "";
+                serviceDocs = "";
+                serviceInfo = "";
+                serviceId = "";
+
+                //retourner à ServicesPage et donner un message d'erreur
+                returnWithError("Il y avait un erreur en tentant d'accéder les infos requises. S'il se persiste, SVP contactez les développeurs");
             }
         }
 
@@ -105,7 +117,7 @@ public class ModifyServicePage extends AppCompatActivity {
                 //get account to be deleted
                 databaseServices.child(serviceId).removeValue();
 
-                Toast.makeText( getApplicationContext(), "Supprimage de service réussi!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Supprimage de service réussi!", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
                 onReturn(view);
             }
@@ -123,7 +135,15 @@ public class ModifyServicePage extends AppCompatActivity {
     }
 
     public void onReturn(View view) {
+        returnWithError("");
+    }
+
+    //this way you don't have to copy the intent code
+    private void returnWithError(String errorMsg) {
         Intent returnToServicesIntent = new Intent(ModifyServicePage.this, ServicesPage.class);
+        if (errorMsg != "") {
+            returnToServicesIntent.putExtra("errorMsg", errorMsg);
+        }
         startActivity(returnToServicesIntent);
     }
 
