@@ -32,7 +32,7 @@
     <string name="plusDeDétails">(Cliquez longtemps sur un service pour le modifier ou le supprimer)</string>
     <string name="gestion_comptes">Gestion des comptes</string>
     <string name="deleteAccountDesc">Nom d\'utilisateur: %1$s \n Type de compte: %2$s</string>
-    <string name="modifier_la_service">Modifier la service</string>
+    <string name="modifier_le_service">Modifier le service</string>
     <string name="modifier">Modifier</string>
     <string name="supprimer">Supprimer</string>
     <string name="retourner">Retourner</string>
