@@ -81,7 +81,7 @@ public class AddService extends AppCompatActivity {
                         docsRequis.setText("");
                         Toast.makeText(AddService.this, "Service ajouté", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(AddService.this, "Erreur: Service avec le meme nom trouvee", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddService.this, "Erreur: Ce service existe déjà", Toast.LENGTH_SHORT).show();
                     }
                 }
 

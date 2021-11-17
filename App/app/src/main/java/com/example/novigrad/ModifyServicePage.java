@@ -81,6 +81,8 @@ public class ModifyServicePage extends AppCompatActivity {
                     for(DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                         Service service = postSnapshot.getValue(Service.class);
                         //check if the service name isn't being renamed to a service that already exists
+                        //note that we don't want to check if the case is the same if the name is the same (second half of the if), in case there's a case change
+                        //e.g. "driver's License" changed to "Driver's License" shouldn't raise an error 
                         if (service.getNomService().equalsIgnoreCase(updatedService.getNomService()) && !service.getNomService().equals(serviceName)) {
                             duplicateService = true;
                         }
@@ -94,7 +96,7 @@ public class ModifyServicePage extends AppCompatActivity {
                         Toast.makeText(ModifyServicePage.this, "Service modifié", Toast.LENGTH_LONG).show();
 
                     } else {
-                        Toast.makeText(ModifyServicePage.this, "Erreur: Service avec le meme nom trouvee", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ModifyServicePage.this, "Erreur: Ce service existe déjà", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -120,7 +122,7 @@ public class ModifyServicePage extends AppCompatActivity {
                 //get account to be deleted
                 databaseServices.child(serviceId).removeValue();
 
-                Toast.makeText( getApplicationContext(), "Supprimage de service réussi!", Toast.LENGTH_SHORT).show();
+                Toast.makeText( getApplicationContext(), "Suppression du service réussi!", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
                 onReturn(view);
             }
