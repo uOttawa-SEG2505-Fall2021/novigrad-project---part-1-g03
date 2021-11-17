@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.novigrad.user.UserAccount;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,11 +53,11 @@ public class LoginPage extends AppCompatActivity {
         final boolean[] infoCheck = new boolean[1];
         final UserAccount[] user = new UserAccount[1];
 
-        myRef.child("users").child(username).addValueEventListener(new ValueEventListener() {
+        myRef.child("users").child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    user[0] = snapshot.getValue(UserAccount.class);
+            public void onComplete(@NonNull Task<DataSnapshot> snapshot) {
+                if (snapshot.getResult().exists()) {
+                    user[0] = snapshot.getResult().getValue(UserAccount.class);
                     assert user[0] != null;
                     if (user[0].getMotDePasse().compareTo(password) == 0) {
                         if (user[0].getAccountType()==2){
@@ -75,11 +77,8 @@ public class LoginPage extends AppCompatActivity {
                 else {
                     //account does not exist
                     Toast.makeText(getApplicationContext(), "Erreur, ce compte n'existe pas ", Toast.LENGTH_LONG).show();
-
                 }
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
         });
 
 
