@@ -140,8 +140,6 @@ public class ModifyServicePage extends AppCompatActivity {
     }
 
     public void onReturn(View view) {
-//        Intent returnToServicesIntent = new Intent(ModifyServicePage.this, ServicesPage.class);
-//        startActivity(returnToServicesIntent);
         finish();
     }
 
