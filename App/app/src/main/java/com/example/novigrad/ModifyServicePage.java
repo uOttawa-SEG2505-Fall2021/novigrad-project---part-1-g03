@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ModifyServicePage extends AppCompatActivity {
 
+    //note that these are the INITIAL values
     private String serviceName;
     private String serviceDocs;
     private String serviceInfo;
@@ -79,7 +80,8 @@ public class ModifyServicePage extends AppCompatActivity {
                     //check if there's a duplicate
                     for(DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                         Service service = postSnapshot.getValue(Service.class);
-                        if (service.getNomService().equals(updatedService.getNomService())) {
+                        //check if the service name isn't being renamed to a service that already exists
+                        if (service.getNomService().equalsIgnoreCase(updatedService.getNomService()) && !service.getNomService().equals(serviceName)) {
                             duplicateService = true;
                         }
                     }
@@ -89,10 +91,10 @@ public class ModifyServicePage extends AppCompatActivity {
                         Service updatedService = new Service(nom, infos, docs);
                         databaseServices.child(serviceId).setValue(updatedService);
 
-                        Toast.makeText(getApplicationContext(), "Service modifié", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ModifyServicePage.this, "Service modifié", Toast.LENGTH_LONG).show();
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "Erreur: Service avec le meme nom trouvee", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ModifyServicePage.this, "Erreur: Service avec le meme nom trouvee", Toast.LENGTH_SHORT).show();
                     }
                 }
 

@@ -67,7 +67,7 @@ public class AddService extends AppCompatActivity {
                     //check if there's a duplicate
                     for(DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                         Service service = postSnapshot.getValue(Service.class);
-                        if (service.getNomService().equals(newService.getNomService())) {
+                        if (service.getNomService().equalsIgnoreCase(newService.getNomService())) {
                             duplicateService = true;
                         }
                     }
@@ -79,9 +79,9 @@ public class AddService extends AppCompatActivity {
                         nomService.setText("");
                         infosRequises.setText("");
                         docsRequis.setText("");
-                        Toast.makeText(getApplicationContext(), "Service ajouté", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddService.this, "Service ajouté", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Erreur: Service avec le meme nom trouvee", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddService.this, "Erreur: Service avec le meme nom trouvee", Toast.LENGTH_SHORT).show();
                     }
                 }
 
