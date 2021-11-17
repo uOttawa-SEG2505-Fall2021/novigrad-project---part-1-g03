@@ -103,4 +103,8 @@ public class AccountDeletionPage extends AppCompatActivity {
 
     }
 
+    public void onReturn(View view) {
+        finish();
+    }
+
 }

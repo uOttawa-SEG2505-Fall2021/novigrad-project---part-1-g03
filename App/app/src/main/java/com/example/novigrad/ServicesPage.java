@@ -85,4 +85,8 @@ public class ServicesPage extends AppCompatActivity {
 
     }
 
+    public void onReturn(View view){
+        finish();
+    }
+
 }
