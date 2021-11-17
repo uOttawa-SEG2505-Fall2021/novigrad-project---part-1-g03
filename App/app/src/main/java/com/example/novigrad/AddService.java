@@ -1,19 +1,19 @@
 package com.example.novigrad;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,14 +58,15 @@ public class AddService extends AppCompatActivity {
         Service newService = new Service(nom, infos, docs);
 
         if (Service.verifyService(newService, getApplicationContext())) {
-            databaseServices.addValueEventListener(new ValueEventListener() {
+
+            databaseServices.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                public void onComplete(@NonNull Task<DataSnapshot> dataSnapshot) {
 
                     boolean duplicateService = false;
 
                     //check if there's a duplicate
-                    for(DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    for(DataSnapshot postSnapshot : dataSnapshot.getResult().getChildren()) {
                         Service service = postSnapshot.getValue(Service.class);
                         if (service.getNomService().equalsIgnoreCase(newService.getNomService())) {
                             duplicateService = true;
@@ -84,12 +85,8 @@ public class AddService extends AppCompatActivity {
                         Toast.makeText(AddService.this, "Erreur: Ce service existe déjà", Toast.LENGTH_SHORT).show();
                     }
                 }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
             });
+
         }
     }
 

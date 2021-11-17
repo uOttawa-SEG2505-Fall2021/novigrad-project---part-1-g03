@@ -1,5 +1,6 @@
 package com.example.novigrad;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.novigrad.user.UserAccount;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -72,6 +75,39 @@ public class ModifyServicePage extends AppCompatActivity {
         Service updatedService = new Service(nom, infos, docs);
         if (Service.verifyService(updatedService, getApplicationContext())) {
 
+
+
+            databaseServices.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> dataSnapshot) {
+
+                    boolean duplicateService = false;
+
+                    //check if there's a duplicate
+                    for(DataSnapshot postSnapshot : dataSnapshot.getResult().getChildren()) {
+                        Service service = postSnapshot.getValue(Service.class);
+                        //check if the service name isn't being renamed to a service that already exists
+                        //note that we don't want to check if the case is the same if the name is the same (second half of the if), in case there's a case change
+                        //e.g. "driver's License" changed to "Driver's License" shouldn't raise an error
+                        if (service.getNomService().equalsIgnoreCase(updatedService.getNomService()) && !service.getNomService().equals(serviceName)) {
+                            duplicateService = true;
+                        }
+                    }
+
+                    if (!duplicateService) {
+
+                        Service updatedService = new Service(nom, infos, docs);
+                        databaseServices.child(serviceId).setValue(updatedService);
+
+                        Toast.makeText(ModifyServicePage.this, "Service modifié", Toast.LENGTH_LONG).show();
+
+                    } else {
+                        Toast.makeText(ModifyServicePage.this, "Erreur: Ce service existe déjà", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            /*
             databaseServices.addValueEventListener(new ValueEventListener() {
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -104,7 +140,7 @@ public class ModifyServicePage extends AppCompatActivity {
                 public void onCancelled(DatabaseError databaseError) {
 
                 }
-            });
+            }); */
 
         }
     }
