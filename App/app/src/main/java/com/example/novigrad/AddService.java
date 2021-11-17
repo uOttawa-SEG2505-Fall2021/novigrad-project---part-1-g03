@@ -90,4 +90,9 @@ public class AddService extends AppCompatActivity {
         }
     }
 
+    // Retourne à la page précédente
+    public void onReturn(View view){
+        finish();
+    }
+
 }

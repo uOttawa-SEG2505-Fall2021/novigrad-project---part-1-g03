@@ -32,8 +32,7 @@ public class CreateAccountPage extends AppCompatActivity {
     }
 
     public void returnToLogin(View view) {
-        Intent intent = new Intent(getApplicationContext(), LoginPage.class);
-        startActivityForResult(intent, 0);
+        finish();
     }
 
     // Méthode de Samy qui vérifie si une chaîne de charactères contient des chiffres

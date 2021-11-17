@@ -22,6 +22,9 @@ public class AdminPage extends AppCompatActivity {
     private final DatabaseReference dbRef = database.getReference();
     private UserAccount user;
 
+    public void onLogout(View view){
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

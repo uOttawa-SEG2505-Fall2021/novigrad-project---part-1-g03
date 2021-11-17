@@ -106,42 +106,6 @@ public class ModifyServicePage extends AppCompatActivity {
                     }
                 }
             });
-
-            /*
-            databaseServices.addValueEventListener(new ValueEventListener() {
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    boolean duplicateService = false;
-
-                    //check if there's a duplicate
-                    for(DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                        Service service = postSnapshot.getValue(Service.class);
-                        //check if the service name isn't being renamed to a service that already exists
-                        //note that we don't want to check if the case is the same if the name is the same (second half of the if), in case there's a case change
-                        //e.g. "driver's License" changed to "Driver's License" shouldn't raise an error 
-                        if (service.getNomService().equalsIgnoreCase(updatedService.getNomService()) && !service.getNomService().equals(serviceName)) {
-                            duplicateService = true;
-                        }
-                    }
-
-                    if (!duplicateService) {
-
-                        Service updatedService = new Service(nom, infos, docs);
-                        databaseServices.child(serviceId).setValue(updatedService);
-
-                        Toast.makeText(ModifyServicePage.this, "Service modifié", Toast.LENGTH_LONG).show();
-
-                    } else {
-                        Toast.makeText(ModifyServicePage.this, "Erreur: Ce service existe déjà", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            }); */
-
         }
     }
 
@@ -176,8 +140,7 @@ public class ModifyServicePage extends AppCompatActivity {
     }
 
     public void onReturn(View view) {
-        Intent returnToServicesIntent = new Intent(ModifyServicePage.this, ServicesPage.class);
-        startActivity(returnToServicesIntent);
+        finish();
     }
 
 
