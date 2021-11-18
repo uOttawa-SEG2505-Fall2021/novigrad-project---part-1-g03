@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import com.example.novigrad.user.UserAccount;
 import com.example.novigrad.user.AdminAccount;
 import com.example.novigrad.user.ClientAccount;
+import com.example.novigrad.user.EmployeeAccount;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -52,7 +53,17 @@ public class ExampleUnitTest  {
 
     }
 
+    @Test
+    //  create  test EmployeeAccount
+    public  void  testEmployeeAccount (){
 
+        EmployeeAccount user = new  EmployeeAccount(7869 , "Karine", "Lahaie","Karine1515","Karine35") ;
+        assertEquals(user.getId(),7869);
+        assertEquals(user.getPrenom(),"Karine");
+        assertEquals(user.getNomDeFamille(),"Lahaie");
+        assertEquals(user.getNomDeUtiliseur(),"Karine1515");
+        assertEquals(user.getMotDePasse(),"Karine35");
 
+    }
 
 }
