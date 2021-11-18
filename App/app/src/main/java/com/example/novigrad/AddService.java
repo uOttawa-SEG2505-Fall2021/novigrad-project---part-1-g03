@@ -18,6 +18,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe AddService qui nous permet d'ajouter un service à la base de donnée
+ * */
+
 public class AddService extends AppCompatActivity {
 
     EditText nomService;
@@ -50,6 +54,7 @@ public class AddService extends AppCompatActivity {
         });
     }
 
+    // méthode qui ajoute le service à la base de donnée
     private void addService() {
         String nom = nomService.getText().toString().trim();
         String infos = infosRequises.getText().toString().trim();

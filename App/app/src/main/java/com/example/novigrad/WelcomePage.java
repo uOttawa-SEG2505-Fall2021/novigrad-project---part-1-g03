@@ -14,6 +14,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * WelcomePage Class utilisé en attendant l'implémentation des fonctionnalités employé et client
+ * */
+
 public class WelcomePage extends AppCompatActivity {
 
     private int accountType;

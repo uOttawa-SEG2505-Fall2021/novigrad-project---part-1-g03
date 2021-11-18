@@ -4,6 +4,10 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+/**
+ * Classe Service pour créer un service
+ * */
+
 public class Service {
 
     // instance variables
