@@ -46,7 +46,7 @@ public class CreateAccountPage extends AppCompatActivity {
         return true;
     }
 
-    public void onCreateAcc(View view) {
+    public void onCreateAcc(View view ) {
         String username, password, rePassword, prenom, nom;
         int acctype = -1;
         boolean allInfo = true;
