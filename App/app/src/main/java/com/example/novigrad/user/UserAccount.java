@@ -1,5 +1,9 @@
 package com.example.novigrad.user;
 
+/**
+ * Classe UserAccount
+ * */
+
 public class UserAccount
 {
 

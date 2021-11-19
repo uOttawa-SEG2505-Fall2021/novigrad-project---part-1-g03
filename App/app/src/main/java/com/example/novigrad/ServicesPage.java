@@ -1,15 +1,12 @@
 package com.example.novigrad;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -66,7 +63,7 @@ public class ServicesPage extends AppCompatActivity {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                        Intent myIntent = new Intent(ServicesPage.this, ModifyServicePage.class);
+                        Intent myIntent = new Intent(ServicesPage.this, ModifyDeleteServicePage.class);
                         Service currentService = services.get(position);
                         myIntent.putExtra("serviceName", currentService.getNomService());
                         myIntent.putExtra("serviceDocs", currentService.getDocsRequis());

@@ -18,22 +18,46 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import android.widget.Toast;
 
+/**
+ * LoginPage classe qui est la classe pour le launch page de l'appliaction
+ * */
+
 public class LoginPage extends AppCompatActivity {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef = database.getReference();
+    EditText usernameET;
+    EditText passwordET;
+    String username;
+    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Remet le username et password comme des champs vides lorsque le compte se déconnecte
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                username = extras.getString("username");
+                password = extras.getString("password");
+            }
+        }
+
+        usernameET = findViewById(R.id.username);
+        passwordET = findViewById(R.id.password);
+        usernameET.setText(username);
+        passwordET.setText(password);
     }
 
+    // Cette méthode nous emmène à la page pour créer un compte
     public void onCreateAccount(View view){
         Intent intent = new Intent(getApplicationContext(), CreateAccountPage.class);
         startActivityForResult(intent, 0);
     }
 
+    // Cette méthode s'exécute lorsque l'utilisateur tente de se connecter
     public void onLogin(View view) {
         // get username
         EditText usernameET = (EditText) findViewById(R.id.username);

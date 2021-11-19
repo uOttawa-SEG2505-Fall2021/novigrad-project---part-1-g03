@@ -5,25 +5,21 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.novigrad.user.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-public class ModifyServicePage extends AppCompatActivity {
+/**
+ * ModifyDeleteServicePage class qui permet de modifier ou supprimer un service
+ * */
+public class ModifyDeleteServicePage extends AppCompatActivity {
 
     //note that these are the INITIAL values
     private String serviceName;
@@ -42,6 +38,7 @@ public class ModifyServicePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_service_page);
 
+        // Information passée du service page à celle ci (pour savoir quel service affiché)
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
@@ -67,6 +64,7 @@ public class ModifyServicePage extends AppCompatActivity {
 
     }
 
+    // Exécuter lorsqu'on modifie le service
     public void onModify(View view) {
         String nom = serviceNameEdit.getText().toString().trim();
         String docs = serviceDocsEdit.getText().toString().trim();
@@ -99,18 +97,19 @@ public class ModifyServicePage extends AppCompatActivity {
                         Service updatedService = new Service(nom, infos, docs);
                         databaseServices.child(serviceId).setValue(updatedService);
 
-                        Toast.makeText(ModifyServicePage.this, "Service modifié", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ModifyDeleteServicePage.this, "Service modifié", Toast.LENGTH_LONG).show();
 
                     } else {
-                        Toast.makeText(ModifyServicePage.this, "Erreur: Ce service existe déjà", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ModifyDeleteServicePage.this, "Erreur: Ce service existe déjà", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
         }
     }
 
+    // Exécuter lorsqu'on supprime le service
     public void onDelete(View view) {
-        AlertDialog.Builder alert = new AlertDialog.Builder(ModifyServicePage.this);
+        AlertDialog.Builder alert = new AlertDialog.Builder(ModifyDeleteServicePage.this);
         alert.setTitle("Attention!!");
         alert.setMessage("Êtes-vous sûr de vouloir supprimer ce service? Cette action ne peut pas être renversée!");
         alert.setPositiveButton("OUI", new DialogInterface.OnClickListener() {
@@ -139,6 +138,7 @@ public class ModifyServicePage extends AppCompatActivity {
 
     }
 
+    // Retourne à la page précédente
     public void onReturn(View view) {
         finish();
     }
