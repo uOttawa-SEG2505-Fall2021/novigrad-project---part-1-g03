@@ -42,11 +42,17 @@ public class Service {
 
     public static boolean verifyService(Service service, Context context) {
 
-        //check for numbers in the service name
+        int counter = 0;
+        int n = service.getNomService().length();
+
+        // If there are only numbers in the service names
         for (char c : service.getNomService().toCharArray()) {
             if (Character.isDigit(c)) {
-                Toast.makeText(context, "Le nom de service ne devrait pas contenir de chiffres", Toast.LENGTH_LONG).show();
-                return false;
+                counter++;
+                if(counter == n) {
+                    Toast.makeText(context, "Le nom de service ne devrait pas contenir que des chiffres", Toast.LENGTH_LONG).show();
+                    return false;
+                }
             }
         }
 
