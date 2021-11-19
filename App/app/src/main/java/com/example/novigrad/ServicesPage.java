@@ -18,6 +18,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ServicesPage classe qui est pour la page principale pour faire des actions sur les services
+ * */
+
 public class ServicesPage extends AppCompatActivity {
 
     ListView listViewServices;

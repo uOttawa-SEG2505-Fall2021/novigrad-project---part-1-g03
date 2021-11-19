@@ -26,16 +26,6 @@ public class AdminPage extends AppCompatActivity {
     private final DatabaseReference dbRef = database.getReference();
     private UserAccount user;
 
-    // Déconnecte le
-    public void onLogout(View view){
-
-        Intent myIntent = new Intent(AdminPage.this, LoginPage.class);
-        myIntent.putExtra("username", "");
-        myIntent.putExtra("password", "");
-        startActivity(myIntent);
-//        finish();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +64,14 @@ public class AdminPage extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+    }
+
+    // Déconnecte l'utilisateur
+    public void onLogout(View view){
+        Intent myIntent = new Intent(AdminPage.this, LoginPage.class);
+        myIntent.putExtra("username", "");
+        myIntent.putExtra("password", "");
+        startActivity(myIntent);
     }
 
 
