@@ -1,15 +1,12 @@
 package com.example.novigrad;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -67,20 +64,35 @@ public class ServicesPage extends AppCompatActivity {
                 }
                 ServiceList servicesAdapter = new ServiceList(ServicesPage.this, services);
                 listViewServices.setAdapter(servicesAdapter);
+                listViewServices.setLongClickable(true);
                 listViewServices.setClickable(true);
 
-                listViewServices.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                listViewServices.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                        Intent myIntent = new Intent(ServicesPage.this, ModifyServicePage.class);
+                        Intent myIntent = new Intent(ServicesPage.this, ModifyDeleteServicePage.class);
                         Service currentService = services.get(position);
                         myIntent.putExtra("serviceName", currentService.getNomService());
                         myIntent.putExtra("serviceDocs", currentService.getDocsRequis());
                         myIntent.putExtra("serviceInfo", currentService.getInfosRequises());
                         myIntent.putExtra("serviceId", serviceIds.get(position));
                         startActivityForResult(myIntent, 0);
+                        return true;
+                    }
+                });
 
+                listViewServices.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        Intent myIntent = new Intent(ServicesPage.this, ServiceDetails.class);
+                        Service currentService = services.get(position);
+                        myIntent.putExtra("serviceName", currentService.getNomService());
+                        myIntent.putExtra("serviceDocs", currentService.getDocsRequis());
+                        myIntent.putExtra("serviceInfo", currentService.getInfosRequises());
+                        myIntent.putExtra("serviceId", serviceIds.get(position));
+                        startActivityForResult(myIntent, 0);
                     }
                 });
             }
@@ -91,6 +103,10 @@ public class ServicesPage extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void onReturn(View view){
+        finish();
     }
 
 }

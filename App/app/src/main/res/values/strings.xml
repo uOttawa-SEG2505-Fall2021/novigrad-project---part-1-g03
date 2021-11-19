@@ -29,10 +29,10 @@
     <string name="action_retour">Retourner à la page précédente</string>
     <string name="instructions_delete">Veuillez appuyer longtemps sur un compte pour le supprimer</string>
     <string name="phrase_services">Liste des services offerts</string>
-    <string name="plusDeDétails">(Cliquez longtemps sur un service pour le modifier ou le supprimer)</string>
+    <string name="plusDeDétails">- Faites un long click sur un service pour le modifier ou le supprimer\n- Faites un click normal pour voir ses détails</string>
     <string name="gestion_comptes">Gestion des comptes</string>
-    <string name="deleteAccountDesc">Nom utilisateur: %1$s \n Type de compte: %2$s</string>
-    <string name="modifier_la_service">Modifier la service</string>
+    <string name="deleteAccountDesc">Nom d\'utilisateur: %1$s \n Type de compte: %2$s</string>
+    <string name="modifier_le_service">Modifier le service</string>
     <string name="modifier">Modifier</string>
     <string name="supprimer">Supprimer</string>
     <string name="retourner">Retourner</string>
@@ -42,5 +42,15 @@
     <string name="information_requises">Information Requises</string>
     <string name="documents_requis">Documents Requis</string>
     <string name="ajouter_un_service">Ajouter un service</string>
+    <string name="title_activity_service_details">ServiceDetails</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="informations_requises_det">Informations requises:</string>
 
 </resources>

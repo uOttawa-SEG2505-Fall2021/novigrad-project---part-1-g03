@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.novigrad.user.UserAccount;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,22 +18,46 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import android.widget.Toast;
 
+/**
+ * LoginPage classe qui est la classe pour le launch page de l'appliaction
+ * */
+
 public class LoginPage extends AppCompatActivity {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef = database.getReference();
+    EditText usernameET;
+    EditText passwordET;
+    String username;
+    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Remet le username et password comme des champs vides lorsque le compte se déconnecte
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                username = extras.getString("username");
+                password = extras.getString("password");
+            }
+        }
+
+        usernameET = findViewById(R.id.username);
+        passwordET = findViewById(R.id.password);
+        usernameET.setText(username);
+        passwordET.setText(password);
     }
 
+    // Cette méthode nous emmène à la page pour créer un compte
     public void onCreateAccount(View view){
         Intent intent = new Intent(getApplicationContext(), CreateAccountPage.class);
         startActivityForResult(intent, 0);
     }
 
+    // Cette méthode s'exécute lorsque l'utilisateur tente de se connecter
     public void onLogin(View view) {
         // get username
         EditText usernameET = (EditText) findViewById(R.id.username);
@@ -51,11 +77,11 @@ public class LoginPage extends AppCompatActivity {
         final boolean[] infoCheck = new boolean[1];
         final UserAccount[] user = new UserAccount[1];
 
-        myRef.child("users").child(username).addValueEventListener(new ValueEventListener() {
+        myRef.child("users").child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    user[0] = snapshot.getValue(UserAccount.class);
+            public void onComplete(@NonNull Task<DataSnapshot> snapshot) {
+                if (snapshot.getResult().exists()) {
+                    user[0] = snapshot.getResult().getValue(UserAccount.class);
                     assert user[0] != null;
                     if (user[0].getMotDePasse().compareTo(password) == 0) {
                         if (user[0].getAccountType()==2){
@@ -75,11 +101,8 @@ public class LoginPage extends AppCompatActivity {
                 else {
                     //account does not exist
                     Toast.makeText(getApplicationContext(), "Erreur, ce compte n'existe pas ", Toast.LENGTH_LONG).show();
-
                 }
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
         });
 
 

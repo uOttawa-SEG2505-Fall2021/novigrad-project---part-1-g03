@@ -3,7 +3,6 @@ package com.example.novigrad;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
@@ -21,8 +20,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountDeletionPage extends AppCompatActivity {
+/**
+ * Classe permettant de supprimer un compte
+ * */
 
+public class AccountDeletionPage extends AppCompatActivity {
 
     ListView listViewAccounts;
     List<UserAccount> accounts; // devrait avoir seulement les comptes employee et client
@@ -62,8 +64,8 @@ public class AccountDeletionPage extends AppCompatActivity {
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
                         AlertDialog.Builder alert = new AlertDialog.Builder(AccountDeletionPage.this);
-                        alert.setTitle("Alert!!");
-                        alert.setMessage("Est-ce-que tu veux supprimer cette compte? Cette action ne peut pas être renversée!");
+                        alert.setTitle("Attention!!");
+                        alert.setMessage("Êtes-vous sûr de vouloir supprimer ce compte? Cette action ne peut pas être renversée!");
                         alert.setPositiveButton("OUI", new DialogInterface.OnClickListener() {
 
                             @Override
@@ -74,7 +76,7 @@ public class AccountDeletionPage extends AppCompatActivity {
                                 UserAccount userToBeDeleted = accounts.get(position);
                                 databaseUsers.child(userToBeDeleted.getNomDeUtiliseur()).removeValue();
 
-                                Toast.makeText( getApplicationContext(), "Supprimage de compte réussi!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText( getApplicationContext(), "Suppression du compte réussi!", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
 
                             }
@@ -101,6 +103,11 @@ public class AccountDeletionPage extends AppCompatActivity {
             }
         });
 
+    }
+
+    // permet de retourner à la page précédente
+    public void onReturn(View view) {
+        finish();
     }
 
 }

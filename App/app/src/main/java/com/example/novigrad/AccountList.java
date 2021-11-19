@@ -11,6 +11,10 @@ import com.example.novigrad.user.UserAccount;
 
 import java.util.List;
 
+/**
+ * Classe AccountList qui nous permet d'afficher la liste des comptes
+ * */
+
 public class AccountList extends ArrayAdapter<UserAccount> {
 
     private Activity context;
@@ -29,7 +33,7 @@ public class AccountList extends ArrayAdapter<UserAccount> {
         TextView AccountName = (TextView) listViewItem.findViewById(R.id.listItemName);
 
         UserAccount account = accounts.get(position);
-        AccountName.setText(String.format(context.getString(R.string.deleteAccountDesc), account.getNomDeUtiliseur(),(account.getAccountType() == 0 ? "Client" : "Employee")) );
+        AccountName.setText(String.format(context.getString(R.string.deleteAccountDesc), account.getNomDeUtiliseur(),(account.getAccountType() == 0 ? "Client" : "Employé")) );
         return listViewItem;
     }
 }

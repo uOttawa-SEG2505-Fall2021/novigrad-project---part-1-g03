@@ -1,19 +1,26 @@
 package com.example.novigrad;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Classe AddService qui nous permet d'ajouter un service à la base de donnée
+ * */
 
 public class AddService extends AppCompatActivity {
 
@@ -47,38 +54,50 @@ public class AddService extends AppCompatActivity {
         });
     }
 
+    // méthode qui ajoute le service à la base de donnée
     private void addService() {
         String nom = nomService.getText().toString().trim();
         String infos = infosRequises.getText().toString().trim();
         String docs = docsRequis.getText().toString().trim();
 
-        char[] chars = nom.toCharArray();
-        boolean nameContainsDigit = false;
+        Service newService = new Service(nom, infos, docs);
 
-        for (char c : chars) {
-            if (Character.isDigit(c)) {
-                nameContainsDigit = true;
-                break;
-            }
+        if (Service.verifyService(newService, getApplicationContext())) {
+
+            databaseServices.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> dataSnapshot) {
+
+                    boolean duplicateService = false;
+
+                    //check if there's a duplicate
+                    for(DataSnapshot postSnapshot : dataSnapshot.getResult().getChildren()) {
+                        Service service = postSnapshot.getValue(Service.class);
+                        if (service.getNomService().equalsIgnoreCase(newService.getNomService())) {
+                            duplicateService = true;
+                        }
+                    }
+
+                    if (!duplicateService) {
+                        String id = databaseServices.push().getKey();
+                        databaseServices.child(id).setValue(newService);
+
+                        nomService.setText("");
+                        infosRequises.setText("");
+                        docsRequis.setText("");
+                        Toast.makeText(AddService.this, "Service ajouté", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(AddService.this, "Erreur: Ce service existe déjà", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
         }
+    }
 
-        if (nameContainsDigit) {
-            Toast.makeText(this, "Le nom de service ne devrait pas contenir de chiffres", Toast.LENGTH_LONG).show();
-        } else if (!TextUtils.isEmpty(nom) && !TextUtils.isEmpty(infos) && !TextUtils.isEmpty(docs)) {
-            String id = databaseServices.push().getKey();
-
-            Service service = new Service(nom, infos, docs);
-
-            databaseServices.child(id).setValue(service);
-
-            nomService.setText("");
-            infosRequises.setText("");
-            docsRequis.setText("");
-
-            Toast.makeText(this, "Service ajouté", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, "Il y a des champs de textes vides", Toast.LENGTH_LONG).show();
-        }
+    // Retourne à la page précédente
+    public void onReturn(View view){
+        finish();
     }
 
 }

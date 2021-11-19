@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Novigrad">
         <activity
-            android:name=".ModifyServicePage"
-            android:exported="false" />
+            android:name=".ModifyDeleteServicePage"
+            android:exported="true" />
         <activity
             android:name=".AccountDeletionPage"
             android:exported="true" />
@@ -29,6 +29,9 @@
             android:exported="true" />
         <activity
             android:name=".CreateAccountPage"
+            android:exported="true" />
+        <activity
+            android:name=".ServiceDetails"
             android:exported="true" />
         <activity
             android:name=".LoginPage"
