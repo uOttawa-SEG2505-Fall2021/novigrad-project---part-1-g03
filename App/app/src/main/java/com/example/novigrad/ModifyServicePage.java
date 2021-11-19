@@ -89,6 +89,7 @@ public class ModifyServicePage extends AppCompatActivity {
                         Service updatedService = new Service(nom, infos, docs);
                         databaseServices.child(serviceId).setValue(updatedService);
 
+
                         Toast.makeText(getApplicationContext(), "Service modifié", Toast.LENGTH_LONG).show();
 
                     } else {
