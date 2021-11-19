@@ -11,7 +11,7 @@
         android:theme="@style/Theme.Novigrad">
         <activity
             android:name=".ModifyDeleteServicePage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".AccountDeletionPage"
             android:exported="true" />
