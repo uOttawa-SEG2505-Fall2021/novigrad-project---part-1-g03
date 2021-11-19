@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/novigrad-project---part-1-g03/App
+    working_directory: ~/novigrad-project---part-1-g03/App/app
     docker:
       - image: circleci/android:api-30
     environment:
