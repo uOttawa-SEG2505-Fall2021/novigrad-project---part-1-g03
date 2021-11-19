@@ -4,9 +4,6 @@ jobs:
     working_directory: ~/novigrad-project---part-1-g03/App
     docker:
       - image: circleci/android:api-30-alpha
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
