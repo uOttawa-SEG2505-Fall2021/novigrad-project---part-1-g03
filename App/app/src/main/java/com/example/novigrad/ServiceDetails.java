@@ -13,6 +13,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * ServiceDetails classe qui permet d'afficher les détails d'un service sur une page
+ * */
+
 public class ServiceDetails extends AppCompatActivity {
 
    private String serviceName, serviceDocs, serviceInfo, serviceId;
@@ -36,11 +40,16 @@ public class ServiceDetails extends AppCompatActivity {
 
         serviceNameView = findViewById(R.id.details_name);
         serviceDocsView = findViewById(R.id.details_docs);
-        serviceInfoView = findViewById(R.id.deatils_info);
+        serviceInfoView = findViewById(R.id.details_info);
         serviceNameView.setText(serviceName);
         serviceDocsView.setText(serviceDocs);
         serviceInfoView.setText(serviceInfo);
 
+    }
+
+    // Retourne à la page précédente
+    public void onReturn(View view){
+        finish();
     }
 
 

@@ -5,9 +5,6 @@
       <map>
         <entry key="..\:/Users/martm/AndroidStudioProjects/novigrad-project---part-1-g03/App/app/src/main/res/layout/activity_create_account.xml" value="0.16576086956521738" />
         <entry key="..\:/Users/martm/AndroidStudioProjects/novigrad-project---part-1-g03/App/app/src/main/res/layout/activity_main.xml" value="0.16576086956521738" />
-        <entry key="..\:/Users/martm/AndroidStudioProjects/novigrad-project---part-1-g03/App/app/src/main/res/layout/activity_modify_service_page.xml" value="0.33" />
-        <entry key="..\:/Users/martm/AndroidStudioProjects/novigrad-project---part-1-g03/App/app/src/main/res/layout/activity_service_details.xml" value="0.25" />
-        <entry key="..\:/Users/martm/AndroidStudioProjects/novigrad-project---part-1-g03/App/app/src/main/res/layout/activity_services.xml" value="0.25" />
         <entry key="..\:/Users/martm/AndroidStudioProjects/novigrad-project---part-1-g03/App/app/src/main/res/layout/activity_welcome_page.xml" value="0.1875" />
         <entry key="..\:/Users/samyt/Desktop/Novigrad2/App/app/src/main/res/layout/activity_add_service.xml" value="0.2436923148431724" />
         <entry key="..\:/Users/samyt/Desktop/Novigrad2/App/app/src/main/res/layout/activity_create_account.xml" value="0.16246154322878156" />
@@ -26,6 +23,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_modify_service_page.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_service_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_service_list.xml" value="0.14356884057971014" />
         <entry key="app/src/main/res/layout/activity_services.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_welcome_page.xml" value="0.25" />
