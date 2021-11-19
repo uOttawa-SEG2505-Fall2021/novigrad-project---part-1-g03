@@ -1,13 +1,20 @@
 version: 2
 jobs:
- test:
-   docker:
-     - image: circleci/android:api-29
-   steps:
-     - checkout
-     - run:
-         name: Grant gradle permissions
-         command: sudo chmod +x ./gradlew
-     - run:
-         name: Download Dependencies
-         command: ./gradlew androidDependenciesworkflows:
+  test:
+    docker:
+      - image: circleci/android:api-29
+    steps:
+      - checkout
+      - run:
+          name: Grant gradle permissions
+          command: sudo chmod +x ./gradlew
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependenciesworkflows:
+      - run:
+          name: Run Unit Tests
+          command: ./gradlew testDebugUnitTest
+ version: 2
+ automated-tests:
+  jobs:
+    - test
