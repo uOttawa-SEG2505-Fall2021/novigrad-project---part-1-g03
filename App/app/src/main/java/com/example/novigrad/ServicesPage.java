@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +33,14 @@ public class ServicesPage extends AppCompatActivity {
         services = new ArrayList<>();
 
         databaseServices = FirebaseDatabase.getInstance().getReference("services");
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras != null && extras.getString("errorMsg") != null) {
+                Toast.makeText(getApplicationContext(), extras.getString("errorMsg"), Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
 
     public void onAddService(View view){
