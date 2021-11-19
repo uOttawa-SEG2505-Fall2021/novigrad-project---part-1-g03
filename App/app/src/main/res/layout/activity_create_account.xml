@@ -24,12 +24,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingLeft="20dp"
-            android:paddingTop="50dp"
+            android:paddingTop="20dp"
             android:paddingRight="20dp"
             android:paddingBottom="20dp">
 
             <Button
-                android:id="@+id/retour"
+                android:id="@+id/logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/cardview_dark_background"
@@ -40,7 +40,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="11dp"
-                app:cornerRadius="20dp" />
+                app:cornerRadius="10dp" />
 
             <Space
                 android:layout_width="match_parent"

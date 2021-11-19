@@ -20,15 +20,16 @@
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.375" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_account_deletion.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_add_service.xml" value="0.20276497695852536" />
+        <entry key="app/src/main/res/layout/activity_add_service.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_admin_main.xml" value="0.28254847645429365" />
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_modify_service_page.xml" value="0.13177083333333334" />
+        <entry key="app/src/main/res/layout/activity_modify_service_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_service_list.xml" value="0.14356884057971014" />
         <entry key="app/src/main/res/layout/activity_services.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_welcome_page.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/layout_item_list.xml" value="0.12284701114488349" />
         <entry key="app/src/main/res/layout/layout_service_list.xml" value="0.335" />
       </map>
     </option>
