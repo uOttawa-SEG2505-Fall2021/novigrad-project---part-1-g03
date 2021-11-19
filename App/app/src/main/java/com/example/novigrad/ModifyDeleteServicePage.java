@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -157,7 +158,7 @@ public class ModifyDeleteServicePage extends AppCompatActivity {
 
     //this way you don't have to copy the intent code
     private void returnWithError(String errorMsg) {
-        Intent returnToServicesIntent = new Intent(ModifyServicePage.this, ServicesPage.class);
+        Intent returnToServicesIntent = new Intent(ModifyDeleteServicePage.this, ServicesPage.class);
         if (errorMsg != "") {
             returnToServicesIntent.putExtra("errorMsg", errorMsg);
             startActivity(returnToServicesIntent);
