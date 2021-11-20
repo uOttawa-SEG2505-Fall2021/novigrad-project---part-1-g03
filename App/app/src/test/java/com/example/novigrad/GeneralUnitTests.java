@@ -62,7 +62,7 @@ public class GeneralUnitTests {
     public void testValidNames () {
         AdminAccount user = new AdminAccount(0, "Sophia", "Tate","sophiaa","123456");
         assertEquals("Checking first name validation",true, user.isValid(user.getPrenom()));
-        assertEquals("Checking first name validation",true, user.isValid(user.getNomDeFamille()));
+        assertEquals("Checking last name validation",true, user.isValid(user.getNomDeFamille()));
     }
     
     @Test
