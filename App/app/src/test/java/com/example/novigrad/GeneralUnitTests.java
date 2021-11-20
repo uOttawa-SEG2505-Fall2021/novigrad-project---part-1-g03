@@ -11,11 +11,11 @@ import com.example.novigrad.user.EmployeeAccount;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ExampleUnitTest  {
+public class GeneralUnitTests  {
 
     @Test
     //  create client account
-    public void testClienAccount (){
+    public void testClientAccount (){
 
         ClientAccount user = new  ClientAccount( 555, "Leonel","Messi","Messi06","seg2505") ;
         assertEquals(user.getId(),555);
