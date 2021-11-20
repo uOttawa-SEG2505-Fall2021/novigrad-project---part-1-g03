@@ -73,7 +73,8 @@ public class ModifyServicePage extends AppCompatActivity {
         String infos = serviceInfoEdit.getText().toString().trim();
 
         Service updatedService = new Service(nom, infos, docs);
-        if (Service.verifyService(updatedService, getApplicationContext())) {
+        String[] errorMessage = new String[1];
+        if (Service.verifyService(updatedService, errorMessage)) {
 
 
 
@@ -106,6 +107,8 @@ public class ModifyServicePage extends AppCompatActivity {
                     }
                 }
             });
+        } else {
+            Toast.makeText(getApplicationContext(), errorMessage[0], Toast.LENGTH_LONG).show();
         }
     }
 

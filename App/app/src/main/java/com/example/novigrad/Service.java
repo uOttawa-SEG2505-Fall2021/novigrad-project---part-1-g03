@@ -36,20 +36,20 @@ public class Service {
         return docsRequis;
     }
 
-    public static boolean verifyService(Service service, Context context) {
+    public static boolean verifyService(Service service, String[] errors) {
 
         //check for numbers in the service name
         for (char c : service.getNomService().toCharArray()) {
             if (Character.isDigit(c)) {
-                Toast.makeText(context, "Le nom de service ne devrait pas contenir de chiffres", Toast.LENGTH_LONG).show();
+                errors[0] = "Le nom de service ne devrait pas contenir de chiffres";
                 return false;
             }
         }
 
-         if (!TextUtils.isEmpty(service.getNomService()) && !TextUtils.isEmpty(service.getInfosRequises()) && !TextUtils.isEmpty(service.getDocsRequis())) {
+         if (!service.getNomService().isEmpty() && !service.getInfosRequises().isEmpty() && !service.getDocsRequis().isEmpty()) {
             return true;
         } else {
-            Toast.makeText(context, "Il y a des champs de textes vides", Toast.LENGTH_LONG).show();
+            errors[0] = "Il y a des champs de textes vides";
         }
          return false;
     }
