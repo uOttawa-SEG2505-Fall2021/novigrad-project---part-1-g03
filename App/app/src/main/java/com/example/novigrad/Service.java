@@ -46,7 +46,7 @@ public class Service {
             if (!Character.isLetter(c)) {
                 counter++;
                 if (counter == n) {
-                    errors[0] = "Le nom de service ne devrait pas contenir que des chiffres, espaces et charactères spéciales";
+                    errors[0] = "Le nom de service ne devrait pas contenir que des chiffres, espaces et charactères spéciaux";
                     return false;
                 }
             }
