@@ -1,24 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AndroidLayouts">
-    <shared>
-      <config />
-    </shared>
-  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f716f497-a75e-4629-b068-f1ea92881657" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/novigrad-project---part-1-g03.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/novigrad-project---part-1-g03.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/App/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/App/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/.project" beforeDir="false" afterPath="$PROJECT_DIR$/App/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/google-services.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/androidTest/java/com/example/novigrad/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/AccountDeletionPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/AccountList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/AddService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/AdminPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/CreateAccountPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/LoginPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/ModifyDeleteServicePage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/Service.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/ServiceDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/ServiceList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/ServicesPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/WelcomePage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/user/AdminAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/user/ClientAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/user/EmployeeAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/java/com/example/novigrad/user/UserAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/drawable/rounded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/drawable/rounded_services.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/layout/activity_account_deletion.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/layout/activity_add_service.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/layout/activity_admin_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/layout/activity_create_account.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/layout/activity_modify_service_page.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/layout/activity_service_details.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/layout/activity_services.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/layout/activity_welcome_page.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/layout/layout_item_list.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/values-land/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/values-night/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/values-w1240dp/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/values-w600dp/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/values/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/main/res/values/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/app/src/test/java/com/example/novigrad/CreateAccountTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/App/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/novigrad-project---part-1-g03" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/settings.gradle" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/celine_wan/.android/avd/Pixel_2_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -64,7 +138,6 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="memory.settings.postsync.last.time.stamp" value="1637420189780" />
   </component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
@@ -136,16 +209,5 @@
       <updated>1637420164585</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
