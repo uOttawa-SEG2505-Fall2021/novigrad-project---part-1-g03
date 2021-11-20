@@ -29,7 +29,7 @@
     <string name="action_retour">Retourner à la page précédente</string>
     <string name="instructions_delete">Veuillez appuyer longtemps sur un compte pour le supprimer</string>
     <string name="phrase_services">Liste des services offerts</string>
-    <string name="plusDeDétails">(Cliquez longtemps sur un service pour le modifier ou le supprimer)</string>
+    <string name="plusDeDétails">- Faites un long click sur un service pour le modifier ou le supprimer\n- Faites un click normal pour voir ses détails</string>
     <string name="gestion_comptes">Gestion des comptes</string>
     <string name="deleteAccountDesc">Nom d\'utilisateur: %1$s \n Type de compte: %2$s</string>
     <string name="modifier_le_service">Modifier le service</string>

@@ -1,5 +1,9 @@
 package com.example.novigrad.user;
 
+/**
+ * Classe UserAccount
+ * */
+
 public class UserAccount
 {
 
@@ -116,6 +120,17 @@ public class UserAccount
     public String getMotDePasse()
     {
         return motDePasse;
+    }
+
+    // Test to check if a first name or last name is valid
+    public boolean isValid(String str){
+        char[] chars = str.toCharArray();
+        for(char c : chars){
+            if(Character.isDigit(c)){
+                return false;
+            }
+        }
+        return true;
     }
 
     public String toString()

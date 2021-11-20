@@ -1,9 +1,7 @@
 package com.example.novigrad;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +18,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ServicesPage classe qui est pour la page principale pour faire des actions sur les services
+ * */
+
 public class ServicesPage extends AppCompatActivity {
 
     ListView listViewServices;
@@ -35,6 +37,14 @@ public class ServicesPage extends AppCompatActivity {
         services = new ArrayList<>();
 
         databaseServices = FirebaseDatabase.getInstance().getReference("services");
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras != null && extras.getString("errorMsg") != null) {
+                Toast.makeText(getApplicationContext(), extras.getString("errorMsg"), Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
 
     public void onAddService(View view){
@@ -66,7 +76,7 @@ public class ServicesPage extends AppCompatActivity {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                        Intent myIntent = new Intent(ServicesPage.this, ModifyServicePage.class);
+                        Intent myIntent = new Intent(ServicesPage.this, ModifyDeleteServicePage.class);
                         Service currentService = services.get(position);
                         myIntent.putExtra("serviceName", currentService.getNomService());
                         myIntent.putExtra("serviceDocs", currentService.getDocsRequis());

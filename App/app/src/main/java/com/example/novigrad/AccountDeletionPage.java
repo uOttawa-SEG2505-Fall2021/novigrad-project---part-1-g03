@@ -3,7 +3,6 @@ package com.example.novigrad;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
@@ -21,8 +20,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountDeletionPage extends AppCompatActivity {
+/**
+ * Classe permettant de supprimer un compte
+ * */
 
+public class AccountDeletionPage extends AppCompatActivity {
 
     ListView listViewAccounts;
     List<UserAccount> accounts; // devrait avoir seulement les comptes employee et client
@@ -103,6 +105,7 @@ public class AccountDeletionPage extends AppCompatActivity {
 
     }
 
+    // permet de retourner à la page précédente
     public void onReturn(View view) {
         finish();
     }

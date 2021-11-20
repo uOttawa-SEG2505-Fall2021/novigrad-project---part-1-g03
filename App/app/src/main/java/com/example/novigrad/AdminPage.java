@@ -16,15 +16,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Classe AdminPage qui représente le landing page lorsqu'on se connecte en tant qu'admin
+ * */
+
 public class AdminPage extends AppCompatActivity {
 
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference dbRef = database.getReference();
     private UserAccount user;
-
-    public void onLogout(View view){
-        finish();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,14 @@ public class AdminPage extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+    }
+
+    // Déconnecte l'utilisateur
+    public void onLogout(View view){
+        Intent myIntent = new Intent(AdminPage.this, LoginPage.class);
+        myIntent.putExtra("username", "");
+        myIntent.putExtra("password", "");
+        startActivity(myIntent);
     }
 
 

@@ -4,6 +4,10 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+/**
+ * Classe Service pour créer un service
+ * */
+
 public class Service {
 
     // instance variables
@@ -38,11 +42,17 @@ public class Service {
 
     public static boolean verifyService(Service service, String[] errors) {
 
-        //check for numbers in the service name
+        int counter = 0;
+        int n = service.getNomService().length();
+
+        // If there are only numbers in the service names
         for (char c : service.getNomService().toCharArray()) {
             if (Character.isDigit(c)) {
-                errors[0] = "Le nom de service ne devrait pas contenir de chiffres";
-                return false;
+                counter++;
+                if(counter == n) {
+                    errors[0] = "Le nom de service ne devrait pas contenir de chiffres";
+                    return false;
+                }
             }
         }
 

@@ -1,15 +1,12 @@
 package com.example.novigrad;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import com.example.novigrad.user.UserAccount;
 import com.example.novigrad.user.AdminAccount;
 import com.example.novigrad.user.ClientAccount;
 import com.example.novigrad.user.EmployeeAccount;
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ * Tests unitaires pour la création de compte admin, employé et client
  */
 public class GeneralUnitTests  {
 
@@ -27,21 +24,7 @@ public class GeneralUnitTests  {
     }
 
     @Test
-    //  test user acount
-    public  void  testUserAccount (){
-
-        UserAccount user = new UserAccount(1 , 123, "Benoi","Bolt","Benoi05","matlab") ;
-        assertEquals(user.getAccountType(),1);
-        assertEquals(user.getId(),123);
-        assertEquals(user.getPrenom(),"Benoi");
-        assertEquals(user.getNomDeFamille(),"Bolt");
-        assertEquals(user.getNomDeUtiliseur(),"Benoi05");
-        assertEquals(user.getMotDePasse(),"matlab");
-
-    }
-
-    @Test
-    // tes admin Account
+    // test create admin Account
     public  void  testAdminAccount (){
         //  create a user
         AdminAccount user = new  AdminAccount(2 , "Jasque", "Trudeau","Jasque47","password") ;
@@ -54,7 +37,7 @@ public class GeneralUnitTests  {
     }
 
     @Test
-    //  create  test EmployeeAccount
+    //  test create Employee Account
     public  void  testEmployeeAccount (){
 
         EmployeeAccount user = new  EmployeeAccount(7869 , "Karine", "Lahaie","Karine1515","Karine35") ;
@@ -84,6 +67,21 @@ public class GeneralUnitTests  {
                 "Measures your driving aptitude", "Driver's License");
         assertEquals(Service.verifyService(valid, new String[1]), true);
         assertEquals(Service.verifyService(invalid, new String[1]), false);
+    }
+
+    // 2 following tests check the validity of first or last name
+    @Test
+    public void testInvalidValidNames () {
+        AdminAccount user = new AdminAccount(0, "Sophia1", "Labe1","sophiaa","123456");
+        assertEquals("Checking first name validation",false, user.isValid(user.getPrenom()));
+        assertEquals("Checking last name validation",false, user.isValid(user.getNomDeFamille()));
+    }
+
+    @Test
+    public void testValidNames () {
+        AdminAccount user = new AdminAccount(0, "Sophia", "Tate","sophiaa","123456");
+        assertEquals("Checking first name validation",true, user.isValid(user.getPrenom()));
+        assertEquals("Checking last name validation",true, user.isValid(user.getNomDeFamille()));
     }
 
 }
