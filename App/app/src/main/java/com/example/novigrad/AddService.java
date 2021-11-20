@@ -62,7 +62,9 @@ public class AddService extends AppCompatActivity {
 
         Service newService = new Service(nom, infos, docs);
 
-        if (Service.verifyService(newService, getApplicationContext())) {
+        String[] errorMessage = new String[1];
+
+        if (Service.verifyService(newService, errorMessage)) {
 
             databaseServices.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
@@ -92,6 +94,8 @@ public class AddService extends AppCompatActivity {
                 }
             });
 
+        } else {
+            Toast.makeText(getApplicationContext(), errorMessage[0], Toast.LENGTH_LONG).show();
         }
     }
 

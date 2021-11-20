@@ -61,6 +61,24 @@ public class CreateAccountTest {
     public void testValidLastName () {
         AdminAccount user = new AdminAccount(0, "Sophia", "Tate","sophiaa","123456");
         assertEquals("Checking first name validation",true, user.isValid(user.getPrenom()));
+    @Test
+    // create service test
+    public void testServiceCreation() {
+        Service service = new Service("Driver's Test", "Measures your driving aptitude", "Driver's License");
+        assertEquals(service.getNomService(), "Driver's Test");
+        assertEquals(service.getDocsRequis(), "Driver's License");
+        assertEquals(service.getInfosRequises(), "Measures your driving aptitude");
+    }
+
+    @Test
+    // test name verification for services
+    public void testServiceVerification() {
+        Service valid = new Service("Driver's Test",
+                "Measures your driving aptitude", "Driver's License");
+        Service invalid = new Service("Dr1ver's T3st",
+                "Measures your driving aptitude", "Driver's License");
+        assertEquals(Service.verifyService(valid, new String[1]), true);
+        assertEquals(Service.verifyService(invalid, new String[1]), false);
     }
 
 }

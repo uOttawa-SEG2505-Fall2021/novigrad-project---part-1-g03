@@ -40,7 +40,7 @@ public class Service {
         return docsRequis;
     }
 
-    public static boolean verifyService(Service service, Context context) {
+    public static boolean verifyService(Service service, String[] errors) {
 
         int counter = 0;
         int n = service.getNomService().length();
@@ -48,18 +48,15 @@ public class Service {
         // If there are only numbers in the service names
         for (char c : service.getNomService().toCharArray()) {
             if (Character.isDigit(c)) {
-                counter++;
-                if(counter == n) {
-                    Toast.makeText(context, "Le nom de service ne devrait pas contenir que des chiffres", Toast.LENGTH_LONG).show();
-                    return false;
-                }
+                errors[0] = "Le nom de service ne devrait pas contenir de chiffres";
+                return false;
             }
         }
 
-         if (!TextUtils.isEmpty(service.getNomService()) && !TextUtils.isEmpty(service.getInfosRequises()) && !TextUtils.isEmpty(service.getDocsRequis())) {
+         if (!service.getNomService().isEmpty() && !service.getInfosRequises().isEmpty() && !service.getDocsRequis().isEmpty()) {
             return true;
         } else {
-            Toast.makeText(context, "Il y a des champs de textes vides", Toast.LENGTH_LONG).show();
+            errors[0] = "Il y a des champs de textes vides";
         }
          return false;
     }
