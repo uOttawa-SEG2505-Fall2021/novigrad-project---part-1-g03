@@ -9,11 +9,11 @@ import com.example.novigrad.user.EmployeeAccount;
  * Tests unitaires pour la création de compte admin, employé et client
  */
 
-public class CreateAccountTest {
+public class GeneralUnitTests {
 
     @Test
     //  test create client account
-    public void testClienAccount (){
+    public void testClientAccount (){
 
         ClientAccount user = new  ClientAccount( 555, "Leonel","Messi","Messi06","seg2505") ;
         assertEquals(user.getId(),555);
@@ -50,17 +50,21 @@ public class CreateAccountTest {
 
     }
 
-    // 2 following tests check the validity of first or last name
+    // 2 following tests check the validity of first and last names
     @Test
-    public void testInvalidValidFirstName () {
-        AdminAccount user = new AdminAccount(0, "Sophia1", "Labe","sophiaa","123456");
+    public void testInvalidNames () {
+        AdminAccount user = new AdminAccount(0, "Sophia1", "Lab3","sophiaa","123456");
         assertEquals("Checking first name validation",false, user.isValid(user.getPrenom()));
+        assertEquals("Checking last name validation",false, user.isValid(user.getNomDeFamille()));
     }
 
     @Test
-    public void testValidLastName () {
+    public void testValidNames () {
         AdminAccount user = new AdminAccount(0, "Sophia", "Tate","sophiaa","123456");
         assertEquals("Checking first name validation",true, user.isValid(user.getPrenom()));
+        assertEquals("Checking first name validation",true, user.isValid(user.getNomDeFamille()));
+    }
+    
     @Test
     // create service test
     public void testServiceCreation() {
@@ -75,10 +79,13 @@ public class CreateAccountTest {
     public void testServiceVerification() {
         Service valid = new Service("Driver's Test",
                 "Measures your driving aptitude", "Driver's License");
-        Service invalid = new Service("Dr1ver's T3st",
+        Service invalidNumbers = new Service("01000100 01110010 01101001 01110110 01100101 01110010 00100111 01110011 00100000 01010100 01100101 01110011 01110100",
+                "Measures your driving aptitude", "Driver's License");
+        Service invalidEmpty = new Service("     ",
                 "Measures your driving aptitude", "Driver's License");
         assertEquals(Service.verifyService(valid, new String[1]), true);
-        assertEquals(Service.verifyService(invalid, new String[1]), false);
+        assertEquals(Service.verifyService(invalidNumbers, new String[1]), false);
+        assertEquals(Service.verifyService(invalidEmpty, new String[1]), false);
     }
 
 }
