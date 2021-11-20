@@ -122,6 +122,17 @@ public class UserAccount
         return motDePasse;
     }
 
+    // Test to check if a first name or last name is valid
+    public boolean isValid(String str){
+        char[] chars = str.toCharArray();
+        for(char c : chars){
+            if(Character.isDigit(c)){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public String toString()
     {
         return super.toString() + "["+

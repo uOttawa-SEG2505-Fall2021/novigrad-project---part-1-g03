@@ -50,4 +50,17 @@ public class CreateAccountTest {
 
     }
 
+    // 2 following tests check the validity of first or last name
+    @Test
+    public void testInvalidValidFirstName () {
+        AdminAccount user = new AdminAccount(0, "Sophia1", "Labe","sophiaa","123456");
+        assertEquals("Checking first name validation",false, user.isValid(user.getPrenom()));
+    }
+
+    @Test
+    public void testValidLastName () {
+        AdminAccount user = new AdminAccount(0, "Sophia", "Tate","sophiaa","123456");
+        assertEquals("Checking first name validation",true, user.isValid(user.getPrenom()));
+    }
+
 }
