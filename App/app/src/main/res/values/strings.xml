@@ -52,6 +52,6 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="informations_requises_det">Informations requises:</string>
-    <string name="bonjour">Bonjour %1$s!\n Bienvenue à Service Novigrad! \n Vous êtes connecté en tant que client.</string>
+    <string name="bonjour">Bonjour %1$s!\n Bienvenue à Service Novigrad! \n Vous êtes connecté en tant qu\'employé.</string>
 
 </resources>
