@@ -17,15 +17,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
 
             <TextView
                 android:id="@+id/welcomeEmploye"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
+                android:layout_marginLeft="60dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginRight="80dp"
+                android:layout_marginRight="60dp"
                 android:text="@string/bonjour"
                 android:textAlignment="center"
                 android:textColor="@color/white"
@@ -33,7 +34,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="30dp" />
 
             <LinearLayout
                 android:id="@+id/servicesBtn"
@@ -66,7 +67,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="25dp" />
 
             <LinearLayout
                 android:id="@+id/hoursBtn"
@@ -98,7 +99,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="25dp" />
 
             <LinearLayout
                 android:id="@+id/demandesBtn"
@@ -135,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="110dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="110dp"
                 android:backgroundTint="@color/cardview_dark_background"
                 android:enabled="true"

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.novigrad.user.EmployeeAccount;
+import com.example.novigrad.user.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -19,7 +20,7 @@ public class EmployeePage extends AppCompatActivity {
 
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference dbRef = database.getReference();
-    private EmployeeAccount user;
+    private UserAccount user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class EmployeePage extends AppCompatActivity {
             public void onComplete(@NonNull Task<DataSnapshot> snapshot) {
                 if (snapshot.getResult().exists()) {
 
-                user = snapshot.getResult().getValue(EmployeeAccount.class);
+                user = snapshot.getResult().getValue(UserAccount.class);
                 welcomeMessage.setText(String.format(getString(R.string.bonjour), user.getPrenom()));
                 } else {
                     //some sort of error handling here
