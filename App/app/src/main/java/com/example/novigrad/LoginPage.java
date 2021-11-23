@@ -84,15 +84,17 @@ public class LoginPage extends AppCompatActivity {
                     user[0] = snapshot.getResult().getValue(UserAccount.class);
                     assert user[0] != null;
                     if (user[0].getMotDePasse().compareTo(password) == 0) {
-                        if (user[0].getAccountType()==2){
-                            Intent myIntent = new Intent(LoginPage.this, AdminPage.class);
-                            myIntent.putExtra("userId", username);
-                            startActivity(myIntent);
+                        Intent myIntent;
+                        int accountType = user[0].getAccountType();
+                        if (accountType==2) { //is an Admin
+                            myIntent = new Intent(LoginPage.this, AdminPage.class);
+                        } else if (accountType == 1) { //is an Employee
+                            myIntent = new Intent(LoginPage.this, EmployeePage.class);
                         } else {
-                            Intent myIntent = new Intent(LoginPage.this, WelcomePage.class);
-                            myIntent.putExtra("userId", username);
-                            startActivity(myIntent);
+                            myIntent = new Intent(LoginPage.this, WelcomePage.class);
                         }
+                        myIntent.putExtra("userId", username);
+                        startActivity(myIntent);
                     } else {
                         //wrong password
                         Toast.makeText(getApplicationContext(), "Erreur, le mot de passe est incorrect ", Toast.LENGTH_LONG).show();
