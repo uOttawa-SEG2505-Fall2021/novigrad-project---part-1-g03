@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Novigrad">
         <activity
+            android:name=".ServicesFournisPage"
+            android:exported="false" />
+        <activity
+            android:name=".SuccursaleDemandsPage"
+            android:exported="false" />
+        <activity
+            android:name=".SuccursaleTimePage"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeePage"
+            android:exported="false" />
+        <activity
             android:name=".ModifyDeleteServicePage"
             android:exported="true" />
         <activity
