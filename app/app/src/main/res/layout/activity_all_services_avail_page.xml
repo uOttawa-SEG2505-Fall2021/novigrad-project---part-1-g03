@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1C1B1B"
-    tools:context=".AccountDeletionPage">
+    tools:context=".AllServicesAvailPage">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
@@ -19,6 +19,7 @@
             android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:backgroundTint="@color/cardview_dark_background"
             android:enabled="true"
             android:onClick="onReturn"
@@ -33,25 +34,26 @@
             android:id="@+id/titlePage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
-            android:text="@string/gestion_comptes"
+            android:layout_marginRight="35dp"
+            android:text="Liste de tous les services fournis par Service Novigrad"
+            android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="28dp"
+            android:textSize="25dp"
             android:textStyle="bold" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="10dp" />
+            android:layout_height="15dp" />
 
         <TextView
-            android:id="@+id/instructions"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:text="@string/instructions_delete"
+            android:text="@string/allServicesInfos"
             android:textColor="@color/white"
             android:textSize="18dp" />
 
@@ -59,19 +61,17 @@
             android:layout_width="match_parent"
             android:layout_height="15dp" />
 
-
         <ListView
 
-            android:id="@+id/listViewAccounts"
+            android:id="@+id/listViewServicesDispo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
+            android:background="#ACACAC"
             android:divider="#1C1B1B"
-            android:dividerHeight="20dp"
-
-            />
-
+            android:dividerHeight="20dp" />
 
     </LinearLayout>
+
 </RelativeLayout>
