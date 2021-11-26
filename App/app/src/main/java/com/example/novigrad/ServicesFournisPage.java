@@ -15,8 +15,8 @@ public class ServicesFournisPage extends AppCompatActivity {
     }
 
     public void onSeeAll(View view){
-//        Intent intent = new Intent(getApplicationContext(), AllServicesAvailPage.class);
-//        startActivityForResult(intent, 0);
+        Intent intent = new Intent(getApplicationContext(), AllServicesAvailPage.class);
+        startActivityForResult(intent, 0);
     }
 
     public void onReturn(View view){
