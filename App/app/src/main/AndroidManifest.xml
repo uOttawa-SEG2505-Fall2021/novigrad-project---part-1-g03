@@ -14,16 +14,16 @@
             android:exported="true" />
         <activity
             android:name=".ServicesFournisPage"
-            android:exported="false" />
+            android:exported="true" /> <!-- This was FALSE -->
         <activity
             android:name=".SuccursaleDemandsPage"
-            android:exported="false" />
+            android:exported="true" /> <!-- This was FALSE -->
         <activity
             android:name=".SuccursaleTimePage"
-            android:exported="false" />
+            android:exported="true" /> <!-- This was FALSE -->
         <activity
             android:name=".EmployeePage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ModifyDeleteServicePage"
             android:exported="true" />
