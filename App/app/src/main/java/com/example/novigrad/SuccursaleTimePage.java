@@ -113,4 +113,8 @@ public class SuccursaleTimePage extends AppCompatActivity {
             }
         });
     }
+
+    public void onReturn(View view){
+        finish();
+    }
 }
