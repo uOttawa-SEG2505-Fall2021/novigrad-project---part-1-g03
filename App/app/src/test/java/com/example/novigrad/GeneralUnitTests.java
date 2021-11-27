@@ -1,4 +1,6 @@
 package com.example.novigrad;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import com.example.novigrad.user.AdminAccount;
@@ -95,6 +97,20 @@ public class GeneralUnitTests {
         assertEquals(Helpers.getHours(90) == 1, true);
         assertEquals(Helpers.approximateTime(22) == 15, true);
 
+    }
+
+    @Test
+    //test that
+    public void testSuccursaleJSON() {
+        Succursale succ = new Succursale("testSucc");
+        try {
+            System.out.println("This was the attempt at JSON\n" + succ.toString() +"\n\n");
+            JSONObject json = new JSONObject(succ.toString());
+        } catch (JSONException e) {
+            System.out.println("This was the attempt at JSON" + succ.toString());
+            e.printStackTrace();
+            fail();
+        }
     }
 
 }
