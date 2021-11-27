@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Novigrad">
         <activity
+            android:name=".AllServicesAvailPage"
+            android:exported="true" />
+        <activity
             android:name=".ServicesFournisPage"
             android:exported="true" /> <!-- This was FALSE -->
         <activity

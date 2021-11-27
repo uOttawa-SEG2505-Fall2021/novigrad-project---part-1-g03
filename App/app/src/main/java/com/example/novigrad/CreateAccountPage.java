@@ -93,7 +93,12 @@ public class CreateAccountPage extends AppCompatActivity {
             // missing text fields
             Toast.makeText(getApplicationContext(), "Il y a des champs de textes manquants", Toast.LENGTH_LONG).show();
             return;
-        } else if (!matchingPass) {
+        } else if(password.length()<6){
+            // ensure password is always more than 6 characters
+            Toast.makeText(getApplicationContext(), "Votre mot de passe doit contenir au moins 6 caractères", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else if (!matchingPass) {
             //password does not match
             Toast.makeText(getApplicationContext(), "Les deux mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
             return;
