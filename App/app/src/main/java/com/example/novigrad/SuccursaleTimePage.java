@@ -42,7 +42,7 @@ public class SuccursaleTimePage extends AppCompatActivity {
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                 // Initialize hour and minute
                                 t1Hour = hourOfDay;
-                                t1minute = minute;
+                                t1minute = Helpers.approximateTime(minute);
 
                                 // Initialize calendar
                                 Calendar calendar = Calendar.getInstance();
@@ -63,7 +63,6 @@ public class SuccursaleTimePage extends AppCompatActivity {
                 timePickerDialog.show();
             }
         });
-
         tvTimer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

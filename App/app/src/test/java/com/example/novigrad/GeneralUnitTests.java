@@ -88,4 +88,13 @@ public class GeneralUnitTests {
         assertEquals(Service.verifyService(invalidEmpty, new String[1]), false);
     }
 
+    @Test
+    // test that the time methods work properly
+    public void testTimes() {
+        assertEquals(Helpers.getMinutes(90) == 30, true);
+        assertEquals(Helpers.getHours(90) == 1, true);
+        assertEquals(Helpers.approximateTime(22) == 15, true);
+
+    }
+
 }
