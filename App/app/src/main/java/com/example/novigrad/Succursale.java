@@ -60,6 +60,7 @@ public class Succursale {
         return serviceRefsString;
     }
 
+    //returns a string in JSON format
     public String toString()
     {
         return "{"+
