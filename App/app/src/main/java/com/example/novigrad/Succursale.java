@@ -39,6 +39,7 @@ public class Succursale {
         String timesString = "{";
         for (int i = 0; i < times.length; i++) {
             timesString += days[i] + ": " + times[i] + (i==times.length-1 ? "}" : ",");
+//            timesString += i + ": " + times[i] + (i==times.length-1 ? "}" : ",");
         }
         return timesString;
     }

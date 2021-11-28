@@ -1,5 +1,6 @@
 package com.example.novigrad;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
@@ -9,23 +10,71 @@ import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.novigrad.user.UserAccount;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 public class SuccursaleTimePage extends AppCompatActivity {
     // Initialize variable
 
+    String succursaleName;
+    DatabaseReference databaseSuccursale;
+    ListView dayIntervalList;
+
     TextView tvTimer1, tvTimer2;
     int t1Hour, t1minute, t2Hour, t2Minute;
+    int[] times = new int[14];
+    HashMap<String, Integer> timesMap;
+    Interval[] dayIntervals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_succursale_time_page);
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                succursaleName = extras.getString("succursaleName");
+                databaseSuccursale = FirebaseDatabase.getInstance().getReference("succursales").child(succursaleName);
+            }
+        }
+
+        dayIntervalList = findViewById(R.id.dayIntervalList);
+
+        //get actual times from the succ
+        databaseSuccursale.child("times").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot succSnapshot) {
+                timesMap = new HashMap<>();
+                for (DataSnapshot time : succSnapshot.getChildren()) {
+                    timesMap.put(time.getKey(), time.getValue(Integer.class));
+                    System.out.println(time.getKey() + time.getValue(Integer.class));
+                }
+                dayIntervals = Helpers.convertTimeHashMapToIntervals(timesMap);
+                IntervalList intervalAdapter = new IntervalList(SuccursaleTimePage.this, Arrays.asList(dayIntervals));
+                dayIntervalList.setAdapter(intervalAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         // Assign Variable
         tvTimer1 = findViewById(R.id.tv_timer1);
@@ -115,5 +164,9 @@ public class SuccursaleTimePage extends AppCompatActivity {
 
     public void onReturn(View view){
         finish();
+    }
+
+    public void onUpdateTimes(View view) {
+
     }
 }

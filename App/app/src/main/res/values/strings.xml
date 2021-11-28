@@ -58,4 +58,9 @@
     <string name="servicesFournisHeader">Services Fournis</string>
     <string name="voirServicesDisponibles">Voir tous les services disponibles</string>
     <string name="retour">Retour</string>
+
+    <string-array name="daysOfTheWeek" >
+        <item>Lundi</item>
+
+    </string-array>
 </resources>

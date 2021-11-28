@@ -49,38 +49,58 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_height="200dp"
+            android:orientation="horizontal"
             android:padding="16dp"
             tools:context=".SuccursaleTimePage">
 
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:spinnerMode="dropdown"
+                android:tooltipText="dayOfWeek"
+
+                tools:ignore="SpeakableTextPresentCheck" />
+
             <TextView
                 android:id="@+id/tv_timer1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
                 android:background="@android:drawable/editbox_background"
-                android:drawableTop="@drawable/ic_time"
                 android:drawablePadding="16dp"
                 android:gravity="center"
                 android:hint="Select Time"
                 android:textSize="32sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:drawableTopCompat="@drawable/ic_time" />
 
             <TextView
                 android:id="@+id/tv_timer2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
                 android:background="@android:drawable/editbox_background"
-                android:drawableTop="@drawable/ic_time"
                 android:drawablePadding="16dp"
-                android:gravity="center"
                 android:hint="Select Time"
                 android:textSize="32sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:drawableTopCompat="@drawable/ic_time" />
 
 
         </LinearLayout>
+
+        <ListView
+            android:id="@+id/dayIntervalList"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:background="#ACACAC"
+            android:divider="#1C1B1B"
+            android:dividerHeight="20dp" />
 
     </LinearLayout>
 
