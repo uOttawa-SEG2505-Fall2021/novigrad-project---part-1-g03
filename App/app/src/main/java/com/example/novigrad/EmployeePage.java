@@ -49,6 +49,7 @@ public class EmployeePage extends AppCompatActivity {
     public void onServicesFournis(View view) {
         Intent servicesFournisIntent = new Intent(EmployeePage.this, ServicesFournisPage.class);
         //put extra values to get succursale's service info, if needed
+        servicesFournisIntent.putExtra("succursaleName", user.getNomDeUtiliseur()); //nomDeUtiliseur is the same as the succursale name
         startActivity(servicesFournisIntent);
     }
 

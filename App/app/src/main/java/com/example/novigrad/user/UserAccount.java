@@ -125,7 +125,7 @@ public class UserAccount
     // Test to check if a first name or last name is valid
     public boolean isValid(String str){
         char[] chars = str.toCharArray();
-        for(char c : chars){
+        for(char c : chars) {
             if(Character.isDigit(c)){
                 return false;
             }

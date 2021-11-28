@@ -18,6 +18,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -117,6 +122,9 @@ public class CreateAccountPage extends AppCompatActivity {
                         user = new ClientAccount(0, prenom, nom, username, password);
                     } else {
                         user = new EmployeeAccount(0, prenom, nom, username, password);
+                        Succursale succ = new Succursale(username);
+                        Map<String, Object> succMap = new Gson().fromJson(succ.toString(), new TypeToken<HashMap<String, Object>>() {}.getType());
+                        dbRef.child("succursales").child(username).setValue(succMap);
                     }
 
                     dbRef.child("users").child(username).setValue(user);

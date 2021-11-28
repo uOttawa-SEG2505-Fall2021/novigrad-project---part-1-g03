@@ -52,7 +52,10 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="informations_requises_det">Informations requises:</string>
     <string name="bonjour">Bonjour %1$s!\n Bienvenue à Service Novigrad! \n Vous êtes connecté en tant qu\'employé.</string>
-    <string name="infoServiceFournis">Faites un click normal pour voir les détails du service</string>
-    <string name="services_fournis">Liste des services offerts par la succursale</string>
+    <string name="infoServiceFournis">- Faites un click normal pour voir les détails du service\n- Faites un click long pour supprimer le service de la liste des services fournis.</string>
+    <string name="voirServicesFournis">Liste des services offerts par la succursale</string>
     <string name="allServicesInfos">- Cliquez longtemps sur un service pour l\'ajouter à la succursale\n- Faites un click normal pour voir les détails du service</string>
+    <string name="servicesFournisHeader">Services Fournis</string>
+    <string name="voirServicesDisponibles">Voir tous les services disponibles</string>
+    <string name="retour">Retour</string>
 </resources>

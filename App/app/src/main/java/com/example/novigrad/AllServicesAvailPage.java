@@ -1,5 +1,6 @@
 package com.example.novigrad;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,7 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +26,7 @@ public class AllServicesAvailPage extends AppCompatActivity {
     ListView listViewServices;
     List<Service> services;
     DatabaseReference databaseServices;
+    String succursaleName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +37,28 @@ public class AllServicesAvailPage extends AppCompatActivity {
         services = new ArrayList<>();
 
         databaseServices = FirebaseDatabase.getInstance().getReference("services");
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                succursaleName = extras.getString("succursaleName");
+            }
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
+        final DatabaseReference databaseSuccursale = FirebaseDatabase.getInstance().getReference("succursales").child(succursaleName);
+
         databaseServices.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot snapshot) {
                 services.clear();
                 ArrayList<String> serviceIds = new ArrayList<>();
 
-                for(DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                for(DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Service service = postSnapshot.getValue(Service.class);
                     serviceIds.add(postSnapshot.getKey());
                     services.add(service);
@@ -67,6 +81,38 @@ public class AllServicesAvailPage extends AppCompatActivity {
                         startActivityForResult(myIntent, 0);
                     }
                 });
+
+                listViewServices.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        databaseSuccursale.child("servicesFournis").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DataSnapshot> snapshot) {
+
+                                boolean duplicateServiceRef = false;
+
+                                for(DataSnapshot postSnapshot : snapshot.getResult().getChildren()) {
+                                    String serviceRef = postSnapshot.getValue(String.class);
+                                    if (serviceRef.equals(serviceIds.get(position))) {
+                                        duplicateServiceRef = true;
+                                    }
+                                }
+
+                                if (!duplicateServiceRef) {
+                                    databaseSuccursale.child("servicesFournis").push().setValue(serviceIds.get(position));
+                                    Toast.makeText(AllServicesAvailPage.this, "Service ajouté", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(AllServicesAvailPage.this, "Erreur: Ce service existe déjà", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+                        return true;
+
+                    }
+                });
+
             }
 
             @Override
