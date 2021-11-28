@@ -108,7 +108,6 @@ public class AllServicesAvailPage extends AppCompatActivity {
                             }
                         });
 
-
                         return true;
 
                     }

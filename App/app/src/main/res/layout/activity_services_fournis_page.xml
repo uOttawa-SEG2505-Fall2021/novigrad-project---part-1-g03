@@ -23,7 +23,7 @@
             android:backgroundTint="@color/cardview_dark_background"
             android:enabled="true"
             android:onClick="onReturn"
-            android:text="Retour"
+            android:text="@string/retour"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -37,7 +37,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="35dp"
-            android:text="Services Fournis"
+            android:text="@string/servicesFournisHeader"
             android:textColor="@color/white"
             android:textSize="28dp"
             android:textStyle="bold" />
@@ -54,7 +54,7 @@
             android:layout_marginRight="40dp"
             android:background="@drawable/rounded"
             android:onClick="onSeeAll"
-            android:text="Voir tous les services disponibles"
+            android:text="@string/voirServicesDisponibles"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18dp"
@@ -68,7 +68,7 @@
             android:id="@+id/titleList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/services_fournis"
+            android:text="@string/voirServicesFournis"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="19dp" />
@@ -92,8 +92,7 @@
             android:layout_height="15dp" />
 
         <ListView
-
-            android:id="@+id/listViewServicesDispo"
+            android:id="@+id/listViewServicesFournis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
