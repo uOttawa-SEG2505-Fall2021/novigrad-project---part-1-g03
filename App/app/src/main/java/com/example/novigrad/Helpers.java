@@ -1,11 +1,10 @@
 package com.example.novigrad;
 
-import android.icu.text.SimpleDateFormat;
-
 import java.util.HashMap;
 
 public class Helpers {
-    static SimpleDateFormat f24Hours = new SimpleDateFormat("HH:mm");
+    static final String[] daysStartEnd = new String[]{"lunA","lunB","marA","marB","merA","merB","jeuA","jeuB","venA","venB","samA","samB","dimA","dimB"};
+    static final String[] days = new String[]{"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
 
     public static int approximateTime(int minute) {
         if (minute <= 7) {
@@ -34,13 +33,25 @@ public class Helpers {
     }
 
     public static Interval[] convertTimeHashMapToIntervals(HashMap<String, Integer> times) {
-        String[] daysStartEnd = new String[]{"lunA","lunB","marA","marB","merA","merB","jeuA","jeuB","venA","venB","samA","samB","dimA","dimB"};
-        String[] days = new String[]{"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
+
         Interval[] intervals = new Interval[7];
 
         for (int i = 0; i < intervals.length; i++) {
             intervals[i] = new Interval(times.get(daysStartEnd[2*i]), times.get(daysStartEnd[2*i+1]), days[i]);
         }
         return intervals;
+    }
+
+    public static void setValueInTimeHashMap(HashMap<String, Integer> times, int newTime, int position) {
+        times.replace(daysStartEnd[position], newTime);
+    }
+
+    public static boolean verifyTimesMap(HashMap<String, Integer> times) {
+        for (int i = 0; i < daysStartEnd.length; i+=2) {
+            if (times.get(daysStartEnd[i]) >= times.get(daysStartEnd[i+1])) {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -56,36 +56,36 @@
 
 
             <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="72dp"
+                android:id="@+id/daySelect"
+                android:hint="Selectionner la jour"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:drawable/editbox_dropdown_light_frame"
                 android:spinnerMode="dropdown"
-                android:tooltipText="dayOfWeek"
-
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:tooltipText="dayOfWeek" />
 
             <TextView
-                android:id="@+id/tv_timer1"
+                android:id="@+id/timeSelectStart"
                 android:layout_width="120dp"
-                android:layout_height="72dp"
+                android:layout_height="match_parent"
                 android:background="@android:drawable/editbox_background"
                 android:drawablePadding="16dp"
-                android:gravity="center"
                 android:hint="Select Time"
-                android:textSize="32sp"
+                android:onClick="onSetTime"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:drawableTopCompat="@drawable/ic_time" />
 
             <TextView
-                android:id="@+id/tv_timer2"
+                android:id="@+id/timeSelectEnd"
                 android:layout_width="120dp"
-                android:layout_height="72dp"
+                android:layout_height="match_parent"
                 android:background="@android:drawable/editbox_background"
                 android:drawablePadding="16dp"
                 android:hint="Select Time"
-                android:textSize="32sp"
+                android:onClick="onSetTime"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:drawableTopCompat="@drawable/ic_time" />
 
@@ -95,10 +95,18 @@
         <ListView
             android:id="@+id/dayIntervalList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="230dp"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:dividerHeight="10dp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="20dp"
+            android:onClick="onUpdateTimes"
+            android:text="Sauvegarder" />
 
     </LinearLayout>
 
