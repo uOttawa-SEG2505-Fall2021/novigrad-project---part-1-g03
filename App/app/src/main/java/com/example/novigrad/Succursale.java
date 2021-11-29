@@ -17,25 +17,11 @@ public class Succursale {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-
-    public String[] getServiceRefs() {
-        return serviceRefs;
-    }
-
-    public int[] getTimes() {
-        return times;
-    }
-
     private String timesToString() {
         String[] days = new String[]{"\"lunA\"","\"lunB\"","\"marA\"","\"marB\"","\"merA\"","\"merB\"","\"jeuA\"","\"jeuB\"","\"venA\"","\"venB\"","\"samA\"","\"samB\"","\"dimA\"","\"dimB\""};
         String timesString = "{";
         for (int i = 0; i < times.length; i++) {
             timesString += days[i] + ": " + times[i] + (i==times.length-1 ? "}" : ",");
-//            timesString += i + ": " + times[i] + (i==times.length-1 ? "}" : ",");
         }
         return timesString;
     }
@@ -51,11 +37,10 @@ public class Succursale {
         return serviceRefsString;
     }
 
-    //returns a string in JSON format
-    public String toString()
-    {
+    //returns a string in JSON format so it can be sent to firebase
+    public String toString() {
         return "{"+
-                "\"name\": \"" + getName()+ "\"," +
+                "\"name\": \"" + this.name + "\"," +
                 "\"serviceRefs\":" + serviceRefsToString() + ", " +
                 "\"times\":" + timesToString() + "}";
     }

@@ -28,7 +28,7 @@ public class Helpers {
         return timeInMinutes % 60; //if timeInMinutes > 60 returns amount in minutes
     }
 
-    public static String formatAsHour(int timeInMinutes) {
+    public static String formatHHmm(int timeInMinutes) {
         return (timeInMinutes/60 <10 ? "0" : "") + (timeInMinutes/60+":") + (timeInMinutes % 60 <10 ? "0" : "") + timeInMinutes%60;
     }
 

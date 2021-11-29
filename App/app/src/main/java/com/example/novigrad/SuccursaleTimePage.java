@@ -96,8 +96,6 @@ public class SuccursaleTimePage extends AppCompatActivity {
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker pickerView, int hourOfDay, int minute) {
-
-
                         int isB = (view.getId() == R.id.timeSelectEnd) ? 1 : 0;
 
                         int time = hourOfDay * 60 + Helpers.approximateTime(minute);

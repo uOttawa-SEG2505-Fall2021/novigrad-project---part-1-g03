@@ -34,8 +34,8 @@ public class IntervalList extends ArrayAdapter<Interval> {
 
         Interval interval = intervals.get(position);
         interLabel.setText(interval.name+": ");
-        interStart.setText("Commence: " + Helpers.formatAsHour(interval.getStart()));
-        interEnd.setText("Fini: " + Helpers.formatAsHour(interval.getEnd()));
+        interStart.setText("Commence: " + Helpers.formatHHmm(interval.getStart()));
+        interEnd.setText("Fini: " + Helpers.formatHHmm(interval.getEnd()));
         return intervalListItem;
     }
 }
