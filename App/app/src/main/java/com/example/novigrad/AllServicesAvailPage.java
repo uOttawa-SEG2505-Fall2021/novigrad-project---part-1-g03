@@ -21,6 +21,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe AllServicesAvailPage qui nous permet de visualiser tous les services offerts par Service Novigrad
+ * */
+
 public class AllServicesAvailPage extends AppCompatActivity {
 
     ListView listViewServices;

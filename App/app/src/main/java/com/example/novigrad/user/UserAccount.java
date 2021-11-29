@@ -16,7 +16,7 @@ public class UserAccount
     private int id;
     private String prenom;
     private String nomDeFamille;
-    private String nomDeUtiliseur;
+    private String nomDeUtilisateur;
     private String motDePasse;
 
     //------------------------
@@ -26,13 +26,12 @@ public class UserAccount
     //blank constructor so that UserAccount can be written to Firebase
     public UserAccount(){}
 
-    public UserAccount(int aAccountType, int aId, String aPrenom, String aNomDeFamille, String aNomDeUtiliseur, String aMotDePasse)
-    {
+    public UserAccount(int aAccountType, int aId, String aPrenom, String aNomDeFamille, String aNomDeUtilisateur, String aMotDePasse) {
         accountType = aAccountType;
         id = aId;
         prenom = aPrenom;
         nomDeFamille = aNomDeFamille;
-        nomDeUtiliseur = aNomDeUtiliseur;
+        nomDeUtilisateur = aNomDeUtilisateur;
         motDePasse = aMotDePasse;
     }
 
@@ -75,7 +74,7 @@ public class UserAccount
     public boolean setNomDeUtiliseur(String aNomDeUtiliseur)
     {
         boolean wasSet = false;
-        nomDeUtiliseur = aNomDeUtiliseur;
+        nomDeUtilisateur = aNomDeUtiliseur;
         wasSet = true;
         return wasSet;
     }
@@ -112,9 +111,9 @@ public class UserAccount
         return nomDeFamille;
     }
 
-    public String getNomDeUtiliseur()
+    public String getNomDeUtilisateur()
     {
-        return nomDeUtiliseur;
+        return nomDeUtilisateur;
     }
 
     public String getMotDePasse()
@@ -140,7 +139,7 @@ public class UserAccount
                 "id" + ":" + getId()+ "," +
                 "prenom" + ":" + getPrenom()+ "," +
                 "nomDeFamille" + ":" + getNomDeFamille()+ "," +
-                "nomDeUtiliseur" + ":" + getNomDeUtiliseur()+ "," +
+                "nomDeUtiliseur" + ":" + getNomDeUtilisateur()+ "," +
                 "motDePasse" + ":" + getMotDePasse()+ "]";
     }
 }

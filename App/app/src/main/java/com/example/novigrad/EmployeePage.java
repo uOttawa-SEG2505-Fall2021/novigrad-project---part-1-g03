@@ -8,13 +8,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.novigrad.user.EmployeeAccount;
 import com.example.novigrad.user.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+/**
+ * Classe EmployeePage qui représente le landing page lorsqu'on se connecte en tant qu'employé
+ * */
 
 public class EmployeePage extends AppCompatActivity {
 
@@ -49,7 +52,7 @@ public class EmployeePage extends AppCompatActivity {
     public void onServicesFournis(View view) {
         Intent servicesFournisIntent = new Intent(EmployeePage.this, ServicesFournisPage.class);
         //put extra values to get succursale's service info, if needed
-        servicesFournisIntent.putExtra("succursaleName", user.getNomDeUtiliseur()); //nomDeUtiliseur is the same as the succursale name
+        servicesFournisIntent.putExtra("succursaleName", user.getNomDeUtilisateur()); //nomDeUtiliseur is the same as the succursale name
         startActivity(servicesFournisIntent);
     }
 
@@ -62,7 +65,7 @@ public class EmployeePage extends AppCompatActivity {
 
     public void onDemandeServices(View view) {
         Intent demandeServicesIntent = new Intent(EmployeePage.this, SuccursaleDemandsPage.class);
-        //put extra values to get succursale's service demands info, if needed
+        demandeServicesIntent.putExtra("succursaleName", user.getNomDeUtilisateur());
         startActivity(demandeServicesIntent);
     }
 

@@ -52,13 +52,12 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="informations_requises_det">Informations requises:</string>
     <string name="bonjour">Bonjour %1$s!\n Bienvenue à Service Novigrad! \n Vous êtes connecté en tant qu\'employé.</string>
-    <string name="infoServiceFournis">Faites un click normal pour voir les détails du service. Faites un click longue pour supprimer la service de la liste des services fournis.</string>
+    <string name="infoServiceFournis">- Faites un click normal pour voir les détails du service\n- Faites un click long pour supprimer le service de la liste des services fournis.</string>
     <string name="voirServicesFournis">Liste des services offerts par la succursale</string>
     <string name="allServicesInfos">- Cliquez longtemps sur un service pour l\'ajouter à la succursale\n- Faites un click normal pour voir les détails du service</string>
     <string name="servicesFournisHeader">Services Fournis</string>
     <string name="voirServicesDisponibles">Voir tous les services disponibles</string>
     <string name="retour">Retour</string>
-
     <string-array name="daysOfTheWeek" >
         <item >Selectionner un jour:</item>
         <item >Lundi</item>
@@ -69,4 +68,8 @@
         <item >Samedi</item>
         <item >Dimanche</item>
     </string-array>
+    <string name="InfosSurDemande">Prénom/Nom: %1$s %2$s\nNom d\'utilisateur: %3$s \nService demandé: %4$s</string>
+    <string name="errorMessageDemandes">Aucune demande n\'a été soumise pour le moment...</string>
+    <string name="instructionsDemande">Cliquez longtemps sur une demande pour l\'approuver ou la rejeter</string>
+    <string name="approve_decline_msg">Approuver ou rejeter cette demande. Veuillez vérifier que l\'utilisateur a envoyé correctement les informations et documents requis pour cette demande par mail avant de l\'approuver ou la rejeter.</string>
 </resources>

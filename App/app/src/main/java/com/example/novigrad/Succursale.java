@@ -1,6 +1,8 @@
 package com.example.novigrad;
 
-//class for the succursale
+/**
+ * Classe Succursale
+ * */
 public class Succursale {
     private String name;
     private String[] serviceRefs;

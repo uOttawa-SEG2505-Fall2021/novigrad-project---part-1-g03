@@ -26,6 +26,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Classe ServiceFournisPage qui nous permet de visualiser les services fournis par la succursale
+ * */
+
 public class ServicesFournisPage extends AppCompatActivity {
 
     ListView listViewServicesFournis;
