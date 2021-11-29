@@ -59,7 +59,7 @@ public class EmployeePage extends AppCompatActivity {
     public void onChangeTime(View view) {
         Intent changeTimeIntent = new Intent(EmployeePage.this, SuccursaleTimePage.class);
         //put extra values to get succursale's info, if needed
-        changeTimeIntent.putExtra("succursaleName", user.getNomDeUtiliseur());
+        changeTimeIntent.putExtra("succursaleName", user.getNomDeUtilisateur());
         startActivity(changeTimeIntent);
     }
 
