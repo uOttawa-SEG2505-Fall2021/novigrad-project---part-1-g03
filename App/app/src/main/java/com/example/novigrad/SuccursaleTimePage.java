@@ -67,8 +67,8 @@ public class SuccursaleTimePage extends AppCompatActivity {
 
         daySelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                btnEndTime.setText("Selectionner un temps");
-                btnStartTime.setText("Selectionner un temps");
+                btnEndTime.setText("Selectionner une heure de fermeture");
+                btnStartTime.setText("Selectionner une heure d'ouverture");
             }
             public void onNothingSelected(AdapterView<?> parent)
             {
@@ -119,7 +119,7 @@ public class SuccursaleTimePage extends AppCompatActivity {
                         int time = hourOfDay * 60 + Helpers.approximateTime(minute);
                         Helpers.setValueInTimeHashMap(timesMap, time, 2*(daySelect.getSelectedItemPosition()-1) + isB);//daySelect positions start from 1
                         updateTimeIntervalList();
-                        ((Button) view).setText(((isB ==0)?"Commence: " : "Fini: ") + Helpers.formatHHmm(time) );
+                        ((Button) view).setText(((isB ==0)?"Heure d'ouverture: " : "Heure de fermeture: ") + Helpers.formatHHmm(time) );
                     }
                 }, 12, 0, false
         );
