@@ -1,5 +1,8 @@
 package com.example.novigrad;
 
+/**
+ * Classe Helpers qui nous aide pour les horaires de travail
+ * */
 public class Helpers {
 
     public static int approximateTime(int minute) {

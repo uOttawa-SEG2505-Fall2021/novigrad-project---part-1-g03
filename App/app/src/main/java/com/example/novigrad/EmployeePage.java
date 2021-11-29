@@ -16,6 +16,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * Classe EmployeePage qui représente le landing page lorsqu'on se connecte en tant qu'employé
+ * */
+
 public class EmployeePage extends AppCompatActivity {
 
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -61,7 +65,7 @@ public class EmployeePage extends AppCompatActivity {
 
     public void onDemandeServices(View view) {
         Intent demandeServicesIntent = new Intent(EmployeePage.this, SuccursaleDemandsPage.class);
-        //put extra values to get succursale's service demands info, if needed
+        demandeServicesIntent.putExtra("succursaleName", user.getNomDeUtiliseur());
         startActivity(demandeServicesIntent);
     }
 

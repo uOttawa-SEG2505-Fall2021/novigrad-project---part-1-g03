@@ -44,6 +44,20 @@
 
         <Space
             android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+        <TextView
+            android:id="@+id/messageDemande"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <Space
+            android:layout_width="match_parent"
             android:layout_height="15dp" />
 
         <ListView

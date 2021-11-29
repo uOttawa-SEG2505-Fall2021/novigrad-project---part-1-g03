@@ -1,10 +1,9 @@
 package com.example.novigrad;
 
-import android.os.Build;
+/**
+ * Classe Succursale
+ * */
 
-import androidx.annotation.RequiresApi;
-
-//class for the succursale
 public class Succursale {
     private String name;
     private String[] serviceRefs;
