@@ -21,7 +21,7 @@ public class GeneralUnitTests {
         assertEquals(user.getId(),555);
         assertEquals(user.getPrenom(),"Leonel");
         assertEquals(user.getNomDeFamille(),"Messi");
-        assertEquals(user.getNomDeUtiliseur(),"Messi06");
+        assertEquals(user.getNomDeUtilisateur(),"Messi06");
         assertEquals(user.getMotDePasse(),"seg2505");
 
     }
@@ -34,7 +34,7 @@ public class GeneralUnitTests {
         assertEquals(user.getId(),2);
         assertEquals(user.getPrenom(),"Jasque");
         assertEquals(user.getNomDeFamille(),"Trudeau");
-        assertEquals(user.getNomDeUtiliseur(),"Jasque47");
+        assertEquals(user.getNomDeUtilisateur(),"Jasque47");
         assertEquals(user.getMotDePasse(),"password");
 
     }
@@ -47,7 +47,7 @@ public class GeneralUnitTests {
         assertEquals(user.getId(),7869);
         assertEquals(user.getPrenom(),"Karine");
         assertEquals(user.getNomDeFamille(),"Lahaie");
-        assertEquals(user.getNomDeUtiliseur(),"Karine1515");
+        assertEquals(user.getNomDeUtilisateur(),"Karine1515");
         assertEquals(user.getMotDePasse(),"Karine35");
 
     }

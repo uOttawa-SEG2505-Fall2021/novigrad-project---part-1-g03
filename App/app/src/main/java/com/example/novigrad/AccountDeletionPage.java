@@ -75,9 +75,9 @@ public class AccountDeletionPage extends AppCompatActivity {
                                 //get account to be deleted
                                 UserAccount userToBeDeleted = accounts.get(position);
                                 if (userToBeDeleted.getAccountType() == 1) { //s'il est un compte employe, supprimer le succursale
-                                    FirebaseDatabase.getInstance().getReference("succursales").child(userToBeDeleted.getNomDeUtiliseur()).removeValue();
+                                    FirebaseDatabase.getInstance().getReference("succursales").child(userToBeDeleted.getNomDeUtilisateur()).removeValue();
                                 }
-                                databaseUsers.child(userToBeDeleted.getNomDeUtiliseur()).removeValue();
+                                databaseUsers.child(userToBeDeleted.getNomDeUtilisateur()).removeValue();
 
                                 Toast.makeText( getApplicationContext(), "Suppression du compte réussi!", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
