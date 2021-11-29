@@ -9,19 +9,19 @@ public class Demande {
     private String firstName;
     private String lastName;
     private String nomDeUtilisateur;
-    private String nomDuServiceDemandé;
-    private String nomSuccursaleDemandé;
+    private String nomDuServiceDemande;
+    private String nomSuccursaleDemande;
 
     // constructeur 1
     public Demande(){}
 
     // constructeur 1
-    public Demande(String firstName, String lastName, String nomDeUtilisateur, String nomDuServiceDemandé, String nomSuccursaleDemandé){
+    public Demande(String firstName, String lastName, String nomDeUtilisateur, String nomDuServiceDemande, String nomSuccursaleDemande){
         this.firstName = firstName;
         this.lastName = lastName;
         this.nomDeUtilisateur = nomDeUtilisateur;
-        this.nomDuServiceDemandé = nomDuServiceDemandé;
-        this.nomSuccursaleDemandé = nomSuccursaleDemandé;
+        this.nomDuServiceDemande = nomDuServiceDemande;
+        this.nomSuccursaleDemande = nomSuccursaleDemande;
     }
 
     // getters
@@ -37,16 +37,16 @@ public class Demande {
         return nomDeUtilisateur;
     }
 
-    public String getNomDuServiceDemandé() {
-        return nomDuServiceDemandé;
+    public String getNomDuServiceDemande() {
+        return nomDuServiceDemande;
     }
 
-    public String getNomSuccursaleDemandé() {
-        return nomSuccursaleDemandé;
+    public String getNomSuccursaleDemande() {
+        return nomSuccursaleDemande;
     }
 
     @Override
     public String toString() {
-        return "Demande faite par " + firstName + " " + lastName + " pour le service \"" + nomDuServiceDemandé +"\"";
+        return "Demande faite par " + firstName + " " + lastName + " pour le service \"" + nomDuServiceDemande +"\"";
     }
 }

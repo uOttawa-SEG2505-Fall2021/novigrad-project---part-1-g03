@@ -13,7 +13,7 @@ import java.util.List;
  * */
 
 public class DemandeList extends ArrayAdapter<Demande> {
-    private Activity context;
+    private final Activity context;
     List<Demande> demandes;
 
     public DemandeList(Activity context, List<Demande> demandes) {
@@ -29,7 +29,7 @@ public class DemandeList extends ArrayAdapter<Demande> {
         TextView DemandeInfo = (TextView) listViewItem.findViewById(R.id.listItemName);
 
         Demande demande = demandes.get(position);
-        DemandeInfo.setText(String.format(context.getString(R.string.InfosSurDemande), demande.getFirstName(), demande.getLastName(), demande.getNomDeUtilisateur(), demande.getNomDuServiceDemandé()));
+        DemandeInfo.setText(String.format(context.getString(R.string.InfosSurDemande), demande.getFirstName(), demande.getLastName(), demande.getNomDeUtilisateur(), demande.getNomDuServiceDemande()));
         return listViewItem;
     }
 }

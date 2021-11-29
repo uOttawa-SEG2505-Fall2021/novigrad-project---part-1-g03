@@ -36,7 +36,7 @@ public class SuccursaleDemandsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_succursale_demands_page);
         message = (TextView) findViewById(R.id.messageDemande);
-        listViewDemandes = (ListView) findViewById(R.id.listViewServicesDispo);
+        listViewDemandes = (ListView) findViewById(R.id.listViewDemandes);
         demandes = new ArrayList<>();
         databaseDemandes = FirebaseDatabase.getInstance().getReference("demandes");
 
@@ -58,13 +58,15 @@ public class SuccursaleDemandsPage extends AppCompatActivity {
                 demandes.clear();
                 for(DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Demande demande = postSnapshot.getValue(Demande.class);
-                    if(demande.getNomSuccursaleDemandé().equals(succursaleName)) {
+                    System.out.println(demande);
+                    System.out.println(succursaleName);
+                    if(demande.getNomSuccursaleDemande().equals(succursaleName)) {
                         demandes.add(demande);
                     }
                 }
                 DemandeList demandeAdapter = new DemandeList(SuccursaleDemandsPage.this, demandes);
                 listViewDemandes.setAdapter(demandeAdapter);
-                if(demandes.size() == 0) {
+                if (demandes.size() == 0) {
                     message.setText(R.string.errorMessageDemandes);
                 } else {
                     message.setText(R.string.instructionsDemande);
