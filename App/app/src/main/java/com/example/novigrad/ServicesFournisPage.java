@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.novigrad.user.UserAccount;
@@ -38,6 +39,7 @@ public class ServicesFournisPage extends AppCompatActivity {
     HashMap<Service, String> serviceToServiceId;
     DatabaseReference databaseServices = FirebaseDatabase.getInstance().getReference("services");
     DatabaseReference databaseSuccursale;
+    TextView message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class ServicesFournisPage extends AppCompatActivity {
         setContentView(R.layout.activity_services_fournis_page);
 
         listViewServicesFournis = findViewById(R.id.listViewServicesFournis);
+        message = (TextView) findViewById(R.id.details);
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -93,6 +96,11 @@ public class ServicesFournisPage extends AppCompatActivity {
 
                         ServiceList servicesAdapter = new ServiceList(ServicesFournisPage.this, services);
                         listViewServicesFournis.setAdapter(servicesAdapter);
+                        if (services.size() == 0) {
+                            message.setText(R.string.errorMessageServices);
+                        } else {
+                            message.setText(R.string.infoServiceFournis);
+                        }
                         listViewServicesFournis.setLongClickable(true);
                         listViewServicesFournis.setClickable(true);
 
@@ -151,7 +159,6 @@ public class ServicesFournisPage extends AppCompatActivity {
                                 return true;
                             }
                         });
-
                     }
 
                     @Override
@@ -159,9 +166,6 @@ public class ServicesFournisPage extends AppCompatActivity {
 
                     }
                 });
-
-
-
             }
 
             @Override
