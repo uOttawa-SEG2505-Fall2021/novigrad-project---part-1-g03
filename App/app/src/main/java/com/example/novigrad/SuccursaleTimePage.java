@@ -8,12 +8,15 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,9 +33,10 @@ public class SuccursaleTimePage extends AppCompatActivity {
     DatabaseReference databaseSuccursale;
     Spinner daySelect;
     ListView dayIntervalList;
-
     HashMap<String, Integer> timesMap;
     Interval[] dayIntervals;
+    Button btnStartTime;
+    Button btnEndTime;
 
     void updateTimeIntervalList() {
         dayIntervals = Helpers.convertTimeHashMapToIntervals(timesMap);
@@ -50,6 +54,9 @@ public class SuccursaleTimePage extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         daySelect.setAdapter(adapter);
 
+        btnStartTime = findViewById(R.id.timeSelectStart);
+        btnEndTime = findViewById(R.id.timeSelectEnd);
+
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
@@ -57,6 +64,17 @@ public class SuccursaleTimePage extends AppCompatActivity {
                 databaseSuccursale = FirebaseDatabase.getInstance().getReference("succursales").child(succursaleName);
             }
         }
+
+        daySelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                btnEndTime.setText("Selectionner un temps");
+                btnStartTime.setText("Selectionner un temps");
+            }
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
 
         dayIntervalList = findViewById(R.id.dayIntervalList);
 
@@ -101,6 +119,7 @@ public class SuccursaleTimePage extends AppCompatActivity {
                         int time = hourOfDay * 60 + Helpers.approximateTime(minute);
                         Helpers.setValueInTimeHashMap(timesMap, time, 2*(daySelect.getSelectedItemPosition()-1) + isB);//daySelect positions start from 1
                         updateTimeIntervalList();
+                        ((Button) view).setText(((isB ==0)?"Commence: " : "Fini: ") + Helpers.formatHHmm(time) );
                     }
                 }, 12, 0, false
         );
