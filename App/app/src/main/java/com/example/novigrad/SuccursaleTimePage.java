@@ -16,7 +16,6 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,7 +37,7 @@ public class SuccursaleTimePage extends AppCompatActivity {
     Button btnStartTime;
     Button btnEndTime;
 
-    void updateTimeIntervalList() {
+    private void updateTimeIntervalList() {
         dayIntervals = Helpers.convertTimeHashMapToIntervals(timesMap);
         IntervalList intervalAdapter = new IntervalList(SuccursaleTimePage.this, Arrays.asList(dayIntervals));
         dayIntervalList.setAdapter(intervalAdapter);

@@ -6,8 +6,8 @@ import java.util.HashMap;
  * Classe Helpers qui nous aide pour les horaires de travail
  * */
 public class Helpers {
-    static final String[] daysStartEnd = new String[]{"lunA","lunB","marA","marB","merA","merB","jeuA","jeuB","venA","venB","samA","samB","dimA","dimB"};
-    static final String[] days = new String[]{"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
+    private static final String[] DAYS_START_END = new String[]{"lunA","lunB","marA","marB","merA","merB","jeuA","jeuB","venA","venB","samA","samB","dimA","dimB"};
+    private static final String[] DAYS = new String[]{"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
 
     public static int approximateTime(int minute) {
         if (minute <= 7) {
@@ -40,18 +40,18 @@ public class Helpers {
         Interval[] intervals = new Interval[7];
 
         for (int i = 0; i < intervals.length; i++) {
-            intervals[i] = new Interval(times.get(daysStartEnd[2*i]), times.get(daysStartEnd[2*i+1]), days[i]);
+            intervals[i] = new Interval(times.get(DAYS_START_END[2*i]), times.get(DAYS_START_END[2*i+1]), DAYS[i]);
         }
         return intervals;
     }
 
     public static void setValueInTimeHashMap(HashMap<String, Integer> times, int newTime, int position) {
-        times.replace(daysStartEnd[position], newTime);
+        times.replace(DAYS_START_END[position], newTime);
     }
 
     public static boolean verifyTimesMap(HashMap<String, Integer> times) {
-        for (int i = 0; i < daysStartEnd.length; i+=2) {
-            if (times.get(daysStartEnd[i]) >= times.get(daysStartEnd[i+1])) {
+        for (int i = 0; i < DAYS_START_END.length; i+=2) {
+            if (times.get(DAYS_START_END[i]) >= times.get(DAYS_START_END[i+1])) {
                 return false;
             }
         }
