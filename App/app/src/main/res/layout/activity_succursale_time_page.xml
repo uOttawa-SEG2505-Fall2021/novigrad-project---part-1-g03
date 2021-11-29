@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1C1B1B"
+    android:paddingBottom="5dp"
     tools:context=".SuccursaleTimePage">
 
     <LinearLayout
@@ -35,52 +36,84 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="35dp"
             android:text="Entrer et modifier les heures de travail de la succursale"
             android:textColor="@color/white"
-            android:textSize="25dp"
+            android:textSize="23dp"
             android:textStyle="bold" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="10dp" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
             android:orientation="vertical"
-            android:padding="16dp"
+            android:padding="5dp"
             tools:context=".SuccursaleTimePage">
 
-            <TextView
-                android:id="@+id/tv_timer1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:drawable/editbox_background"
-                android:drawableTop="@drawable/ic_time"
-                android:drawablePadding="16dp"
-                android:gravity="center"
-                android:hint="Select Time"
-                android:textSize="32sp"
-                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_timer2"
+            <Spinner
+                android:id="@+id/daySelect"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@android:drawable/editbox_background"
-                android:drawableTop="@drawable/ic_time"
-                android:drawablePadding="16dp"
-                android:gravity="center"
-                android:hint="Select Time"
-                android:textSize="32sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="2dp"
+                android:background="#6A6666"
+                android:hint="Selectionner la jour"
+                android:spinnerMode="dropdown"
+                android:textAlignment="center"
+                android:tooltipText="dayOfWeek" />
+
+            <Button
+                android:id="@+id/timeSelectStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#6A6666"
+                android:hint="Selectionner une heure d'ouverture"
+                android:onClick="onSetTime"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/timeSelectEnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#6A6666"
+                android:hint="Selectionner une heure de fermeture"
+                android:onClick="onSetTime"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/teal_700"
+                android:onClick="onUpdateTimes"
+                android:text="Sauvegarder" />
 
 
         </LinearLayout>
+
+        <ListView
+            android:id="@+id/dayIntervalList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:dividerHeight="10dp" />
 
     </LinearLayout>
 

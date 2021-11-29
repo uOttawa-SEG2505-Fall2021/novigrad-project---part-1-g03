@@ -1,119 +1,140 @@
 package com.example.novigrad;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
-import java.text.ParseException;
-import java.util.Calendar;
-import java.util.Date;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class SuccursaleTimePage extends AppCompatActivity {
     // Initialize variable
 
-    TextView tvTimer1, tvTimer2;
-    int t1Hour, t1minute, t2Hour, t2Minute;
+    String succursaleName;
+    DatabaseReference databaseSuccursale;
+    Spinner daySelect;
+    ListView dayIntervalList;
+    HashMap<String, Integer> timesMap;
+    Interval[] dayIntervals;
+    Button btnStartTime;
+    Button btnEndTime;
+
+    private void updateTimeIntervalList() {
+        dayIntervals = Helpers.convertTimeHashMapToIntervals(timesMap);
+        IntervalList intervalAdapter = new IntervalList(SuccursaleTimePage.this, Arrays.asList(dayIntervals));
+        dayIntervalList.setAdapter(intervalAdapter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_succursale_time_page);
 
-        // Assign Variable
-        tvTimer1 = findViewById(R.id.tv_timer1);
-        tvTimer2 = findViewById(R.id.tv_timer2);
+        daySelect = findViewById(R.id.daySelect);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.daysOfTheWeek, android.R.layout.simple_list_item_1);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        daySelect.setAdapter(adapter);
 
-        tvTimer1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Initialize time picker dialog
-                TimePickerDialog timePickerDialog = new TimePickerDialog(
-                        SuccursaleTimePage.this,
-                        new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                // Initialize hour and minute
-                                t1Hour = hourOfDay;
-                                t1minute = Helpers.approximateTime(minute);
+        btnStartTime = findViewById(R.id.timeSelectStart);
+        btnEndTime = findViewById(R.id.timeSelectEnd);
 
-                                // Initialize calendar
-                                Calendar calendar = Calendar.getInstance();
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                succursaleName = extras.getString("succursaleName");
+                databaseSuccursale = FirebaseDatabase.getInstance().getReference("succursales").child(succursaleName);
+            }
+        }
 
-                                // Set hour and minute
-                                calendar.set(0,0,0, t1Hour, t1minute);
+        daySelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                btnEndTime.setText("Selectionner une heure de fermeture");
+                btnStartTime.setText("Selectionner une heure d'ouverture");
+            }
+            public void onNothingSelected(AdapterView<?> parent)
+            {
 
-                                // Set selected time on text view
-                                tvTimer1.setText(DateFormat.format("hh:mm aa", calendar));
-
-                            }
-                        }, 12, 0, false
-                );
-                // Display previous selected time
-                timePickerDialog.updateTime(t1Hour, t1minute);
-
-                // Show dialog
-                timePickerDialog.show();
             }
         });
-        tvTimer2.setOnClickListener(new View.OnClickListener() {
+
+        dayIntervalList = findViewById(R.id.dayIntervalList);
+
+        //get actual times from the succ
+        databaseSuccursale.child("times").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                // Initialize time picker dialog
+            public void onDataChange(DataSnapshot succSnapshot) {
+                timesMap = new HashMap<>();
+                for (DataSnapshot time : succSnapshot.getChildren()) {
+                    timesMap.put(time.getKey(), time.getValue(Integer.class));
+                }
+                updateTimeIntervalList();
+            }
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(
-                        SuccursaleTimePage.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                // Initialize hour and minute
-                                t2Hour = hourOfDay;
-                                t2Minute = minute;
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                                // Store hour and minute in String
-                                String time = t2Hour + ":" + t2Minute;
-
-                                // Initialize 24h time format
-                                SimpleDateFormat f24Hours = new SimpleDateFormat(
-                                        "HH:mm"
-                                );
-                                try {
-                                    Date date = f24Hours.parse(time);
-
-                                    // Initialize 12 hours time format
-                                    SimpleDateFormat f12Hours = new SimpleDateFormat(
-                                            "hh:mm aa"
-                                    );
-
-                                    // Set selected time on text view
-                                    tvTimer2.setText(f12Hours.format(date));
-                                } catch (ParseException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }, 12, 0, false
-                );
-                // Set transparent background
-                timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                // Display previously selected time
-                timePickerDialog.updateTime(t2Hour, t2Minute);
-
-                // Show dialog
-                timePickerDialog.show();
             }
         });
+
     }
 
     public void onReturn(View view){
         finish();
+    }
+
+    public void onSetTime(View view) {
+        //0 is the one that says "Selectionner un jour:"
+        //therefore any clicks should be ignored
+        if (daySelect.getSelectedItemPosition() == 0) {
+            Toast.makeText(this, "Selectionner un jour SVP.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        TimePickerDialog timePickerDialog = new TimePickerDialog(
+                SuccursaleTimePage.this,
+                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker pickerView, int hourOfDay, int minute) {
+                        int isB = (view.getId() == R.id.timeSelectEnd) ? 1 : 0;
+
+                        int time = hourOfDay * 60 + Helpers.approximateTime(minute);
+                        Helpers.setValueInTimeHashMap(timesMap, time, 2*(daySelect.getSelectedItemPosition()-1) + isB);//daySelect positions start from 1
+                        updateTimeIntervalList();
+                        ((Button) view).setText(((isB ==0)?"Heure d'ouverture: " : "Heure de fermeture: ") + Helpers.formatHHmm(time) );
+                    }
+                }, 12, 0, false
+        );
+        // Set transparent background
+        timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        // Show dialog
+        timePickerDialog.show();
+
+    }
+
+    public void onUpdateTimes(View view) {
+        if (Helpers.verifyTimesMap(timesMap)) {
+            databaseSuccursale.child("times").setValue(timesMap);
+        } else {
+            Toast.makeText(this, "Il y a des temps invalides (commence après la fin)", Toast.LENGTH_SHORT).show();
+        }
     }
 }
