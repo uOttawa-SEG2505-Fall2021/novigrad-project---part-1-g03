@@ -37,6 +37,7 @@ public class SuccursaleTimePage extends AppCompatActivity {
     Interval[] dayIntervals;
     Button btnStartTime;
     Button btnEndTime;
+    Button btnToggleOffday;
 
     void updateTimeIntervalList() {
         dayIntervals = Helpers.convertTimeHashMapToIntervals(timesMap);
@@ -56,6 +57,7 @@ public class SuccursaleTimePage extends AppCompatActivity {
 
         btnStartTime = findViewById(R.id.timeSelectStart);
         btnEndTime = findViewById(R.id.timeSelectEnd);
+        btnToggleOffday = findViewById(R.id.button3);
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -69,6 +71,7 @@ public class SuccursaleTimePage extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 btnEndTime.setText("Selectionner une heure de fermeture");
                 btnStartTime.setText("Selectionner une heure d'ouverture");
+                btnToggleOffday.setText("Fermer la succursale");
             }
             public void onNothingSelected(AdapterView<?> parent)
             {
@@ -101,6 +104,20 @@ public class SuccursaleTimePage extends AppCompatActivity {
         finish();
     }
 
+    public void onToggle(View view) {
+        if (daySelect.getSelectedItemPosition() == 0) {
+            Toast.makeText(this, "Selectionner un jour SVP.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String dayName = dayIntervals[daySelect.getSelectedItemPosition() - 1].getName();
+        Helpers.setValueInTimeHashMap(timesMap, -1, 2*(daySelect.getSelectedItemPosition()-1));//daySelect positions start from 1
+        Helpers.setValueInTimeHashMap(timesMap, -1, 2*(daySelect.getSelectedItemPosition()-1) + 1);
+        updateTimeIntervalList();
+        btnEndTime.setText("Selectionner une heure de fermeture");
+        btnStartTime.setText("Selectionner une heure d'ouverture");
+        btnToggleOffday.setText("La succursale est fermée les " + dayName + "s");
+    }
+
     public void onSetTime(View view) {
         //0 is the one that says "Selectionner un jour:"
         //therefore any clicks should be ignored
@@ -119,6 +136,7 @@ public class SuccursaleTimePage extends AppCompatActivity {
                         int time = hourOfDay * 60 + Helpers.approximateTime(minute);
                         Helpers.setValueInTimeHashMap(timesMap, time, 2*(daySelect.getSelectedItemPosition()-1) + isB);//daySelect positions start from 1
                         updateTimeIntervalList();
+                        btnToggleOffday.setText("Fermer la succursale");
                         ((Button) view).setText(((isB ==0)?"Heure d'ouverture: " : "Heure de fermeture: ") + Helpers.formatHHmm(time) );
                     }
                 }, 12, 0, false

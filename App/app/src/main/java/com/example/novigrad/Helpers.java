@@ -40,7 +40,12 @@ public class Helpers {
         Interval[] intervals = new Interval[7];
 
         for (int i = 0; i < intervals.length; i++) {
+            if(times.get(daysStartEnd[2*i]) * times.get(daysStartEnd[2*i+1]) >= 0) //checks for case where start/end time gets updated on a closed day
             intervals[i] = new Interval(times.get(daysStartEnd[2*i]), times.get(daysStartEnd[2*i+1]), days[i]);
+            else if (times.get(daysStartEnd[2*i]) == -1) intervals[i] = new Interval(9*60, times.get(daysStartEnd[2*i+1]), days[i]);
+            else intervals[i] = new Interval(times.get(daysStartEnd[2*i]), 17*60, days[i]);
+
+
         }
         return intervals;
     }
@@ -51,7 +56,8 @@ public class Helpers {
 
     public static boolean verifyTimesMap(HashMap<String, Integer> times) {
         for (int i = 0; i < daysStartEnd.length; i+=2) {
-            if (times.get(daysStartEnd[i]) >= times.get(daysStartEnd[i+1])) {
+            if(times.get(daysStartEnd[i]) == -1){}
+            else if (times.get(daysStartEnd[i]) >= times.get(daysStartEnd[i+1])) {
                 return false;
             }
         }
