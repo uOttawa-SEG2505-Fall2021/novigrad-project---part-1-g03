@@ -51,6 +51,12 @@ public class Helpers {
 
     public static boolean verifyTimesMap(HashMap<String, Integer> times) {
         for (int i = 0; i < DAYS_START_END.length; i+=2) {
+            //si succursale fermé
+            if (times.get(DAYS_START_END[i]) == -1 && times.get(DAYS_START_END[i+1]) == -1) {
+                continue;
+            } else if (times.get(DAYS_START_END[i]) == -1 || times.get(DAYS_START_END[i+1]) == -1) {
+                return false;
+            }
             if (times.get(DAYS_START_END[i]) >= times.get(DAYS_START_END[i+1])) {
                 return false;
             }

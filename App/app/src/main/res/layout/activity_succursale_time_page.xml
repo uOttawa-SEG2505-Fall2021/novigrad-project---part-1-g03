@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
                 android:background="#6A6666"
-                android:hint="Selectionner la jour"
+                android:hint="Selectionner le jour"
                 android:spinnerMode="dropdown"
                 android:textAlignment="center"
                 android:tooltipText="dayOfWeek" />
@@ -89,6 +89,19 @@
                 android:backgroundTint="#6A6666"
                 android:hint="Selectionner une heure de fermeture"
                 android:onClick="onSetTime"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#6A6666"
+                android:hint="Fermer la succursale"
+                android:onClick="onToggle"
                 android:textAlignment="viewStart"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
