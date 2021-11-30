@@ -12,8 +12,6 @@ Compte administrateur pré-créé:
 Nom d'utilisateur: admin1
 Mot de passe: password123
 
-Note: Pour tester l'application, veuillez ouvrir le fichier "App" dans Android Studio et non tout le répertoire Github. Veuillez tester l'application également avec comme AVD: soit Pixel 2 API 30, Pixel 3 API 30 ou Pixel 4 API 30, et un niveau minimum SDK de 26.
-
 Vous pouvez vous connecter aux comptes employé suivants pour accéder à des comptes ayant reçu des demandes de services:
 
 Nom d'utilisateur: succursaleTest
