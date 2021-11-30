@@ -152,7 +152,7 @@ public class SuccursaleTimePage extends AppCompatActivity {
         if (Helpers.verifyTimesMap(timesMap)) {
             databaseSuccursale.child("times").setValue(timesMap);
         } else {
-            Toast.makeText(this, "Il y a des temps invalides (commence après la fin, à la même temps ou n'a pas de valeur)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Il y a des temps invalides (l'heure d'ouverture est après l'heure de fermeture, ont le même temps ou n'a pas de valeur)", Toast.LENGTH_SHORT).show();
         }
     }
 }
