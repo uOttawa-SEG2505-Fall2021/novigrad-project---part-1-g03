@@ -37,7 +37,16 @@ public class IntervalList extends ArrayAdapter<Interval> {
         if(interval.getStart() != -1 && interval.getEnd() != -1) {
             interStart.setText("Heure d'ouverture: " + Helpers.formatHHmm(interval.getStart()));
             interEnd.setText("Heure de fermeture: " + Helpers.formatHHmm(interval.getEnd()));
-        } else {
+        }
+        else if (interval.getStart() != -1) {
+            interStart.setText("Heure d'ouverture: " + Helpers.formatHHmm(interval.getStart()));
+            interEnd.setText("Heure de fermeture: ");
+        }
+        else if (interval.getEnd() != -1) {
+            interStart.setText("Heure d'ouverture: ");
+            interEnd.setText("Heure de fermeture: " + Helpers.formatHHmm(interval.getEnd()));
+        }
+        else {
             interStart.setText("Fermé");
             interEnd.setText("");
         }
