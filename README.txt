@@ -22,3 +22,4 @@ OU
 Nom d'utilisateur: emptest
 Mot de passe: asdfjkl;
 
+Notez que la fonctionnalité d'approuver ou de rejeter les demandes de services ne supprime pas les demandes car il faut qu'on l'ajoute en Firebase manuellement, ce qui n'est pas pratique pour les démonstrations.   
