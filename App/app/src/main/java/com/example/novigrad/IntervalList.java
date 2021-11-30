@@ -34,7 +34,7 @@ public class IntervalList extends ArrayAdapter<Interval> {
 
         Interval interval = intervals.get(position);
         interLabel.setText(interval.name+": ");
-        if(interval.getStart() != -1) {
+        if(interval.getStart() != -1 && interval.getEnd() != -1) {
             interStart.setText("Heure d'ouverture: " + Helpers.formatHHmm(interval.getStart()));
             interEnd.setText("Heure de fermeture: " + Helpers.formatHHmm(interval.getEnd()));
         } else {

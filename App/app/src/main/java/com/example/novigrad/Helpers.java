@@ -40,12 +40,7 @@ public class Helpers {
         Interval[] intervals = new Interval[7];
 
         for (int i = 0; i < intervals.length; i++) {
-            if(times.get(DAYS_START_END[2*i]) * times.get(DAYS_START_END[2*i+1]) >= 0) //checks for case where start/end time gets updated on a closed day
             intervals[i] = new Interval(times.get(DAYS_START_END[2*i]), times.get(DAYS_START_END[2*i+1]), DAYS[i]);
-            else if (times.get(DAYS_START_END[2*i]) == -1) intervals[i] = new Interval(9*60, times.get(DAYS_START_END[2*i+1]), DAYS[i]);
-            else intervals[i] = new Interval(times.get(DAYS_START_END[2*i]), 17*60, DAYS[i]);
-
-
         }
         return intervals;
     }
@@ -59,6 +54,8 @@ public class Helpers {
             //si succursale fermé
             if (times.get(DAYS_START_END[i]) == -1 && times.get(DAYS_START_END[i+1]) == -1) {
                 continue;
+            } else if (times.get(DAYS_START_END[i]) == -1 || times.get(DAYS_START_END[i+1]) == -1) {
+                return false;
             }
             if (times.get(DAYS_START_END[i]) >= times.get(DAYS_START_END[i+1])) {
                 return false;
