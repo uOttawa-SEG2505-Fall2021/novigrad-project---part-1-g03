@@ -42,42 +42,63 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="80dp" />
+                android:layout_height="50dp" />
 
-            <EditText
-                android:id="@+id/username"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="@string/prompt_username"
-                android:backgroundTint="#FFFFFF"
-                android:hint="@string/prompt_username"
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:selectAllOnFocus="true"
-                android:textColor="@color/white"
                 android:textColorHighlight="@color/white"
-                android:textColorHint="#838383" />
+                android:textColorHint="#838383"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/white"
+                >
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/prompt_username"
+                    android:backgroundTint="#1C1B1B"
+                    android:hint="@string/prompt_username"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionDone"
+                    android:inputType="text|textNoSuggestions"
+                    android:minHeight="48dp"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/white"
+                    android:textColorHighlight="@color/white"
+                    android:textColorHint="#838383" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
-            <EditText
-                android:id="@+id/password"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="@string/prompt_password"
-                android:backgroundTint="#FFFFFF"
-                android:hint="@string/prompt_password"
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:imeOptions="actionDone"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:selectAllOnFocus="true"
-                android:textColor="@color/white"
-                android:textColorHint="#838383" />
+                android:textColorHighlight="@color/white"
+                android:textColorHint="#838383"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white"
+                >
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/prompt_password"
+
+                    android:backgroundTint="#1C1B1B"
+                    android:hint="@string/prompt_password"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Space
                 android:layout_width="match_parent"
@@ -99,7 +120,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="50dp"
                 android:backgroundTint="#1C1B1B" />
 
             <TextView
