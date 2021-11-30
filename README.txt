@@ -1,4 +1,4 @@
-Projet Service Novigrad SEG2505
+Projet Service Novigrad SEG2505 Groupe 03
 
 Membres de l'équipe:
 -	Céline Wan Min Kee (celinewmk), 300193369
