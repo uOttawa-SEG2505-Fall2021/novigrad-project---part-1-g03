@@ -1,5 +1,5 @@
 package com.example.novigrad;
-
+// class Interval  consiste a donner un intervalle de temps
 public class Interval {
     int start;
     int end;
