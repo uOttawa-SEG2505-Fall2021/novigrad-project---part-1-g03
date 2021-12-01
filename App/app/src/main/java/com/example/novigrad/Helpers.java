@@ -3,7 +3,7 @@ package com.example.novigrad;
 import java.util.HashMap;
 
 /**
- * Classe Helpers qui nous aide pour les horaires de travail
+ * Classe Helpers implementé pour  les horaires de travail
  * */
 public class Helpers {
     private static final String[] DAYS_START_END = new String[]{"lunA","lunB","marA","marB","merA","merB","jeuA","jeuB","venA","venB","samA","samB","dimA","dimB"};
