@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 /**
- * Classe AdminPage qui représente le landing page lorsqu'on se connecte en tant qu'admin
+ * Classe AdminPage représente le landing page lorsqu'on se connecte en tant qu'administrateur
  * */
 
 public class AdminPage extends AppCompatActivity {
