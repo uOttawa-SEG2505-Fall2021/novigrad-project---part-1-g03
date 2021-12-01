@@ -91,7 +91,7 @@ public class ServicesPage extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                        Intent myIntent = new Intent(ServicesPage.this, ServiceDetails.class);
+                        Intent myIntent = new Intent(ServicesPage.this, ServiceDetailsPage.class);
                         Service currentService = services.get(position);
                         myIntent.putExtra("serviceName", currentService.getNomService());
                         myIntent.putExtra("serviceDocs", currentService.getDocsRequis());

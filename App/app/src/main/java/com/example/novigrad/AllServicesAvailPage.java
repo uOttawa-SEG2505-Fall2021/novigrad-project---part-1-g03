@@ -76,7 +76,7 @@ public class AllServicesAvailPage extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                        Intent myIntent = new Intent(AllServicesAvailPage.this, ServiceDetails.class);
+                        Intent myIntent = new Intent(AllServicesAvailPage.this, ServiceDetailsPage.class);
                         Service currentService = services.get(position);
                         myIntent.putExtra("serviceName", currentService.getNomService());
                         myIntent.putExtra("serviceDocs", currentService.getDocsRequis());

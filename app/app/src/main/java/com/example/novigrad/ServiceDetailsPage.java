@@ -17,7 +17,7 @@ import android.widget.Toast;
  * ServiceDetails classe qui permet d'afficher les détails d'un service sur une page
  * */
 
-public class ServiceDetails extends AppCompatActivity {
+public class ServiceDetailsPage extends AppCompatActivity {
 
    private String serviceName, serviceDocs, serviceInfo, serviceId;
    private TextView serviceNameView, serviceDocsView, serviceInfoView;

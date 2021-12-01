@@ -46,7 +46,7 @@
             android:name=".CreateAccountPage"
             android:exported="true" />
         <activity
-            android:name=".ServiceDetails"
+            android:name=".ServiceDetailsPage"
             android:exported="true" />
         <activity
             android:name=".LoginPage"
