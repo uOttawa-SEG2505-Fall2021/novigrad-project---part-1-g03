@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Classe DemandeList qui nous permet d'afficher la liste des demandes soumises
+ * Classe DemandeList permet d'afficher la liste des demandes soumises
  * */
 
 public class DemandeList extends ArrayAdapter<Demande> {
