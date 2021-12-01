@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
- * ModifyDeleteServicePage class qui permet de modifier ou supprimer un service
+ * ModifyDeleteServicePage class  permet de modifier ou supprimer un service
  * */
 public class ModifyDeleteServicePage extends AppCompatActivity {
 
