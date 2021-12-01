@@ -88,23 +88,39 @@
                 android:textColor="@color/white"
                 android:textSize="20dp" />
 
-            <EditText
-                android:id="@+id/boxInfoRequis"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-                android:backgroundTint="@color/cardview_dark_background"
-                android:gravity="top"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:textColorHighlight="@color/white"
+                android:textColorHint="#838383"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/white"
+                app:counterMaxLength="500"
+                app:counterEnabled="true"
+                app:counterTextColor="@color/white"
+                >
 
-                android:hint="@string/prompt_entrerInfoRequis"
-                android:inputType="textMultiLine|textNoSuggestions"
-                android:maxLines="50"
-                android:padding="10dp"
-                android:textColor="@android:color/white"
-                android:textColorHint="#838383" />
-            <!-- android:text="Entrez ici les informations requises" -->
+                <EditText
+                    android:id="@+id/boxInfoRequis"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+                    android:backgroundTint="@color/cardview_dark_background"
+                    android:gravity="top"
+                    android:hint="@string/prompt_entrerInfoRequis"
+                    android:inputType="textMultiLine|textNoSuggestions"
+                    android:maxLines="50"
+                    android:padding="10dp"
+                    android:scrollbars="vertical"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="#838383"
+                    android:textSize="15dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
 
             <TextView
@@ -116,22 +132,39 @@
                 android:textColor="@color/white"
                 android:textSize="20dp" />
 
-            <EditText
-                android:id="@+id/boxDocuRequis"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-                android:backgroundTint="@color/cardview_dark_background"
-                android:gravity="top"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:textColorHighlight="@color/white"
+                android:textColorHint="#838383"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/white"
+                app:counterMaxLength="500"
+                app:counterEnabled="true"
+                app:counterTextColor="@color/white"
+                >
 
-                android:hint="@string/prompt_entrerDocRequis"
-                android:inputType="textMultiLine|textNoSuggestions"
-                android:maxLines="50"
-                android:padding="10dp"
-                android:textColor="@android:color/white"
-                android:textColorHint="#838383" />
+
+                <EditText
+                    android:id="@+id/boxDocuRequis"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+                    android:backgroundTint="@color/cardview_dark_background"
+                    android:gravity="top"
+                    android:scrollbars="vertical"
+                    android:hint="@string/prompt_entrerDocRequis"
+                    android:inputType="textMultiLine|textNoSuggestions"
+                    android:maxLines="50"
+                    android:padding="10dp"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="#838383"
+                    android:textSize="15dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Space
                 android:layout_width="match_parent"
@@ -148,6 +181,7 @@
                 android:text="@string/action_ajouter"
                 android:textAlignment="center"
                 android:textColor="@color/white" />
+            <!-- this is a comment -->
 
 
         </LinearLayout>
