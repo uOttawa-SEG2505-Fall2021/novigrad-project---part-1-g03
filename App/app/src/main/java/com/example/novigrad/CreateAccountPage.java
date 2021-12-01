@@ -26,6 +26,7 @@ import java.util.Map;
 
 /**
  *
+ class CreateAccountPage permet de creer un compte 
  *
  * */
 public class CreateAccountPage extends AppCompatActivity {
