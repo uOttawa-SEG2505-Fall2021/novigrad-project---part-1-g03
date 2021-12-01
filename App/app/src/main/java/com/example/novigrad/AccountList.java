@@ -12,7 +12,7 @@ import com.example.novigrad.user.UserAccount;
 import java.util.List;
 
 /**
- * Classe AccountList qui nous permet d'afficher la liste des comptes
+ * Classe AccountList permet d'afficher la liste des comptes
  * */
 
 public class AccountList extends ArrayAdapter<UserAccount> {
