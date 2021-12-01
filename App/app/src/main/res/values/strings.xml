@@ -23,8 +23,8 @@
     <string name="prompt_infoRequises">Informations requises</string>
     <string name="prompt_docRequis">Document requis</string>
     <string name="action_ajouter">Ajouter</string>
-    <string name="prompt_entrerInfoRequis">Veuillez entrer les informations requises pour le nouveau service</string>
-    <string name="prompt_entrerDocRequis">Veuillez indiquer les documents requis pour le nouveau service</string>
+    <string name="prompt_entrerInfoRequis">Veuillez entrer les informations requises</string>
+    <string name="prompt_entrerDocRequis">Veuillez indiquer les documents requis</string>
     <string name="welcomeAdmin">Bonjour %1$s!\n Vous êtes connecté en tant qu\'administrateur.</string>
     <string name="action_retour">Retourner à la page précédente</string>
     <string name="instructions_delete">Veuillez appuyer longtemps sur un compte pour le supprimer</string>

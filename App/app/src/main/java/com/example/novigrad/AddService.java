@@ -64,7 +64,11 @@ public class AddService extends AppCompatActivity {
 
         String[] errorMessage = new String[1];
 
-        if (Service.verifyService(newService, errorMessage)) {
+        if(infos.length() > 500 || docs.length() > 500){
+            Toast.makeText(AddService.this, "Vous n'avez pas respecté la limite de caractères", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (Service.verifyService(newService, errorMessage)) {
 
             databaseServices.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
@@ -97,6 +101,8 @@ public class AddService extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), errorMessage[0], Toast.LENGTH_LONG).show();
         }
+
+
     }
 
     // Retourne à la page précédente
