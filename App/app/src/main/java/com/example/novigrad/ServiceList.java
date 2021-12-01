@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Classe ServiceList qui nous permet d'afficher la liste des services
+ * Classe ServiceList permet d'afficher la liste des services
  * */
 
 public class ServiceList extends ArrayAdapter<Service> {
