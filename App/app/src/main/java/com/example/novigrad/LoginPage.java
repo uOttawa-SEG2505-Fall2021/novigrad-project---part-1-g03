@@ -90,8 +90,11 @@ public class LoginPage extends AppCompatActivity {
                             myIntent = new Intent(LoginPage.this, AdminPage.class);
                         } else if (accountType == 1) { //is an Employee
                             myIntent = new Intent(LoginPage.this, EmployeePage.class);
+                        } else if (accountType == 0){
+                            myIntent = new Intent(LoginPage.this, ClientPage.class);
                         } else {
-                            myIntent = new Intent(LoginPage.this, WelcomePage.class);
+                            //some error handling here
+                            return;
                         }
                         myIntent.putExtra("userId", username);
                         startActivity(myIntent);

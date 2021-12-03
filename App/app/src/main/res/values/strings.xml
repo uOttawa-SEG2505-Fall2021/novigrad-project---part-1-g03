@@ -58,15 +58,15 @@
     <string name="servicesFournisHeader">Services Fournis</string>
     <string name="voirServicesDisponibles">Voir tous les services disponibles</string>
     <string name="retour">Retour</string>
-    <string-array name="daysOfTheWeek" >
-        <item >Selectionner un jour:</item>
-        <item >Lundi</item>
-        <item >Mardi</item>
-        <item >Mercredi</item>
-        <item >Jeudi</item>
-        <item >Vendredi</item>
-        <item >Samedi</item>
-        <item >Dimanche</item>
+    <string-array name="daysOfTheWeek">
+        <item>Selectionner un jour:</item>
+        <item>Lundi</item>
+        <item>Mardi</item>
+        <item>Mercredi</item>
+        <item>Jeudi</item>
+        <item>Vendredi</item>
+        <item>Samedi</item>
+        <item>Dimanche</item>
     </string-array>
     <string name="InfosSurDemande">Prénom/Nom: %1$s %2$s\nNom d\'utilisateur: %3$s \nService demandé: %4$s</string>
     <string name="errorMessageDemandes">Aucune demande n\'a été soumise pour le moment...</string>
