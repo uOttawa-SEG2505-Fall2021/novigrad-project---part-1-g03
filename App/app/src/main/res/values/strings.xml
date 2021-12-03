@@ -73,4 +73,9 @@
     <string name="errorMessageServices">Aucun service n\'a été ajouté à la succursale pour le moment...</string>
     <string name="instructionsDemande">Cliquez longtemps sur une demande pour l\'approuver ou la rejeter</string>
     <string name="approve_decline_msg">Approuver ou rejeter cette demande. Veuillez vérifier que l\'utilisateur a envoyé correctement les informations et documents requis pour cette demande par mail avant de l\'approuver ou la rejeter.</string>
+    <string name="header_client">Client</string>
+    <string name="recherche_client">Rechercher une succursale</string>
+    <string name="recherche_action">Recherche</string>
+    <string name="action_demande">Demande</string>
+    <string name="faire_demande">Faire une demande</string>
 </resources>
