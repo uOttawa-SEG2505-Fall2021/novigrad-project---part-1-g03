@@ -1,37 +1,61 @@
 package com.example.novigrad;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.example.novigrad.user.UserAccount;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ClientPage extends AppCompatActivity {
 
     private String username;
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final DatabaseReference dbRef = database.getReference();
+    private UserAccount user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_page);
 
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if (extras != null) {
-                username = extras.getString("username");
-            } else {
-                //Cette code ici devrait jamais s'exécuter
-                // S'il exécute, il y a des problèmes avec l'information transmise dans la page précédente
+        Intent intent = getIntent();
+        username = intent.getStringExtra("userId");
 
-                //assigner des valeurs vides pour éviter les erreurs
-                username = "";
+        TextView welcomeMessage = findViewById(R.id.welcomeClient);
+
+        dbRef.child("users").child(username).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                user = snapshot.getValue(UserAccount.class);
+
+                welcomeMessage.setText(String.format(getString(R.string.header_client), user.getPrenom()));
             }
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
     }
 
     public void onDemandes(View view) {
         Intent demandes = new Intent(ClientPage.this, ViewClientDemandesPage.class);
         demandes.putExtra("clientName", username);
         startActivity(demandes);
+    }
+
+    // Déconnecte l'utilisateur
+    public void onLogout(View view){
+        Intent myIntent = new Intent(ClientPage.this, LoginPage.class);
+        myIntent.putExtra("username", "");
+        myIntent.putExtra("password", "");
+        startActivity(myIntent);
     }
 }

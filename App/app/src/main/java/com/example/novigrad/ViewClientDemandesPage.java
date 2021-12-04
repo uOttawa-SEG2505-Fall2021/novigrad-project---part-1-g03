@@ -123,10 +123,8 @@ public class ViewClientDemandesPage extends AppCompatActivity {
                 continue;
             } else if (demandesA.contains(dem)) {
                 Toast.makeText(this, "Un nouveau demande a été apprové", Toast.LENGTH_SHORT).show();
-                System.out.println("Un nouveau demande a été apprové");
             } else if (demandesR.contains(dem)) {
                 Toast.makeText(this, "Un nouveau demande a été rejeté", Toast.LENGTH_SHORT).show();
-                System.out.println("Un nouveau demande a été rejeté");
             }
         }
     }
