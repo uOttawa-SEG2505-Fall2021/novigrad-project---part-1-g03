@@ -68,14 +68,16 @@
         <item>Samedi</item>
         <item>Dimanche</item>
     </string-array>
-    <string name="InfosSurDemande">Prénom/Nom: %1$s %2$s\nNom d\'utilisateur: %3$s \nService demandé: %4$s</string>
-    <string name="errorMessageDemandes">Aucune demande n\'a été soumise pour le moment...</string>
-    <string name="errorMessageServices">Aucun service n\'a été ajouté à la succursale pour le moment...</string>
+    <string name="InfosSurDemande">Prénom/Nom: %1$s %2$s\nNom d\'utilisateur: %3$s \nService demandé: %4$s \nSuccursale concernée: %5$s \nStatus: %6$s</string>
+    <string name="errorMessageDemandes">Aucune demande n\'a été soumise pour le moment…</string>
+    <string name="errorMessageServices">Aucun service n\'a été ajouté à la succursale pour le moment…</string>
     <string name="instructionsDemande">Cliquez longtemps sur une demande pour l\'approuver ou la rejeter</string>
     <string name="approve_decline_msg">Approuver ou rejeter cette demande. Veuillez vérifier que l\'utilisateur a envoyé correctement les informations et documents requis pour cette demande par mail avant de l\'approuver ou la rejeter.</string>
     <string name="header_client">Bonjour %1$s!\n Bienvenue à Service Novigrad! \n Vous êtes connecté en tant que client.</string>
     <string name="recherche_client">Rechercher une succursale pour faire une demande</string>
     <string name="recherche_action">Recherche</string>
     <string name="action_demande">Demandes</string>
-    <string name="faire_demande">Voir vos demandes</string>
+    <string name="faire_demande">Faire une demande</string>
+    <string name="voir_demande">Voir vos demandes</string>
+    <string name="errorMessage">Aucune demandes trouvées</string>
 </resources>

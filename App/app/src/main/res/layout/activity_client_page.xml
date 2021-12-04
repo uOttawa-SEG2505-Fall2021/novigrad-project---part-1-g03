@@ -82,6 +82,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/rounded"
+                android:onClick="onDemandes"
                 android:orientation="vertical">
 
                 <TextView
@@ -118,6 +119,7 @@
                 android:textColor="@color/white"
                 android:textSize="15dp"
                 app:cornerRadius="5dp" />
+
         </LinearLayout>
     </ScrollView>
 
