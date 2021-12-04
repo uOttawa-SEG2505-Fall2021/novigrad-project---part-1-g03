@@ -94,7 +94,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/teal_700"
             android:onClick="onSelectList"
-            android:text="Pending" />
+            android:text="En attente" />
 
         <Button
             android:id="@+id/btnApproved"
@@ -103,7 +103,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/teal_700"
             android:onClick="onSelectList"
-            android:text="Approved" />
+            android:text="Approuvée" />
 
         <Button
             android:id="@+id/btnRejected"
@@ -112,7 +112,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/teal_700"
             android:onClick="onSelectList"
-            android:text="Rejected" />
+            android:text="Rejetée" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
