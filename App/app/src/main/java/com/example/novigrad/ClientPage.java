@@ -30,7 +30,7 @@ public class ClientPage extends AppCompatActivity {
     }
 
     public void onDemandes(View view) {
-        Intent demandes = new Intent(ClientPage.this, ViewClientDemandes.class);
+        Intent demandes = new Intent(ClientPage.this, ViewClientDemandesPage.class);
         demandes.putExtra("clientName", username);
         startActivity(demandes);
     }

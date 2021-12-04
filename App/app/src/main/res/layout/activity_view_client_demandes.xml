@@ -6,168 +6,110 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1C1B1B"
-    tools:context=".ViewClientDemandes">
+    tools:context=".ViewClientDemandesPage">
 
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:backgroundTint="@color/cardview_dark_background"
+            android:enabled="true"
+            android:onClick="onReturn"
+            android:text="Retour"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="11dp"
+            app:cornerRadius="10dp" />
+
+        <TextView
+            android:id="@+id/headerDemandes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="35dp"
+            android:text="Liste des demandes 'pending'"
+            android:textColor="@color/white"
+            android:textSize="28dp"
+            android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:backgroundTint="@color/cardview_dark_background"
-                android:enabled="true"
-                android:onClick="onReturn"
-                android:text="Retour"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="11dp"
-                app:cornerRadius="10dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
 
-            <TextView
-                android:id="@+id/headerPending"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="35dp"
-                android:text="Liste des demandes \'pending\'"
-                android:textColor="@color/white"
-                android:textSize="28dp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/messageDemandes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="5dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
 
-            <TextView
-                android:id="@+id/messageDemandePending"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="16dp" />
+        <ListView
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15dp" />
-
-            <ListView
-
-                android:id="@+id/listViewDemandesPending"
-                android:layout_width="match_parent"
-                android:layout_height="85dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
-                android:background="#ACACAC"
-                android:divider="#1C1B1B"
-                android:dividerHeight="20dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15dp" />
+            android:id="@+id/listViewDemandes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:background="#ACACAC"
+            android:divider="#1C1B1B"
+            android:dividerHeight="20dp" />
 
 
-            <TextView
-                android:id="@+id/headerApproved"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="35dp"
-                android:text="Liste des demandes 'approuved'"
-                android:textColor="@color/white"
-                android:textSize="28dp"
-                android:textStyle="bold" />
+    </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="5dp" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
-                android:id="@+id/messageDemandeApproved"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="16dp" />
+        <Button
+            android:id="@+id/btnPending"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onSelectList"
+            android:text="Pending" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15dp" />
+        <Button
+            android:id="@+id/btnApproved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onSelectList"
+            android:text="Approved" />
 
-            <ListView
-
-                android:id="@+id/listViewDemandesApproved"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
-                android:background="#ACACAC"
-                android:divider="#1C1B1B"
-                android:dividerHeight="20dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15dp" />
-
-
-            <TextView
-                android:id="@+id/headerRejected"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="35dp"
-                android:text="Liste des demandes 'rejected'"
-                android:textColor="@color/white"
-                android:textSize="28dp"
-                android:textStyle="bold" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="5dp" />
-
-            <TextView
-                android:id="@+id/messageDemandeRejected"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="16dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15dp" />
-
-            <ListView
-
-                android:id="@+id/listViewDemandesRejected"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
-                android:background="#ACACAC"
-                android:divider="#1C1B1B"
-                android:dividerHeight="20dp" />
-
-        </LinearLayout>
-    </ScrollView>
+        <Button
+            android:id="@+id/btnRejected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onSelectList"
+            android:text="Rejected" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
