@@ -92,6 +92,7 @@ public class LoginPage extends AppCompatActivity {
                             myIntent = new Intent(LoginPage.this, EmployeePage.class);
                         } else if (accountType == 0){
                             myIntent = new Intent(LoginPage.this, ClientPage.class);
+                            myIntent.putExtra("username", username);
                         } else {
                             //some error handling here
                             return;

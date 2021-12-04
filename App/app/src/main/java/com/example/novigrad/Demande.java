@@ -5,6 +5,12 @@ package com.example.novigrad;
  * */
 public class Demande {
 
+    //magic numbers for demande: 0 1 2
+    // 0 = pending
+    // 1 = approved
+    // 2 = rejected
+    private int status = 0;
+
     // instance variables
     private String firstName;
     private String lastName;
@@ -16,12 +22,13 @@ public class Demande {
     public Demande(){}
 
     // constructeur 1
-    public Demande(String firstName, String lastName, String nomDeUtilisateur, String nomDuServiceDemande, String nomSuccursaleDemande){
+    public Demande(String firstName, String lastName, String nomDeUtilisateur, String nomDuServiceDemande, String nomSuccursaleDemande, int status){
         this.firstName = firstName;
         this.lastName = lastName;
         this.nomDeUtilisateur = nomDeUtilisateur;
         this.nomDuServiceDemande = nomDuServiceDemande;
         this.nomSuccursaleDemande = nomSuccursaleDemande;
+        this.status = status;
     }
 
     // getters
@@ -43,6 +50,10 @@ public class Demande {
 
     public String getNomSuccursaleDemande() {
         return nomSuccursaleDemande;
+    }
+
+    public int getStatus() {
+        return status;
     }
 
     @Override

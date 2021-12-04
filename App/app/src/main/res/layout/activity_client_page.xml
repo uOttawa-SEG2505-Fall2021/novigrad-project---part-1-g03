@@ -99,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
-                android:text="@string/faire_demande"
+                android:text="@string/voir_demande"
                 android:textColor="@color/white"
                 android:textSize="20dp" />
 
@@ -119,6 +119,7 @@
                 android:layout_marginRight="90dp"
                 android:backgroundTint="@color/teal_700"
                 android:enabled="true"
+                android:onClick="onDemandes"
                 android:text="@string/action_demande"
                 android:textAlignment="center"
                 android:textColor="@color/white" />

@@ -16,6 +16,14 @@ public class DemandeList extends ArrayAdapter<Demande> {
     private final Activity context;
     List<Demande> demandes;
 
+    public int size() {
+        return demandes.size();
+    }
+
+    public List<Demande> getList() {
+        return demandes;
+    }
+
     public DemandeList(Activity context, List<Demande> demandes) {
         super(context, R.layout.layout_item_list, demandes);
         this.context = context;

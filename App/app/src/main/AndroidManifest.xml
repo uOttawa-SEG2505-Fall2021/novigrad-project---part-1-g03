@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Novigrad">
         <activity
+            android:name=".ViewClientDemandes"
+            android:exported="false" />
+        <activity
             android:name=".ClientPage"
             android:exported="true" />
         <activity
