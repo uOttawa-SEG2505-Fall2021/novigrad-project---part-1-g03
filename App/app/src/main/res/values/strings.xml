@@ -80,4 +80,5 @@
     <string name="faire_demande">Faire une demande</string>
     <string name="voir_demande">Voir vos demandes</string>
     <string name="errorMessage">Aucune demandes trouvées</string>
+    <string name="prompt_nouveau_nom">Nouveau nom du service</string>
 </resources>
