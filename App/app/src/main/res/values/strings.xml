@@ -76,7 +76,7 @@
     <string name="header_client">Bonjour %1$s!\n Bienvenue à Service Novigrad! \n Vous êtes connecté en tant que client.</string>
     <string name="recherche_client">Rechercher une succursale pour faire une demande</string>
     <string name="recherche_action">Recherche</string>
-    <string name="action_demande">Demande</string>
+    <string name="action_demande">Demandes</string>
     <string name="faire_demande">Faire une demande</string>
     <string name="voir_demande">Voir vos demandes</string>
 </resources>

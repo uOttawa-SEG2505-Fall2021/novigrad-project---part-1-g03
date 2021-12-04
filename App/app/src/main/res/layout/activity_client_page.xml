@@ -78,34 +78,11 @@
             <LinearLayout
                 android:id="@+id/VoirDemandeBtn"
                 android:layout_width="match_parent"
-<<<<<<< HEAD
-                android:layout_height="30dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
-
-            <TextView
-                android:id="@+id/demande"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:text="@string/voir_demande"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="5dp" />
-=======
                 android:layout_height="match_parent"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/rounded"
+                android:onClick="onDemandes"
                 android:orientation="vertical">
 
                 <TextView
@@ -125,7 +102,6 @@
                     android:textColor="#DAD4D4"
                     android:textSize="16dp" />
             </LinearLayout>
->>>>>>> main
 
             <Button
                 android:id="@+id/logout"
@@ -136,18 +112,14 @@
                 android:layout_marginRight="100dp"
                 android:backgroundTint="@color/cardview_dark_background"
                 android:enabled="true"
-<<<<<<< HEAD
-                android:onClick="onDemandes"
-                android:text="@string/action_demande"
-=======
                 android:onClick="onLogout"
                 android:text="Se déconnecter"
->>>>>>> main
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="15dp"
                 app:cornerRadius="5dp" />
+
         </LinearLayout>
     </ScrollView>
 
