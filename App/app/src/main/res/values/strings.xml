@@ -35,7 +35,7 @@
     <string name="modifier_le_service">Modifier le service</string>
     <string name="modifier">Modifier</string>
     <string name="supprimer">Supprimer</string>
-    <string name="retourner">Retourner</string>
+    <string name="retourner">Retour</string>
     <string name="nom_de_service">Nom de Service:</string>
     <string name="documents_requis_de_service">Documents Requis de Service:</string>
     <string name="info_de_service">Info de Service:</string>
@@ -78,4 +78,5 @@
     <string name="recherche_action">Recherche</string>
     <string name="action_demande">Demandes</string>
     <string name="faire_demande">Voir vos demandes</string>
+    <string name="prompt_nouveau_nom">Nouveau nom du service</string>
 </resources>
