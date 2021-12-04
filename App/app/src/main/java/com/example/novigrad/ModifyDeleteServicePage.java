@@ -48,7 +48,7 @@ public class ModifyDeleteServicePage extends AppCompatActivity {
                 serviceInfo = extras.getString("serviceInfo");
                 serviceId = extras.getString("serviceId");
             } else {
-                //Cette code ici devrait jamais s'exécuter
+                //Ce code ici devrait jamais s'exécuter
                 // S'il exécute, il y a des problèmes avec l'information transmise dans la page précédente
 
                 //assigner des valeurs vides pour éviter les erreurs

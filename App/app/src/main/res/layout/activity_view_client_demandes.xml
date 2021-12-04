@@ -38,7 +38,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="35dp"
-            android:text="Liste des demandes 'pending'"
+            android:text="Liste des demandes en attente"
             android:textColor="@color/white"
             android:textSize="28dp"
             android:textStyle="bold" />
@@ -92,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/teal_700"
             android:onClick="onSelectList"
             android:text="Pending" />
 
@@ -100,6 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/teal_700"
             android:onClick="onSelectList"
             android:text="Approved" />
 
@@ -108,6 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/teal_700"
             android:onClick="onSelectList"
             android:text="Rejected" />
     </LinearLayout>

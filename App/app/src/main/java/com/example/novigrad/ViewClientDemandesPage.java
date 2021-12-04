@@ -23,7 +23,7 @@ import java.util.List;
 public class ViewClientDemandesPage extends AppCompatActivity {
 
     //notez bien: 0 - pending; 1 - approved; 2 - rejected
-    final String[] STATUS_NAMES = new String[]{"pending", "approved", "rejected"}; //needs to be translated
+    final String[] STATUS_NAMES = new String[]{"en attente", "approuvées", "rejetées"};
     int selectedList; //0 - pending; 1 - approved; 2 - rejected
 
     DatabaseReference databaseDemandes;
@@ -93,8 +93,7 @@ public class ViewClientDemandesPage extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Demande demandeActuelle = selectedDemandes.get(position);
                 AlertDialog.Builder alert = new AlertDialog.Builder(ViewClientDemandesPage.this);
-                alert.setTitle(demandeActuelle.toString());
-                alert.setMessage("Blah Blah Blah something or other");
+                alert.setMessage(demandeActuelle.toString());
                 alert.setPositiveButton("RETOURNER", new DialogInterface.OnClickListener() {
                     //dont think there's anything to be done here
                     @Override
@@ -122,9 +121,9 @@ public class ViewClientDemandesPage extends AppCompatActivity {
             if (demandesP.contains(dem)) {
                 continue;
             } else if (demandesA.contains(dem)) {
-                Toast.makeText(this, "Un nouveau demande a été apprové", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Une nouvelle demande a été approvée", Toast.LENGTH_SHORT).show();
             } else if (demandesR.contains(dem)) {
-                Toast.makeText(this, "Un nouveau demande a été rejeté", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Un nouvelle demande a été rejetée", Toast.LENGTH_SHORT).show();
             }
         }
     }

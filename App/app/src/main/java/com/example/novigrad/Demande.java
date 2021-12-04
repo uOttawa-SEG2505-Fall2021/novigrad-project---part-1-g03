@@ -80,6 +80,6 @@ public class Demande {
 
     @Override
     public String toString() {
-        return "Demande faite par " + firstName + " " + lastName + " au succursale " + getNomSuccursaleDemande() + " pour le service \"" + nomDuServiceDemande +"\"";
+        return "Demande faite par " + firstName + " " + lastName + " à la succursale " + getNomSuccursaleDemande() + " pour le service \"" + nomDuServiceDemande +"\"";
     }
 }
