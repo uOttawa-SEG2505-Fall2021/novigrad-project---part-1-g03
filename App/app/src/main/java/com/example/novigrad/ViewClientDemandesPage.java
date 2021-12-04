@@ -34,6 +34,9 @@ public class ViewClientDemandesPage extends AppCompatActivity {
     List<Demande> demandesA;
     List<Demande> demandesR;
 
+    //for updating the user that a new demande was approved/rejected
+    List<Demande> prevDemandesP;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,9 +61,12 @@ public class ViewClientDemandesPage extends AppCompatActivity {
     }
 
     private void clearDemandes() {
-        demandesP.clear();
-        demandesA.clear();
-        demandesR.clear();
+        //deep clone the arrays by copying the first ones
+        // and then making new ones
+        prevDemandesP = demandesP;
+        demandesP = new ArrayList<>();
+        demandesA = new ArrayList<>();
+        demandesR = new ArrayList<>();
     }
 
     private List<Demande> getSelectedDemandes(int status) {
@@ -111,6 +117,20 @@ public class ViewClientDemandesPage extends AppCompatActivity {
         message.setText("Liste des demandes " + STATUS_NAMES[selectedList]);
     }
 
+    private void checkIfDemandeWasApprovedRejected() {
+        for (Demande dem: prevDemandesP) {
+            if (demandesP.contains(dem)) {
+                continue;
+            } else if (demandesA.contains(dem)) {
+                Toast.makeText(this, "Un nouveau demande a été apprové", Toast.LENGTH_SHORT).show();
+                System.out.println("Un nouveau demande a été apprové");
+            } else if (demandesR.contains(dem)) {
+                Toast.makeText(this, "Un nouveau demande a été rejeté", Toast.LENGTH_SHORT).show();
+                System.out.println("Un nouveau demande a été rejeté");
+            }
+        }
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -118,15 +138,15 @@ public class ViewClientDemandesPage extends AppCompatActivity {
         databaseDemandes.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                System.out.println("Stuff got updated");
                 clearDemandes();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Demande demande = postSnapshot.getValue(Demande.class);
-                    System.out.println(demande);
-                    System.out.println(clientName);
                     if (demande.getNomDeUtilisateur().equals(clientName)) {
                         getSelectedDemandes(demande.getStatus()).add(demande);
                     }
                 }
+                checkIfDemandeWasApprovedRejected();
                 updateDemandes();
             }
 

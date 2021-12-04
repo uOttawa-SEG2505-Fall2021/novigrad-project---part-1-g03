@@ -57,6 +57,28 @@ public class Demande {
     }
 
     @Override
+    public boolean equals(Object o) {
+        // self check
+        if (this == o) {
+            return true;
+        }
+        // null check
+        if (o == null) {
+            return false;
+        }
+        // type check and cast
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+        Demande demande = (Demande) o;
+        return demande.firstName.equals(this.firstName) &&
+                demande.lastName.equals(this.lastName) &&
+                demande.nomDeUtilisateur.equals(this.nomDeUtilisateur) &&
+                demande.nomDuServiceDemande.equals(this.nomDuServiceDemande) &&
+                demande.nomSuccursaleDemande.equals(this.nomSuccursaleDemande);
+    }
+
+    @Override
     public String toString() {
         return "Demande faite par " + firstName + " " + lastName + " au succursale " + getNomSuccursaleDemande() + " pour le service \"" + nomDuServiceDemande +"\"";
     }
