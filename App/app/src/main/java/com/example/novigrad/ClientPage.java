@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ClientPage extends AppCompatActivity {
 
+    private String username;
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference dbRef = database.getReference();
     private UserAccount user;
@@ -27,9 +28,8 @@ public class ClientPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_page);
 
-
         Intent intent = getIntent();
-        String username = intent.getStringExtra("userId");
+        username = intent.getStringExtra("userId");
 
         TextView welcomeMessage = findViewById(R.id.welcomeClient);
 
@@ -43,6 +43,12 @@ public class ClientPage extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
+    }
+
+    public void onDemandes(View view) {
+        Intent demandes = new Intent(ClientPage.this, ViewClientDemandesPage.class);
+        demandes.putExtra("clientName", username);
+        startActivity(demandes);
     }
 
     // Déconnecte l'utilisateur
