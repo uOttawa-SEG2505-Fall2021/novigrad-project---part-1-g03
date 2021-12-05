@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -56,12 +57,15 @@ public class SuccursaleDemandsPage extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 demandes.clear();
+                ArrayList<String> demandeIds = new ArrayList<>();
                 for(DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Demande demande = postSnapshot.getValue(Demande.class);
                     System.out.println(demande);
                     System.out.println(succursaleName);
                     if(demande.getNomSuccursaleDemande().equals(succursaleName)) {
                         demandes.add(demande);
+                        demandeIds.add(postSnapshot.getKey());
+                        System.out.println(postSnapshot.getKey());
                     }
                 }
                 DemandeList demandeAdapter = new DemandeList(SuccursaleDemandsPage.this, demandes);
@@ -83,7 +87,7 @@ public class SuccursaleDemandsPage extends AppCompatActivity {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Demande demandeToBeRemoved = demandes.get(position);
+                                databaseDemandes.child(demandeIds.get(position)).child("status").setValue(1);
                                 Toast.makeText(getApplicationContext(), "Demande approuvée", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
                             }
@@ -92,6 +96,7 @@ public class SuccursaleDemandsPage extends AppCompatActivity {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                databaseDemandes.child(demandeIds.get(position)).child("status").setValue(2);
                                 Toast.makeText(getApplicationContext(), "Demande rejetée", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
                             }

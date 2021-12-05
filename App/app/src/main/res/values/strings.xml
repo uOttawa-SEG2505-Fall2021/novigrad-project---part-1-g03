@@ -35,7 +35,7 @@
     <string name="modifier_le_service">Modifier le service</string>
     <string name="modifier">Modifier</string>
     <string name="supprimer">Supprimer</string>
-    <string name="retourner">Retourner</string>
+    <string name="retourner">Retour</string>
     <string name="nom_de_service">Nom de Service:</string>
     <string name="documents_requis_de_service">Documents Requis de Service:</string>
     <string name="info_de_service">Info de Service:</string>
@@ -54,7 +54,7 @@
     <string name="bonjour">Bonjour %1$s!\n Bienvenue à Service Novigrad! \n Vous êtes connecté en tant qu\'employé.</string>
     <string name="infoServiceFournis">- Faites un click normal pour voir les détails du service\n- Faites un click long pour supprimer le service de la liste des services fournis.</string>
     <string name="voirServicesFournis">Liste des services offerts par la succursale</string>
-    <string name="allServicesInfos">- Cliquez longtemps sur un service pour l\'ajouter à la succursale\n- Faites un click normal pour voir les détails du service</string>
+    <string name="allServicesInfos">- Faites un click normal pour voir les détails du service\n- Cliquez longtemps sur un service pour l\'ajouter à la succursale</string>
     <string name="servicesFournisHeader">Services Fournis</string>
     <string name="voirServicesDisponibles">Voir tous les services disponibles</string>
     <string name="retour">Retour</string>
@@ -68,14 +68,17 @@
         <item>Samedi</item>
         <item>Dimanche</item>
     </string-array>
-    <string name="InfosSurDemande">Prénom/Nom: %1$s %2$s\nNom d\'utilisateur: %3$s \nService demandé: %4$s</string>
-    <string name="errorMessageDemandes">Aucune demande n\'a été soumise pour le moment...</string>
-    <string name="errorMessageServices">Aucun service n\'a été ajouté à la succursale pour le moment...</string>
+    <string name="InfosSurDemande">Prénom/Nom: %1$s %2$s\nNom d\'utilisateur: %3$s \nService demandé: %4$s \nSuccursale concernée: %5$s \nStatus: %6$s</string>
+    <string name="errorMessageDemandes">Aucune demande n\'a été soumise pour le moment…</string>
+    <string name="errorMessageServices">Aucun service n\'a été ajouté à la succursale pour le moment…</string>
     <string name="instructionsDemande">Cliquez longtemps sur une demande pour l\'approuver ou la rejeter</string>
     <string name="approve_decline_msg">Approuver ou rejeter cette demande. Veuillez vérifier que l\'utilisateur a envoyé correctement les informations et documents requis pour cette demande par mail avant de l\'approuver ou la rejeter.</string>
     <string name="header_client">Bonjour %1$s!\n Bienvenue à Service Novigrad! \n Vous êtes connecté en tant que client.</string>
     <string name="recherche_client">Rechercher une succursale pour faire une demande</string>
     <string name="recherche_action">Recherche</string>
     <string name="action_demande">Demandes</string>
-    <string name="faire_demande">Voir vos demandes</string>
+    <string name="faire_demande">Faire une demande</string>
+    <string name="voir_demande">Voir vos demandes</string>
+    <string name="errorMessage">Aucune demandes trouvées</string>
+    <string name="prompt_nouveau_nom">Nouveau nom du service</string>
 </resources>
