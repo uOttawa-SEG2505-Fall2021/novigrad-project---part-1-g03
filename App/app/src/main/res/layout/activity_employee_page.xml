@@ -148,7 +148,7 @@
                     android:id="@+id/detailsHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Détails du Succursale"
+                    android:text="Détails de la succursale"
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -157,7 +157,7 @@
                     android:id="@+id/detailsDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Modifier et voir les détails du succursale"
+                    android:text="Modifier et voir les détails de la succursale"
                     android:textColor="#DAD4D4"
                     android:textSize="16dp" />
 
