@@ -41,7 +41,7 @@
                 android:layout_marginRight="40dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:text="Succursale NomSucc"
+                android:text="@string/succursale_nom"
                 android:textSize="35dp" />
 
             <Space
@@ -88,29 +88,65 @@
 
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
             <TextView
-                android:id="@+id/details_info"
+                android:id="@+id/adresseLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginRight="40dp"
+                android:text="Adresse: "
                 android:textColor="@color/white"
                 android:textSize="18dp" />
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="5dp" />
+                android:layout_height="10dp" />
 
-            <TextView
-                android:id="@+id/details_docs"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginRight="40dp"
-                android:textColor="@color/white"
-                android:textSize="18dp" />
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/newAdresseSucc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:autofillHints="@string/prompt_username"
+                    android:backgroundTint="#1C1B1B"
+                    android:hint="@string/adresseSucc"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionDone"
+                    android:inputType="text|textNoSuggestions"
+                    android:minHeight="48dp"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/white"
+                    android:textColorHighlight="@color/white"
+                    android:textColorHint="#838383" />
+
+
+                <Button
+                    android:id="@+id/changeAdresseSucc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:backgroundTint="@color/teal_700"
+                    android:enabled="true"
+                    android:onClick="onAdresseChange"
+                    android:text="Modifier"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    app:cornerRadius="5dp" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,19 +19,24 @@ import com.google.firebase.database.ValueEventListener;
 
 public class SuccursaleDetailsPage extends AppCompatActivity {
 
-    private String dbSuccursaleName;
+    //succ details
     private String succName;
+    private String succAdresse;
+
+    //db variables
+    private String dbSuccursaleName;
     private DatabaseReference dbSucc;
 
+    //UI elements
     private EditText nameText;
+    private EditText adresseText;
+    private TextView headerText;
+    private TextView adresseLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_succursale_details_page);
-
-
-
         if(savedInstanceState == null){
             Bundle extras = getIntent().getExtras();
             if (extras != null){
@@ -42,13 +48,33 @@ public class SuccursaleDetailsPage extends AppCompatActivity {
         }
 
         nameText = findViewById(R.id.newNameSucc);
+        headerText = findViewById(R.id.succName);
+        adresseText = findViewById(R.id.newAdresseSucc);
+        adresseLabel = findViewById(R.id.adresseLabel);
         dbSucc = FirebaseDatabase.getInstance().getReference("succursales").child(dbSuccursaleName);
 
-        //this auto-updates the name field
+        //auto-updates the name field
         dbSucc.child("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 succName = snapshot.getValue(String.class);
+                headerText.setText(String.format(getString(R.string.succursale_nom), succName));
+                nameText.setText(succName);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        //auto-updates address field
+        dbSucc.child("adresse").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                succAdresse = snapshot.getValue(String.class);
+                adresseLabel.setText(String.format(getString(R.string.adresseSucc), succAdresse));
+                adresseText.setText(succAdresse);
             }
 
             @Override
@@ -60,8 +86,17 @@ public class SuccursaleDetailsPage extends AppCompatActivity {
 
     // Retourne à la page précédente
     public void onNameChange(View view){
-        final String newName = nameText.getText().toString().trim();
-        if (newName.equals(succName)) {
+        changeSuccField(nameText, succName, "name", "Erreur: Un succursale avec cette nom existe déjà", "Le nom du succursale a été modifié");
+    }
+
+    public void onAdresseChange(View view) {
+        changeSuccField(adresseText, succAdresse, "adresse", "Erreur: Un succursale déjà possède cette adresse", "L'adresse a été modifié");
+    }
+
+
+    private void changeSuccField(EditText field, String current, String dbField, String errorMsg, String successMsg) {
+        final String newField = field.getText().toString().trim();
+        if (newField.equals(current)) {
             //error message here optional, but should be obvious to the user what they're doing
             return;
         }
@@ -70,21 +105,21 @@ public class SuccursaleDetailsPage extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> allSuccsShot) {
 
-                boolean duplicateSucc = false;
+                boolean duplicateVal = false;
 
                 for (DataSnapshot snapshot:
-                     allSuccsShot.getResult().getChildren()) {
-                    String succName = snapshot.child("name").getValue(String.class);
-                    if (succName.equalsIgnoreCase(newName)) {
-                        duplicateSucc = true;
+                        allSuccsShot.getResult().getChildren()) {
+                    String succField = snapshot.child(dbField).getValue(String.class);
+                    if (succField.equalsIgnoreCase(newField)) {
+                        duplicateVal = true;
                     }
                 }
 
-                if (duplicateSucc) {
-                    Toast.makeText(SuccursaleDetailsPage.this, "Erreur: Ce succursale existe déjà", Toast.LENGTH_SHORT).show();
+                if (duplicateVal) {
+                    Toast.makeText(SuccursaleDetailsPage.this, errorMsg, Toast.LENGTH_SHORT).show();
                 } else {
-                    dbSucc.child("name").setValue(newName);
-                    Toast.makeText(SuccursaleDetailsPage.this, "Nom de succursale modifié", Toast.LENGTH_LONG).show();
+                    dbSucc.child(dbField).setValue(newField);
+                    Toast.makeText(SuccursaleDetailsPage.this, successMsg, Toast.LENGTH_LONG).show();
                 }
 
             }
