@@ -112,7 +112,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/teal_700"
             android:onClick="onSelectList"
-            android:text="Rejetée" />
+            android:text="Rejetées" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
