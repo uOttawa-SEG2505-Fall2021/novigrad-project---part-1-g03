@@ -121,7 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="15dp" />
 
-<!--      Samy put the rating thing here      -->
+            <!--      Samy put the rating thing here      -->
 
             <Space
                 android:layout_width="match_parent"
@@ -144,6 +144,36 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="332dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="15dp"
+                android:text="Veuillez évaluer le service: "
+                android:textAlignment="viewStart"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <RatingBar
+
+                android:layout_marginLeft="70dp"
+                android:layout_marginRight="70dp"
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:numStars="5"
+                android:stepSize=".5"
+                android:theme="@style/RatingBar"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+
         </LinearLayout>
     </ScrollView>
 

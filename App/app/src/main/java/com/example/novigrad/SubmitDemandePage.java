@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,10 +25,24 @@ public class SubmitDemandePage extends AppCompatActivity {
     private Service serviceApplyingTo;
     DatabaseReference databaseServices;
 
+    private RatingBar bar;
+    private float cote; // This is the number
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_demande_page);
+
+        // Samy Stuff
+        bar = (RatingBar) findViewById(R.id.rating_bar);
+        bar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                Toast.makeText(SubmitDemandePage.this, "Service coté à: " + rating, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // End Samy stuff
 
         databaseServices = FirebaseDatabase.getInstance().getReference("services");
 

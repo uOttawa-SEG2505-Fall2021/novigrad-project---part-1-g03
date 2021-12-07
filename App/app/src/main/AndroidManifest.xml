@@ -11,13 +11,13 @@
         android:theme="@style/Theme.Novigrad">
         <activity
             android:name=".SubmitDemandePage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SuccursaleDetailsPage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ViewClientDemandesPage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ClientPage"
             android:exported="true" />
