@@ -11,6 +11,8 @@ public class SearchDemande extends Demande{
         this.times = times.clone();
     }
 
+    public SearchDemande() {}
+
     public Demande compress() {
         return new Demande(this.getFirstName(), this.getLastName(),
                 this.getNomDeUtilisateur(), this.getNomDuServiceDemande(), this.getNomSuccursaleDemande(), 0);

@@ -28,8 +28,8 @@ public class TimeList extends ArrayAdapter<Time>{
         TextView dayLabel = timeListItem.findViewById(R.id.dayOfWeek);
         TextView timeLabel = timeListItem.findViewById(R.id.timeOfDay);
         Time time = times.get(position);
-        dayLabel.setText(days[time.getDay()]);
-        timeLabel.setText((time.getTime() != 0) ? Helpers.formatHHmm(time.getTime()) : "");
+        dayLabel.setText((time.getDay() < 7) ? days[time.getDay()]: "");
+        timeLabel.setText((time.getTime() != -1) ? Helpers.formatHHmm(time.getTime()) : "");
         return timeListItem;
     }
 

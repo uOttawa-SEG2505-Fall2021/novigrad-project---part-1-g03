@@ -5,7 +5,10 @@ public class Time {
     private int time;
     private int day;
 
-    public Time(){}
+    public Time(){
+        time = -1;
+        day = 7;
+    }
 
     public Time(int times, int day) {
         this.time = time;

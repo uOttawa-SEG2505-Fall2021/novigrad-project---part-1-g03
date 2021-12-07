@@ -14,9 +14,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,18 +29,20 @@ import com.google.firebase.database.ValueEventListener;
 public class ServiceSearch extends AppCompatActivity {
 
     private ArrayList<Time> times = new ArrayList<Time>();
+    private TextView displayedResult;
     private ListView timeList;
     private Button search, addTime;
     private Spinner locationsSpinner, servicesSpinner;
-    private DatabaseReference dbSuccursales, dbServices;
+    private DatabaseReference dbSuccursales, dbServices, dbDemandes;
     private String username, firstName, lastName;
-    private ArrayList<Integer[]> succursales_times;
     private ArrayList<String[]> service_fournis;
     private ArrayList<String> addresses;
     private ArrayList<String> service_ids;
     private String[] service_names;
     private int addTimeState = 0;
     private ArrayList<SearchDemande> possibleDemands = new ArrayList<SearchDemande>();
+    private ArrayList<SearchDemande> filteredDemands = possibleDemands;
+    private int currentResult = 0;
 
 
     @Override
@@ -60,9 +64,33 @@ public class ServiceSearch extends AppCompatActivity {
         locationsSpinner = findViewById(R.id.address_query);
         servicesSpinner = findViewById(R.id.service_query);
         timeList = findViewById(R.id.dates_query);
+        displayedResult = findViewById(R.id.demande_cherchée);
 
         dbSuccursales = FirebaseDatabase.getInstance().getReference("succursales");
         dbServices = FirebaseDatabase.getInstance().getReference("services");
+        dbDemandes = FirebaseDatabase.getInstance().getReference("demandes");
+
+        servicesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                filterResults();
+                updateDemandeView();
+            }
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+
+        locationsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                filterResults();
+                updateDemandeView();
+            }
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
 
     }
 
@@ -92,23 +120,22 @@ public class ServiceSearch extends AppCompatActivity {
         dbSuccursales.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                succursales_times = new ArrayList<Integer[]>();
                 service_fournis = new ArrayList<String[]>();
                 int i = 0;
                 addresses = new ArrayList<String>();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    succursales_times.add(new Integer[14]);
                     int[] localtimes = new int[14];
                     addresses.add(postSnapshot.child("adresse").getValue(String.class));
-                    int j = 0;
+                    String[] labels = {"lunA", "lunB", "marA", "marB", "merA", "merB", "jeuA", "jeuB",
+                            "venA", "venB", "samA", "samB", "dimA", "dimB"};
+                    ArrayList<String> conversion = new ArrayList<String>(Arrays.asList(labels));
                     for(DataSnapshot time: postSnapshot.child("times").getChildren()) {
-                        succursales_times.get(i)[j] = time.getValue(Integer.class);
-                        localtimes[j] = time.getValue(Integer.class);
-                        j++;
+                        String key = time.getKey();
+                        localtimes[conversion.indexOf(key)] = time.getValue(Integer.class);
                     }
 
                     ArrayList<String> offeredServices = new ArrayList<String>();
-                    for(DataSnapshot servOffert : postSnapshot.child("services").getChildren()) {
+                    for(DataSnapshot servOffert : postSnapshot.child("servicesFournis").getChildren()) {
                         offeredServices.add(servOffert.getValue(String.class));
                     }
                     String[] offServices = new String[offeredServices.size()];
@@ -125,6 +152,9 @@ public class ServiceSearch extends AppCompatActivity {
                     i++;
                 }
                 updateLocationSpinner(addresses);
+                System.out.println(filteredDemands.isEmpty());
+                System.out.println(possibleDemands.isEmpty());
+                updateDemandeView();
             }
             @Override
             public void onCancelled(DatabaseError error) { }});
@@ -137,21 +167,72 @@ public class ServiceSearch extends AppCompatActivity {
     }
 
     private void updateServiceSpinner(String[] options) {
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, options);
+
+        String[] servicesSpinnerOptions = new String[options.length + 1];
+        servicesSpinnerOptions[0] = "Selectionner un service";
+        for(int i = 1; i < servicesSpinnerOptions.length; i++) {
+            servicesSpinnerOptions[i] = options[i-1];
+        }
+
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, servicesSpinnerOptions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         servicesSpinner.setAdapter(adapter);
     }
 
     private void updateLocationSpinner(ArrayList<String> options) {
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, options);
+
+        String[] locationsSpinnerOptions = new String[options.size()+1];
+        locationsSpinnerOptions[0] = "Selectionner une adresse";
+        for(int i = 1; i < locationsSpinnerOptions.length; i++) {
+            locationsSpinnerOptions[i] = options.get(i-1);
+        }
+
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, locationsSpinnerOptions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationsSpinner.setAdapter(adapter);
+    }
+
+    private void updateDemandeView() {
+        if(filteredDemands.isEmpty()){ displayedResult.setText(""); return;}
+        SearchDemande displayed = filteredDemands.get(currentResult);
+        String display = "Service: " + displayed.getNomDuServiceDemande() + "\n Adresse: " + displayed.getAddress();
+        displayedResult.setText(display);
+    }
+
+    public void onDelete(View view) {
+        times.remove(times.size() - 1);
+        addTimeState = 0;
+        updateTimeList();
+        filterResults();
+        updateDemandeView();
+    }
+
+    public void onPrev(View view) {
+        if(currentResult == 0) return;
+        currentResult--;
+        updateDemandeView();
+    }
+
+    public void onNext(View view) {
+        if(currentResult == filteredDemands.size() -1) return;
+        currentResult++;
+        updateDemandeView();
+    }
+
+    public void makeRequest(View view) {
+        if(filteredDemands.isEmpty()) {
+            //error message
+            return;
+        }
+        String key = dbDemandes.push().getKey();
+        dbDemandes.child(key).setValue(filteredDemands.get(currentResult).compress());
+
     }
 
     public void onAddTime(View view) {
         if(addTimeState == 0) {
             times.add(new Time());
-            addTime.setText("Selectionner un jour");
+            addTime.setText("Un jour?");
             addTimeState = (addTimeState + 1) % 3;
             updateTimeList();
         } else if(addTimeState == 1) {
@@ -159,7 +240,7 @@ public class ServiceSearch extends AppCompatActivity {
             String[] days = {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Pick a color");
+            builder.setTitle("Choisisez un jour de la semaine.");
             builder.setItems(days, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -169,7 +250,7 @@ public class ServiceSearch extends AppCompatActivity {
                 }
             });
             builder.show();
-            addTime.setText("Selectionner un temps");
+            addTime.setText("Un temps?");
         } else {
             TimePickerDialog timePickerDialog = new TimePickerDialog(
                     ServiceSearch.this,
@@ -180,6 +261,8 @@ public class ServiceSearch extends AppCompatActivity {
                             times.get(times.size() - 1).setTime(hourOfDay * 60 + Helpers.approximateTime(minute));
                             addTimeState = (addTimeState + 1) % 3;
                             updateTimeList();
+                            filterResults();
+                            updateDemandeView();
                         }
                     }, 12, 0, false
             );
@@ -195,24 +278,30 @@ public class ServiceSearch extends AppCompatActivity {
 
     // broken because I didn't understand how spinners worked
 
-    public void onSearch(View view) {
+    private void filterResults() {
+        // so that it only updates when time is fully entered
+        int offset = 0;
+        currentResult = 0;
+        if (addTimeState != 0) {
+            offset = 1;
+        }
         ArrayList<SearchDemande> filtered = new ArrayList<SearchDemande>();
         for (SearchDemande candidate : possibleDemands) {
             //filter out bad times
             if(!times.isEmpty()){
                 boolean oneMatch = false;
-                for (Time time: times) oneMatch = oneMatch || time.withinTimes(candidate.getTimes());
+                for (int i = 0; i < times.size() - offset; i++) oneMatch = oneMatch || times.get(i).withinTimes(candidate.getTimes());
                 if(!oneMatch) continue;
             }
 
             //filter out bad location/succursale
-            if (locationsSpinner.getId() == 0) {
-                if(!(candidate.getAddress().equals(addresses.get(locationsSpinner.getId())))) continue;
+            if (locationsSpinner.getSelectedItemPosition() != 0) {
+                if(!(candidate.getAddress().equals(addresses.get(locationsSpinner.getSelectedItemPosition() - 1)))) continue;
             }
 
             //filter out wrong service
-            if (servicesSpinner.getId() != 0) {
-                if(!(candidate.getNomDuServiceDemande().equals(service_names[servicesSpinner.getId()]))) continue;
+            if (servicesSpinner.getSelectedItemPosition() != 0) {
+                if(!(candidate.getNomDuServiceDemande().equals(service_names[servicesSpinner.getSelectedItemPosition() - 1]))) continue;
             }
 
             // add correct result to filtered list
@@ -221,7 +310,7 @@ public class ServiceSearch extends AppCompatActivity {
         }
 
         //for testing
-        for(SearchDemande demande: filtered) System.out.println(demande.toString());
+        filteredDemands = filtered;
 
     }
 
