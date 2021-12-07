@@ -39,6 +39,7 @@ public class SubmitDemandePage extends AppCompatActivity {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 Toast.makeText(SubmitDemandePage.this, "Service coté à: " + rating, Toast.LENGTH_SHORT).show();
+                cote = rating;
             }
         });
 

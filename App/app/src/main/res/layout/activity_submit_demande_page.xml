@@ -151,7 +151,7 @@
                 android:layout_height="35dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="15dp"
-                android:text="Veuillez évaluer le service: "
+                android:text="Veuillez évaluer la succursale: "
                 android:textAlignment="viewStart"
                 android:textColor="@color/white"
                 android:textSize="20dp"
