@@ -51,6 +51,14 @@ public class ClientPage extends AppCompatActivity {
         startActivity(demandes);
     }
 
+    public void onSearch(View view) {
+        Intent search = new Intent(ClientPage.this, ServiceSearch.class);
+        search.putExtra("clientName", username);
+        search.putExtra("firstName", user.getPrenom());
+        search.putExtra("lastName", user.getNomDeFamille());
+        startActivity(search);
+    }
+
     // Déconnecte l'utilisateur
     public void onLogout(View view){
         Intent myIntent = new Intent(ClientPage.this, LoginPage.class);

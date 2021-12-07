@@ -3,19 +3,29 @@ package com.example.novigrad;
 public class Time {
 
     private int time;
-    private String day;
+    private int day;
 
-    public Time(int times, String day) {
+    public Time(){}
+
+    public Time(int times, int day) {
         this.time = time;
         this.day = day;
     }
 
-    public String getDay() {
+    public int getDay() {
         return day;
     }
 
     public int getTime() {
         return time;
+    }
+
+    public void setDay(int day) {this.day = day;}
+
+    public void setTime(int time) {this.time = time;}
+
+    public boolean withinTimes(int[] times) {
+       return (times[2*day] <= time && time <= times[2*day + 1]);
     }
 
 }

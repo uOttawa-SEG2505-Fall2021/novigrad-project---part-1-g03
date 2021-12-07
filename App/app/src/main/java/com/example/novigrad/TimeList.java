@@ -22,13 +22,14 @@ public class TimeList extends ArrayAdapter<Time>{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        String[] days = {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
         LayoutInflater inflater = context.getLayoutInflater();
         View timeListItem = inflater.inflate(R.layout.layout_time_list, null,true);
         TextView dayLabel = timeListItem.findViewById(R.id.dayOfWeek);
         TextView timeLabel = timeListItem.findViewById(R.id.timeOfDay);
         Time time = times.get(position);
-        dayLabel.setText(time.getDay());
-        timeLabel.setText(Helpers.formatHHmm(time.getTime()));
+        dayLabel.setText(days[time.getDay()]);
+        timeLabel.setText((time.getTime() != 0) ? Helpers.formatHHmm(time.getTime()) : "");
         return timeListItem;
     }
 
