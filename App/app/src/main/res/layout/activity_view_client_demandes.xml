@@ -103,7 +103,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/teal_700"
             android:onClick="onSelectList"
-            android:text="Approuvée" />
+            android:text="Approuvées" />
 
         <Button
             android:id="@+id/btnRejected"
