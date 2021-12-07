@@ -38,7 +38,7 @@ public class SubmitDemandePage extends AppCompatActivity {
         bar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                Toast.makeText(SubmitDemandePage.this, "Service coté à: " + rating, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SubmitDemandePage.this, "Service évalué à: " + rating, Toast.LENGTH_SHORT).show();
                 cote = rating;
             }
         });
@@ -84,7 +84,7 @@ public class SubmitDemandePage extends AppCompatActivity {
         Intent pdfSelectIntent = new Intent();
         pdfSelectIntent.setType("application/pdf");
         pdfSelectIntent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(pdfSelectIntent,"Please select a pdf"), 1);
+        startActivityForResult(Intent.createChooser(pdfSelectIntent,"SVP choisir un fichier .pdf"), 1);
     }
 
     @Override
