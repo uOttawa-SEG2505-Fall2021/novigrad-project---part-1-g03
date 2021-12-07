@@ -29,8 +29,7 @@
         android:layout_marginTop="75dp"
         android:layout_marginEnd="40dp"
         android:hint="Selectionner une adresse de succursale"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/white"
+        android:background="#8A8787"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -90,8 +89,7 @@
         android:layout_marginTop="375dp"
         android:layout_marginEnd="40dp"
         android:hint="Selectionner un service"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/white"
+        android:background="#8A8787"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
