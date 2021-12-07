@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1C1B1B"
+    android:outlineAmbientShadowColor="#FFFFFF"
+    android:outlineSpotShadowColor="#FFFFFF"
     tools:context=".ServiceSearch">
 
     <TextView
@@ -14,6 +17,7 @@
         android:layout_marginTop="20dp"
         android:text="Chercher un service"
         android:textSize="36dp"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,6 +29,8 @@
         android:layout_marginTop="75dp"
         android:layout_marginEnd="40dp"
         android:hint="Selectionner une adresse de succursale"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,6 +42,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="140dp"
         android:text="Dates: "
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,6 +55,8 @@
         android:layout_marginTop="128dp"
         android:onClick="onAddTime"
         android:text="Ajouter"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/teal_700"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -58,6 +67,7 @@
         android:layout_height="53dp"
         android:layout_marginStart="268dp"
         android:text="Supprimer"
+        android:backgroundTint="@color/teal_700"
         android:onClick="onDelete"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,6 +90,8 @@
         android:layout_marginTop="375dp"
         android:layout_marginEnd="40dp"
         android:hint="Selectionner un service"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -91,6 +103,7 @@
         android:layout_marginStart="39dp"
         android:layout_marginTop="9dp"
         android:layout_marginEnd="36dp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/service_query" />
@@ -102,8 +115,10 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="580dp"
         android:layout_marginEnd="40dp"
-        android:text="Faire une demande"
+        android:backgroundTint="@color/teal_700"
         android:onClick="makeRequest"
+        android:text="Faire une demande"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,6 +131,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="580dp"
         android:text="Précédent"
+        android:backgroundTint="@color/teal_700"
         android:onClick="onPrev"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,6 +144,7 @@
         android:layout_marginStart="268dp"
         android:layout_marginTop="580dp"
         android:text="Suivant"
+        android:backgroundTint="@color/teal_700"
         android:onClick="onNext"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
