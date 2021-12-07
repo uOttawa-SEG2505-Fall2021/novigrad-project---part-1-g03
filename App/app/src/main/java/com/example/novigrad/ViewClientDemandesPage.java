@@ -30,12 +30,12 @@ public class ViewClientDemandesPage extends AppCompatActivity {
     String clientName;
     ListView listViewDemandes;
     TextView message;
-    List<Demande> demandesP;
-    List<Demande> demandesA;
-    List<Demande> demandesR;
+    ArrayList<Demande> demandesP;
+    ArrayList<Demande> demandesA;
+    ArrayList<Demande> demandesR;
 
     //for updating the user that a new demande was approved/rejected
-    List<Demande> prevDemandesP;
+    ArrayList<Demande> prevDemandesP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class ViewClientDemandesPage extends AppCompatActivity {
         demandesR = new ArrayList<>();
     }
 
-    private List<Demande> getSelectedDemandes(int status) {
+    private ArrayList<Demande> getSelectedDemandes(int status) {
         switch (status) {
             case 0: return demandesP;
             case 1: return demandesA;
@@ -79,7 +79,7 @@ public class ViewClientDemandesPage extends AppCompatActivity {
     }
 
     private void updateDemandes() {
-        final List<Demande> selectedDemandes = getSelectedDemandes(selectedList);
+        final ArrayList<Demande> selectedDemandes = getSelectedDemandes(selectedList);
         DemandeList demandesList = new DemandeList(ViewClientDemandesPage.this, selectedDemandes);
         listViewDemandes.setAdapter(demandesList);
         if (selectedDemandes.size() == 0) {
