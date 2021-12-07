@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Novigrad">
         <activity
+            android:name=".SubmitDemandePage"
+            android:exported="false" />
+        <activity
             android:name=".SuccursaleDetailsPage"
             android:exported="false" />
         <activity
