@@ -136,7 +136,7 @@
                 android:backgroundTint="@color/teal_700"
                 android:enabled="true"
                 android:onClick="onSubmitDemande"
-                android:text="Soumettre"
+                android:text="@string/soumettreDemande"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 app:cornerRadius="5dp" />
@@ -172,6 +172,24 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
+
+            <Button
+                android:id="@+id/submitRating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:backgroundTint="@color/teal_700"
+                android:enabled="true"
+                android:onClick="onSubmitRating"
+                android:text="@string/soumettreEval"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:cornerRadius="5dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
 
 
         </LinearLayout>

@@ -83,4 +83,6 @@
     <string name="prompt_nouveau_nom">Nouveau nom du service</string>
     <string name="succursale_nom">Succursale %1$s</string>
     <string name="adresseSucc">Adresse: %1$s</string>
+    <string name="soumettreDemande">Soumettre Demande</string>
+    <string name="soumettreEval">Soumettre Évaluation</string>
 </resources>

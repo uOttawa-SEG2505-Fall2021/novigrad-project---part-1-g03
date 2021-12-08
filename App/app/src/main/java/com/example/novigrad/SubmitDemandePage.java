@@ -29,7 +29,9 @@ public class SubmitDemandePage extends AppCompatActivity {
     DatabaseReference dbDemandes;
 
     private RatingBar bar;
-    private float cote; // This is the number
+    private double cote; // This is the number
+
+    private boolean submitted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,14 @@ public class SubmitDemandePage extends AppCompatActivity {
         bar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                Toast.makeText(SubmitDemandePage.this, "Service évalué à: " + rating, Toast.LENGTH_SHORT).show();
-                cote = rating;
+
+                if (!submitted) {
+                    ratingBar.setRating(0);
+                    Toast.makeText(SubmitDemandePage.this, "Erreur: Vous n'avez pas encore soumit le demande", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SubmitDemandePage.this, "Service évalué à: " + rating, Toast.LENGTH_SHORT).show();
+                    cote = rating;
+                }
             }
         });
 
@@ -57,11 +65,11 @@ public class SubmitDemandePage extends AppCompatActivity {
                 succName = extras.getString("succName");
             } else {
                 //error handling
-                finish();
+//                finish();
 
                 //testing
-//                servKey = "-MofyR4RKkazUR4ef6ap";
-//                succName = "Elmoville";
+                servKey = "-MofyR4RKkazUR4ef6ap";
+                succName = "Elmoville";
             }
         }
 
@@ -105,10 +113,25 @@ public class SubmitDemandePage extends AppCompatActivity {
     }
 
     public void onSubmitDemande(View view) {
+        if (submitted) {
+            Toast.makeText(this, "Erreur: Vous avez déjà soumit le demande", Toast.LENGTH_SHORT).show();
+            return;
+        }
         UserAccount user = UserAccount.getUserInstance();
         Demande newDemande = new Demande(user.getPrenom(), user.getNomDeFamille(), user.getNomDeUtilisateur(), applyServ.getNomService(), succName, 0);
         dbDemandes.push().setValue(newDemande);
-        Toast.makeText(this, "Votre demande a été soumit", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Votre demande a été soumise, SVP évaluez (optionnel)", Toast.LENGTH_SHORT).show();
+        submitted = true;
+    }
+
+    public void onSubmitRating(View view) {
+        if (submitted) {
+            Toast.makeText(this, "Votre évaluation a été soumit.", Toast.LENGTH_SHORT).show();
+            FirebaseDatabase.getInstance().getReference("ratings").setValue(new Rating(cote, succName));
+            finish();
+        } else {
+            Toast.makeText(this, "Erreur: Vous n'avez pas encore soumis la demande", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onReturn(View view) {
