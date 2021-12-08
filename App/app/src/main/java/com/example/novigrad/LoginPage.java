@@ -47,7 +47,7 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        testAPage();
+//        testAPage();
 
         // Remet le username et password comme des champs vides lorsque le compte se déconnecte
         if (savedInstanceState == null) {

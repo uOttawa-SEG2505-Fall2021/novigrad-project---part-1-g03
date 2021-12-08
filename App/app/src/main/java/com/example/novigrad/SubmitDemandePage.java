@@ -65,11 +65,11 @@ public class SubmitDemandePage extends AppCompatActivity {
                 succName = extras.getString("succName");
             } else {
                 //error handling
-//                finish();
+                finish();
 
                 //testing
-                servKey = "-MofyR4RKkazUR4ef6ap";
-                succName = "Elmoville";
+//                servKey = "-MofyR4RKkazUR4ef6ap";
+//                succName = "Elmoville";
             }
         }
 
