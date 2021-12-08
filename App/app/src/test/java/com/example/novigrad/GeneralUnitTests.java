@@ -90,6 +90,17 @@ public class GeneralUnitTests {
         assertEquals(Service.verifyService(invalidEmpty, new String[1]), false);
     }
 
-
-
+    // test method that calculates average of ratings for a succursale
+    @Test
+    public void testRatingAverage() {
+        Rating rating1 = new Rating(5, "Novigrad Centrale");
+        Rating rating2 = new Rating(3, "Novigrad Centrale");
+        Rating rating3 = new Rating(4, "Novigrad Centrale");
+        Rating rating4 = new Rating(5, "Novigrad Centrale");
+        Rating rating5 = new Rating(3, "Novigrad Centrale");
+        Rating rating6 = new Rating(1, "Novigrad Centrale");
+        Rating[] ratings = new Rating[] {rating1, rating2, rating3, rating4, rating5, rating6};
+        double average = Rating.getAverageRatings(ratings);
+        assertEquals(3.5, average, 0.1);
+    }
 }

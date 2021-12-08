@@ -51,4 +51,18 @@ public class StringFormatTests {
         assertEquals("Prénom/Nom: Test Account\\nNom d\\'utilisateur: testaccount \\nService demandé: Covid-19 \\nSuccursale concernée: Novigrad Centrale \\nStatut: Approuvée", approved);
         assertEquals("Prénom/Nom: Client Test\\nNom d\\'utilisateur: clienttest \\nService demandé: Permis de conduire \\nSuccursale concernée: Novigrad Centrale \\nStatut: Rejetée", rejected);
     }
+
+    // test affichage de la moyenne de la note d'une succursale
+    @Test
+    public void testRatingAverageString() {
+        Rating rating1 = new Rating(5, "Novigrad Centrale");
+        Rating rating2 = new Rating(3, "Novigrad Centrale");
+        Rating rating3 = new Rating(4, "Novigrad Centrale");
+        Rating rating4 = new Rating(5, "Novigrad Centrale");
+        Rating rating5 = new Rating(3, "Novigrad Centrale");
+        Rating rating6 = new Rating(1, "Novigrad Centrale");
+        Rating[] ratings = new Rating[] {rating1, rating2, rating3, rating4, rating5, rating6};
+        String averageString = Rating.getAverageRatingsAsString(ratings);
+        assertEquals("3.5", averageString);
+    }
 }
