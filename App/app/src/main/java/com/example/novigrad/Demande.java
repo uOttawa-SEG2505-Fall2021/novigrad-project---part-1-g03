@@ -21,7 +21,7 @@ public class Demande {
     // constructeur 1
     public Demande(){}
 
-    // constructeur 1
+    // constructeur 2
     public Demande(String firstName, String lastName, String nomDeUtilisateur, String nomDuServiceDemande, String nomSuccursaleDemande, int status){
         this.firstName = firstName;
         this.lastName = lastName;

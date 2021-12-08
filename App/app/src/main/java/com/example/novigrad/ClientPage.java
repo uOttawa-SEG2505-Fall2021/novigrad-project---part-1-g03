@@ -64,6 +64,7 @@ public class ClientPage extends AppCompatActivity {
         Intent myIntent = new Intent(ClientPage.this, LoginPage.class);
         myIntent.putExtra("username", "");
         myIntent.putExtra("password", "");
+        UserAccount.unsetUserInstance();
         startActivity(myIntent);
     }
 }

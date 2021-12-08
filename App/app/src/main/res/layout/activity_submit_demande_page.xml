@@ -2,10 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1C1B1B"
-    tools:context=".ServiceDetails">
+    android:outlineAmbientShadowColor="#FFFFFF"
+    android:outlineSpotShadowColor="#FFFFFF"
+    tools:context="com.example.novigrad.SubmitDemandePage">
 
 
     <ScrollView
@@ -95,7 +98,102 @@
                 android:textColor="@color/white"
                 android:textSize="18dp" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <Button
+                android:id="@+id/selectPdf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:backgroundTint="@color/teal_700"
+                android:enabled="true"
+                android:onClick="onSelectPDF"
+                android:text="Sélectionner un pdf"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:cornerRadius="5dp" />
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <!--      Samy put the rating thing here      -->
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <Button
+                android:id="@+id/submitDemande"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:backgroundTint="@color/teal_700"
+                android:enabled="true"
+                android:onClick="onSubmitDemande"
+                android:text="@string/soumettreDemande"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:cornerRadius="5dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="332dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="15dp"
+                android:text="Veuillez évaluer la succursale: "
+                android:textAlignment="viewStart"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <RatingBar
+
+                android:layout_marginLeft="70dp"
+                android:layout_marginRight="70dp"
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:numStars="5"
+                android:stepSize=".5"
+                android:theme="@style/RatingBar"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:id="@+id/submitRating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:backgroundTint="@color/teal_700"
+                android:enabled="true"
+                android:onClick="onSubmitRating"
+                android:text="@string/soumettreEval"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:cornerRadius="5dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+
         </LinearLayout>
     </ScrollView>
 
 </RelativeLayout>
+

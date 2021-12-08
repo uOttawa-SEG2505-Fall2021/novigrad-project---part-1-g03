@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/logout"
+            android:id="@+id/retour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -47,72 +47,71 @@
             android:layout_width="match_parent"
             android:layout_height="5dp" />
 
-        <TextView
-            android:id="@+id/messageDemandes"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
 
-        <Space
+            <Button
+                android:id="@+id/btnPending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/teal_700"
+                android:onClick="onSelectList"
+                android:text="En attente" />
+
+            <Button
+                android:id="@+id/btnApproved"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/teal_700"
+                android:onClick="onSelectList"
+                android:text="Approuvées" />
+
+            <Button
+                android:id="@+id/btnRejected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/teal_700"
+                android:onClick="onSelectList"
+                android:text="Rejetées" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="15dp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <ListView
+            <ListView
 
-            android:id="@+id/listViewDemandes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:background="#ACACAC"
-            android:divider="#1C1B1B"
-            android:dividerHeight="20dp" />
+                android:id="@+id/listViewDemandes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:background="#ACACAC"
+                android:divider="#1C1B1B"
+                android:dividerHeight="20dp" />
+
+            <TextView
+                android:id="@+id/messageDemandes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+        </LinearLayout>
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="32dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/btnPending"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/teal_700"
-            android:onClick="onSelectList"
-            android:text="En attente" />
-
-        <Button
-            android:id="@+id/btnApproved"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/teal_700"
-            android:onClick="onSelectList"
-            android:text="Approuvée" />
-
-        <Button
-            android:id="@+id/btnRejected"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/teal_700"
-            android:onClick="onSelectList"
-            android:text="Rejetée" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

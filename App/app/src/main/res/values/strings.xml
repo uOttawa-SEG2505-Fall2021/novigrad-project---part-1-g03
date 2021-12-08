@@ -68,7 +68,7 @@
         <item>Samedi</item>
         <item>Dimanche</item>
     </string-array>
-    <string name="InfosSurDemande">Prénom/Nom: %1$s %2$s\nNom d\'utilisateur: %3$s \nService demandé: %4$s \nSuccursale concernée: %5$s \nStatus: %6$s</string>
+    <string name="InfosSurDemande">Prénom/Nom: %1$s %2$s\nNom d\'utilisateur: %3$s \nService demandé: %4$s \nSuccursale concernée: %5$s \nStatut: %6$s</string>
     <string name="errorMessageDemandes">Aucune demande n\'a été soumise pour le moment…</string>
     <string name="errorMessageServices">Aucun service n\'a été ajouté à la succursale pour le moment…</string>
     <string name="instructionsDemande">Cliquez longtemps sur une demande pour l\'approuver ou la rejeter</string>
@@ -81,4 +81,8 @@
     <string name="voir_demande">Voir vos demandes</string>
     <string name="errorMessage">Aucune demandes trouvées</string>
     <string name="prompt_nouveau_nom">Nouveau nom du service</string>
+    <string name="succursale_nom">Succursale %1$s</string>
+    <string name="adresseSucc">Adresse: %1$s</string>
+    <string name="soumettreDemande">Soumettre Demande</string>
+    <string name="soumettreEval">Soumettre Évaluation</string>
 </resources>

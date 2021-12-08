@@ -137,7 +137,7 @@ public class ModifyDeleteServicePage extends AppCompatActivity {
                 //get account to be deleted
                 databaseServices.child(serviceId).removeValue();
 
-                Toast.makeText( getApplicationContext(), "Suppression du service réussi!", Toast.LENGTH_SHORT).show();
+                Toast.makeText( getApplicationContext(), "Suppression du service réussi", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
                 onReturn(view);
             }

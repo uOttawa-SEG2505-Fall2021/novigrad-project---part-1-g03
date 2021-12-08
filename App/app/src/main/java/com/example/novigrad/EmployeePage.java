@@ -69,11 +69,18 @@ public class EmployeePage extends AppCompatActivity {
         startActivity(demandeServicesIntent);
     }
 
+    public void onDetailsSuccursale(View view) {
+        Intent detailsIntent = new Intent(EmployeePage.this, SuccursaleDetailsPage.class);
+        detailsIntent.putExtra("succursaleName", user.getNomDeUtilisateur());
+        startActivity(detailsIntent);
+    }
+
     // Déconnecte l'utilisateur
     public void onLogout(View view){
         Intent myIntent = new Intent(EmployeePage.this, LoginPage.class);
         myIntent.putExtra("username", "");
         myIntent.putExtra("password", "");
+        UserAccount.unsetUserInstance();
         startActivity(myIntent);
     }
 }
