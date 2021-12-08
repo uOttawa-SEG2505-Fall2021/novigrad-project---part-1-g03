@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.novigrad">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Novigrad">
+        <activity
+            android:name=".SubmitDemandePage"
+            android:exported="true" />
+        <activity
+            android:name=".SuccursaleDetailsPage"
+            android:exported="true" />
+        <activity
+            android:name=".ViewClientDemandesPage"
+            android:exported="true" />
+        <activity
+            android:name=".ClientPage"
+            android:exported="true" />
+        <activity
+            android:name=".AllServicesAvailPage"
+            android:exported="true" />
+        <activity
+            android:name=".ServicesFournisPage"
+            android:exported="true" /> <!-- This was FALSE -->
+        <activity
+            android:name=".SuccursaleDemandsPage"
+            android:exported="true" /> <!-- This was FALSE -->
+        <activity
+            android:name=".SuccursaleTimePage"
+            android:exported="true" /> <!-- This was FALSE -->
+        <activity
+            android:name=".EmployeePage"
+            android:exported="true" />
+        <activity
+            android:name=".ModifyDeleteServicePage"
+            android:exported="true" />
+        <activity
+            android:name=".AccountDeletionPage"
+            android:exported="true" />
+        <activity
+            android:name=".ServicesPage"
+            android:exported="true" />
+        <activity
+            android:name=".AdminPage"
+            android:exported="true" />
+        <activity
+            android:name=".AddService"
+            android:exported="true" />
+        <activity
+            android:name=".WelcomePage"
+            android:exported="true" />
+        <activity
+            android:name=".CreateAccountPage"
+            android:exported="true" />
+        <activity
+            android:name=".ServiceDetailsPage"
+            android:exported="true" />
+        <activity
+            android:name=".LoginPage"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">ServiceNovigrad</string>
+    <!-- Strings related to login -->
+    <string name="prompt_password">Mot de passe</string>
+    <string name="action_sign_in">Se connecter</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="prompt_username">Nom d\'utilisateur</string>
+    <string name="CreateAccountBtn"><u>Créer un compte</u></string>
+    <string name="prompt_prenom">Prénom</string>
+    <string name="prompt_nomDeFamille">Nom de famille</string>
+    <string name="prompt_nomUtilisateur">Nom d\'utilisateur</string>
+    <string name="aa" />
+    <string name="prompt_donnerMotDePasse1">Mot de passe (au moins 6 caractères)</string>
+    <string name="prompt_donnerMotDePasse2">Confirmer le mot de passe</string>
+    <string name="action_creerCompte">Créer un compte</string>
+    <string name="badAccountTypeFoundErrorText">Il y a un erreur! On ne sait pas quel type de compte vous avez! S\'il vous plait contacter nous pour que nous puissions trouvez l\'erreur.</string>
+    <string name="loginSuccess">Bonjour %1$s!\n Bienvenue à Service Novigrad! \n Vous êtes connecté en tant que %2$s.</string>
+    <string name="prompt_nomService">Nom du service</string>
+    <string name="prompt_infoRequises">Informations requises</string>
+    <string name="prompt_docRequis">Document requis</string>
+    <string name="action_ajouter">Ajouter</string>
+    <string name="prompt_entrerInfoRequis">Veuillez entrer les informations requises</string>
+    <string name="prompt_entrerDocRequis">Veuillez indiquer les documents requis</string>
+    <string name="welcomeAdmin">Bonjour %1$s!\n Vous êtes connecté en tant qu\'administrateur.</string>
+    <string name="action_retour">Retourner à la page précédente</string>
+    <string name="instructions_delete">Veuillez appuyer longtemps sur un compte pour le supprimer</string>
+    <string name="phrase_services">Liste des services offerts</string>
+    <string name="plusDeDétails">- Faites un long click sur un service pour le modifier ou le supprimer\n- Faites un click normal pour voir ses détails</string>
+    <string name="gestion_comptes">Gestion des comptes</string>
+    <string name="deleteAccountDesc">Nom d\'utilisateur: %1$s \n Type de compte: %2$s</string>
+    <string name="modifier_le_service">Modifier le service</string>
+    <string name="modifier">Modifier</string>
+    <string name="supprimer">Supprimer</string>
+    <string name="retourner">Retour</string>
+    <string name="nom_de_service">Nom de Service:</string>
+    <string name="documents_requis_de_service">Documents Requis de Service:</string>
+    <string name="info_de_service">Info de Service:</string>
+    <string name="information_requises">Information Requises</string>
+    <string name="documents_requis">Documents Requis</string>
+    <string name="ajouter_un_service">Ajouter un service</string>
+    <string name="title_activity_service_details">ServiceDetails</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="informations_requises_det">Informations requises:</string>
+    <string name="bonjour">Bonjour %1$s!\n Bienvenue à Service Novigrad! \n Vous êtes connecté en tant qu\'employé.</string>
+    <string name="infoServiceFournis">- Faites un click normal pour voir les détails du service\n- Faites un click long pour supprimer le service de la liste des services fournis.</string>
+    <string name="voirServicesFournis">Liste des services offerts par la succursale</string>
+    <string name="allServicesInfos">- Faites un click normal pour voir les détails du service\n- Cliquez longtemps sur un service pour l\'ajouter à la succursale</string>
+    <string name="servicesFournisHeader">Services Fournis</string>
+    <string name="voirServicesDisponibles">Voir tous les services disponibles</string>
+    <string name="retour">Retour</string>
+    <string-array name="daysOfTheWeek">
+        <item>Selectionner un jour:</item>
+        <item>Lundi</item>
+        <item>Mardi</item>
+        <item>Mercredi</item>
+        <item>Jeudi</item>
+        <item>Vendredi</item>
+        <item>Samedi</item>
+        <item>Dimanche</item>
+    </string-array>
+    <string name="InfosSurDemande">Prénom/Nom: %1$s %2$s\nNom d\'utilisateur: %3$s \nService demandé: %4$s \nSuccursale concernée: %5$s \nStatut: %6$s</string>
+    <string name="errorMessageDemandes">Aucune demande n\'a été soumise pour le moment…</string>
+    <string name="errorMessageServices">Aucun service n\'a été ajouté à la succursale pour le moment…</string>
+    <string name="instructionsDemande">Cliquez longtemps sur une demande pour l\'approuver ou la rejeter</string>
+    <string name="approve_decline_msg">Approuver ou rejeter cette demande. Veuillez vérifier que l\'utilisateur a envoyé correctement les informations et documents requis pour cette demande par mail avant de l\'approuver ou la rejeter.</string>
+    <string name="header_client">Bonjour %1$s!\n Bienvenue à Service Novigrad! \n Vous êtes connecté en tant que client.</string>
+    <string name="recherche_client">Rechercher une succursale pour faire une demande</string>
+    <string name="recherche_action">Recherche</string>
+    <string name="action_demande">Demandes</string>
+    <string name="faire_demande">Faire une demande</string>
+    <string name="voir_demande">Voir vos demandes</string>
+    <string name="errorMessage">Aucune demandes trouvées</string>
+    <string name="prompt_nouveau_nom">Nouveau nom du service</string>
+    <string name="succursale_nom">Succursale %1$s</string>
+    <string name="adresseSucc">Adresse: %1$s</string>
+    <string name="soumettreDemande">Soumettre Demande</string>
+    <string name="soumettreEval">Soumettre Évaluation</string>
+</resources>
