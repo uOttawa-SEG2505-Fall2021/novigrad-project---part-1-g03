@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -86,8 +87,7 @@ public class ServiceSearch extends AppCompatActivity {
                 filterResults();
                 updateDemandeView();
             }
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
@@ -200,11 +200,13 @@ public class ServiceSearch extends AppCompatActivity {
     }
 
     public void onDelete(View view) {
-        times.remove(times.size() - 1);
         addTimeState = 0;
-        updateTimeList();
-        filterResults();
-        updateDemandeView();
+        if (times.size() > 0){
+            times.remove(times.size() - 1);
+            updateTimeList();
+            filterResults();
+            updateDemandeView();
+        }
     }
 
     public void onPrev(View view) {
@@ -221,11 +223,9 @@ public class ServiceSearch extends AppCompatActivity {
 
     public void makeRequest(View view) {
         if(filteredDemands.isEmpty()) {
-            //error message
+            Toast.makeText(this, "Il n'y a pas de succursale/service choisi", Toast.LENGTH_SHORT).show();
             return;
         }
-        String key = dbDemandes.push().getKey();
-        dbDemandes.child(key).setValue(filteredDemands.get(currentResult).compress());
 
     }
 
@@ -306,7 +306,6 @@ public class ServiceSearch extends AppCompatActivity {
 
             // add correct result to filtered list
             filtered.add(candidate);
-
         }
 
         //for testing
