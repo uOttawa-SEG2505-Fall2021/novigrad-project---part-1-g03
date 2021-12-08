@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#1C1B1B"
+    android:outlineAmbientShadowColor="#FFFFFF"
+    android:outlineSpotShadowColor="#FFFFFF"
+    tools:context=".ModifyDeleteServicePage">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp">
+
+            <Button
+                android:id="@+id/returnButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/cardview_dark_background"
+                android:enabled="true"
+                android:onClick="onReturn"
+                android:text="@string/retourner"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="11dp"
+                app:cornerRadius="10dp" />
+
+            <TextView
+                android:id="@+id/modifyServiceHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/modifier_le_service"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+
+            <EditText
+                android:id="@+id/serviceNameEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:autofillHints="@string/prompt_username"
+                android:backgroundTint="#FFFFFF"
+                android:hint="@string/prompt_nouveau_nom"
+                android:inputType="textNoSuggestions"
+                android:minHeight="48dp"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/white"
+                android:textColorHint="#838383" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/serviceInfoLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="@string/information_requises"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHighlight="@color/white"
+                android:textColorHint="#838383"
+                app:counterEnabled="true"
+                app:counterMaxLength="500"
+                app:counterTextColor="@color/white"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/white">
+
+
+                <EditText
+                    android:id="@+id/serviceInfoEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+                    android:backgroundTint="@color/cardview_dark_background"
+                    android:gravity="top"
+                    android:hint="@string/prompt_entrerInfoRequis"
+                    android:inputType="textMultiLine|textNoSuggestions"
+                    android:maxLines="50"
+                    android:padding="10dp"
+                    android:scrollbars="vertical"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="#838383"
+                    android:textSize="15dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/serviceDocsLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="@string/documents_requis"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHighlight="@color/white"
+                android:textColorHint="#838383"
+                app:counterEnabled="true"
+                app:counterMaxLength="500"
+                app:counterTextColor="@color/white"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/white">
+
+                <EditText
+                    android:id="@+id/serviceDocsEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+                    android:backgroundTint="@color/cardview_dark_background"
+                    android:gravity="top"
+                    android:hint="@string/prompt_entrerDocRequis"
+                    android:inputType="textMultiLine|textNoSuggestions"
+                    android:maxLines="50"
+                    android:padding="10dp"
+                    android:scrollbars="vertical"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="#838383"
+                    android:textSize="15dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/modifyButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90dp"
+                android:layout_marginRight="90dp"
+                android:backgroundTint="@color/teal_700"
+                android:enabled="true"
+                android:onClick="onModify"
+                android:text="@string/modifier"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90dp"
+                android:layout_marginRight="90dp"
+                android:backgroundTint="@color/teal_700"
+                android:enabled="true"
+                android:onClick="onDelete"
+                android:text="@string/supprimer"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
