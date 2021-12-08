@@ -18,6 +18,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+  class qui  sert a soumetttre les service
+ */
+
 public class SubmitDemandePage extends AppCompatActivity {
 
     private TextView serviceNameView, serviceDocsView, serviceInfoView;
