@@ -127,7 +127,7 @@ public class SubmitDemandePage extends AppCompatActivity {
     public void onSubmitRating(View view) {
         if (submitted) {
             Toast.makeText(this, "Votre évaluation a été soumit.", Toast.LENGTH_SHORT).show();
-            FirebaseDatabase.getInstance().getReference("ratings").setValue(new Rating(cote, succName));
+            FirebaseDatabase.getInstance().getReference("ratings").push().setValue(new Rating(cote, succName)); //ratings --> ratingKey --> rating
             finish();
         } else {
             Toast.makeText(this, "Erreur: Vous n'avez pas encore soumis la demande", Toast.LENGTH_SHORT).show();

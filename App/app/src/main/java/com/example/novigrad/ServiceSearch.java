@@ -1,10 +1,12 @@
 package com.example.novigrad;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -20,6 +22,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,11 +38,13 @@ public class ServiceSearch extends AppCompatActivity {
     private ListView timeList;
     private Button search, addTime;
     private Spinner locationsSpinner, servicesSpinner;
-    private DatabaseReference dbSuccursales, dbServices, dbDemandes;
+    private DatabaseReference dbSuccursales, dbServices, dbRatings;
     private String username, firstName, lastName;
     private ArrayList<String[]> service_fournis;
     private ArrayList<String> addresses;
     private ArrayList<String> service_ids;
+    private HashMap<String, String> serviceNameToId;
+    private HashMap<String, ArrayList<Rating>> succursaleNameToRatings;
     private String[] service_names;
     private int addTimeState = 0;
     private ArrayList<SearchDemande> possibleDemands = new ArrayList<SearchDemande>();
@@ -69,7 +75,10 @@ public class ServiceSearch extends AppCompatActivity {
 
         dbSuccursales = FirebaseDatabase.getInstance().getReference("succursales");
         dbServices = FirebaseDatabase.getInstance().getReference("services");
-        dbDemandes = FirebaseDatabase.getInstance().getReference("demandes");
+        dbRatings = FirebaseDatabase.getInstance().getReference("ratings");
+
+        serviceNameToId = new HashMap<>();
+        succursaleNameToRatings = new HashMap<>();
 
         servicesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -103,9 +112,11 @@ public class ServiceSearch extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 ArrayList<Service> services = new ArrayList<Service>();
                 service_ids = new ArrayList<String>();
+                serviceNameToId = new HashMap<>();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Service serv = postSnapshot.getValue(Service.class);
                     service_ids.add(postSnapshot.getKey());
+                    serviceNameToId.put(serv.getNomService(), postSnapshot.getKey());
                     services.add(serv);
                 }
                 service_names = new String[services.size()];
@@ -159,6 +170,29 @@ public class ServiceSearch extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError error) { }});
 
+        dbRatings.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                succursaleNameToRatings = new HashMap<>();
+                for (DataSnapshot ratingSnap: snapshot.getChildren()) {
+                    ArrayList<Rating> ratings;
+                    Rating rating = ratingSnap.getValue(Rating.class);
+                    if (!succursaleNameToRatings.containsKey(rating.getForSucc())) {
+                        ratings = new ArrayList<>();
+                        ratings.add(rating);
+                        succursaleNameToRatings.put(rating.getForSucc(), ratings);
+                    } else {
+                        ratings = succursaleNameToRatings.get(rating.getForSucc());
+                        ratings.add(rating);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void updateTimeList() {
@@ -195,7 +229,9 @@ public class ServiceSearch extends AppCompatActivity {
     private void updateDemandeView() {
         if(filteredDemands.isEmpty()){ displayedResult.setText(""); return;}
         SearchDemande displayed = filteredDemands.get(currentResult);
-        String display = "Service: " + displayed.getNomDuServiceDemande() + "\n Adresse: " + displayed.getAddress();
+        String evaluation = (succursaleNameToRatings.containsKey(displayed.getNomSuccursaleDemande()) ? Rating.getAverageRatingsAsString(succursaleNameToRatings.get(displayed.getNomSuccursaleDemande())) : "Il n'y a pas de évaluation pour ce succursale");
+        String display = "Service: " + displayed.getNomDuServiceDemande() + "\nAdresse: " + displayed.getAddress() + "\nSuccursale: " + displayed.getNomSuccursaleDemande()
+          + "\nÉvaluation: " + evaluation;
         displayedResult.setText(display);
     }
 
@@ -226,7 +262,11 @@ public class ServiceSearch extends AppCompatActivity {
             Toast.makeText(this, "Il n'y a pas de succursale/service choisi", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        SearchDemande chosenSuccService = filteredDemands.get(currentResult);
+        Intent newDemandeIntent = new Intent(ServiceSearch.this, SubmitDemandePage.class);
+        newDemandeIntent.putExtra("serviceKey", serviceNameToId.get(chosenSuccService.getNomDuServiceDemande()));
+        newDemandeIntent.putExtra("succName", chosenSuccService.getNomSuccursaleDemande());
+        startActivity(newDemandeIntent);
     }
 
     public void onAddTime(View view) {
