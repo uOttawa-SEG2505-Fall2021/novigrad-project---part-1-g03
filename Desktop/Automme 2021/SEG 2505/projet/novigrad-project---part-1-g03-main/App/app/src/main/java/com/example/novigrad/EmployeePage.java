@@ -16,6 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
+ *
+ *
  * Classe EmployeePage qui représente le landing page lorsqu'on se connecte en tant qu'employé
  * */
 
