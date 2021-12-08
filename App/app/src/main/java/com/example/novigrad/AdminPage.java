@@ -71,6 +71,7 @@ public class AdminPage extends AppCompatActivity {
         Intent myIntent = new Intent(AdminPage.this, LoginPage.class);
         myIntent.putExtra("username", "");
         myIntent.putExtra("password", "");
+        UserAccount.unsetUserInstance();
         startActivity(myIntent);
     }
 

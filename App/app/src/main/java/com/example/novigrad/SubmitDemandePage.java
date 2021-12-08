@@ -11,6 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.novigrad.user.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -21,9 +22,11 @@ public class SubmitDemandePage extends AppCompatActivity {
 
     private TextView serviceNameView, serviceDocsView, serviceInfoView;
 
-    private String serviceKey;
-    private Service serviceApplyingTo;
-    DatabaseReference databaseServices;
+    private String succName;
+    private String servKey;
+    private Service applyServ;
+    DatabaseReference dbServices;
+    DatabaseReference dbDemandes;
 
     private RatingBar bar;
     private float cote; // This is the number
@@ -44,18 +47,21 @@ public class SubmitDemandePage extends AppCompatActivity {
         });
 
         // End Samy stuff
-
-        databaseServices = FirebaseDatabase.getInstance().getReference("services");
-
+        dbServices = FirebaseDatabase.getInstance().getReference("services");
+        dbDemandes = FirebaseDatabase.getInstance().getReference("demandes");
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
-                serviceKey = extras.getString("serviceKey");
+                servKey = extras.getString("serviceKey");
+                succName = extras.getString("succName");
             } else {
                 //error handling
-//                finish();
-                serviceKey = "-MofyR4RKkazUR4ef6ap";
+                finish();
+
+                //testing
+//                servKey = "-MofyR4RKkazUR4ef6ap";
+//                succName = "Elmoville";
             }
         }
 
@@ -63,16 +69,16 @@ public class SubmitDemandePage extends AppCompatActivity {
         serviceDocsView = findViewById(R.id.details_docs);
         serviceInfoView = findViewById(R.id.details_info);
 
-        databaseServices.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        dbServices.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 for (DataSnapshot serviceSnap:
                      task.getResult().getChildren()) {
-                    if (serviceSnap.getKey().equals(serviceKey)) {
-                        serviceApplyingTo = serviceSnap.getValue(Service.class);
-                        serviceNameView.setText(serviceApplyingTo.getNomService());
-                        serviceDocsView.setText(serviceApplyingTo.getDocsRequis());
-                        serviceInfoView.setText(serviceApplyingTo.getInfosRequises());
+                    if (serviceSnap.getKey().equals(servKey)) {
+                        applyServ = serviceSnap.getValue(Service.class);
+                        serviceNameView.setText(applyServ.getNomService());
+                        serviceDocsView.setText(applyServ.getDocsRequis());
+                        serviceInfoView.setText(applyServ.getInfosRequises());
                     }
                 }
             }
@@ -99,7 +105,10 @@ public class SubmitDemandePage extends AppCompatActivity {
     }
 
     public void onSubmitDemande(View view) {
-        //do database stuff
+        UserAccount user = UserAccount.getUserInstance();
+        Demande newDemande = new Demande(user.getPrenom(), user.getNomDeFamille(), user.getNomDeUtilisateur(), applyServ.getNomService(), succName, 0);
+        dbDemandes.push().setValue(newDemande);
+        Toast.makeText(this, "Votre demande a été soumit", Toast.LENGTH_SHORT).show();
     }
 
     public void onReturn(View view) {

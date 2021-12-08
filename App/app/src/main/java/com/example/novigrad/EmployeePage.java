@@ -80,6 +80,7 @@ public class EmployeePage extends AppCompatActivity {
         Intent myIntent = new Intent(EmployeePage.this, LoginPage.class);
         myIntent.putExtra("username", "");
         myIntent.putExtra("password", "");
+        UserAccount.unsetUserInstance();
         startActivity(myIntent);
     }
 }

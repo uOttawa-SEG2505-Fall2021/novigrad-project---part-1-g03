@@ -7,6 +7,8 @@ package com.example.novigrad.user;
 public class UserAccount
 {
 
+    private static UserAccount userInstance;
+
     //------------------------
     // MEMBER VARIABLES
     //------------------------
@@ -22,6 +24,19 @@ public class UserAccount
     //------------------------
     // CONSTRUCTOR
     //------------------------
+
+
+    public static UserAccount getUserInstance() {
+        return userInstance;
+    }
+
+    public static void setUserInstance(UserAccount currentUser) {
+        userInstance = currentUser;
+    }
+
+    public static void unsetUserInstance() {
+        userInstance = null;
+    }
 
     //blank constructor so that UserAccount can be written to Firebase
     public UserAccount(){}

@@ -32,6 +32,11 @@ public class LoginPage extends AppCompatActivity {
     String password;
 
     private void testAPage() {
+        UserAccount testUser = new UserAccount();
+        testUser.setNomDeUtiliseur("celinewmk");
+        testUser.setPrenom("Céline");
+        testUser.setNomDeFamille("Wan");
+        UserAccount.setUserInstance(testUser);
         Intent testpage = new Intent(LoginPage.this, SubmitDemandePage.class);
         startActivity(testpage);
     }
@@ -104,6 +109,7 @@ public class LoginPage extends AppCompatActivity {
                             //some error handling here
                             return;
                         }
+                        UserAccount.setUserInstance(user[0]);
                         myIntent.putExtra("userId", username);
                         startActivity(myIntent);
                     } else {
