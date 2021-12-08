@@ -163,8 +163,6 @@ public class ServiceSearch extends AppCompatActivity {
                     i++;
                 }
                 updateLocationSpinner(addresses);
-                System.out.println(filteredDemands.isEmpty());
-                System.out.println(possibleDemands.isEmpty());
                 updateDemandeView();
             }
             @Override
