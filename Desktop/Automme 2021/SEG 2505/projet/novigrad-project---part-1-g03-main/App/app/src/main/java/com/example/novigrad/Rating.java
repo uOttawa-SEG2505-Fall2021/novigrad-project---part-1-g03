@@ -1,5 +1,7 @@
 package com.example.novigrad;
-
+/**
+ * Classe  qui permet de noter les  services
+ * */
 public class Rating {
 
     private double rating;
