@@ -19,7 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
-  class qui  sert a soumetttre les service
+  class qui  sert a soumetttre les services
  */
 
 public class SubmitDemandePage extends AppCompatActivity {
