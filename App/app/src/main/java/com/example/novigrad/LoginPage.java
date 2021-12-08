@@ -31,10 +31,23 @@ public class LoginPage extends AppCompatActivity {
     String username;
     String password;
 
+    private void testAPage() {
+        UserAccount testUser = new UserAccount();
+        testUser.setNomDeUtiliseur("celinewmk");
+        testUser.setPrenom("Céline");
+        testUser.setNomDeFamille("Wan");
+        UserAccount.setUserInstance(testUser);
+        Intent testpage = new Intent(LoginPage.this, SubmitDemandePage.class);
+        startActivity(testpage);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        testAPage();
 
         // Remet le username et password comme des champs vides lorsque le compte se déconnecte
         if (savedInstanceState == null) {
@@ -96,6 +109,7 @@ public class LoginPage extends AppCompatActivity {
                             //some error handling here
                             return;
                         }
+                        UserAccount.setUserInstance(user[0]);
                         myIntent.putExtra("userId", username);
                         startActivity(myIntent);
                     } else {
