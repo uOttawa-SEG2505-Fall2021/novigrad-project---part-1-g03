@@ -12,8 +12,12 @@ import com.example.novigrad.user.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 /**
  * Classe EmployeePage qui représente le landing page lorsqu'on se connecte en tant qu'employé
@@ -24,28 +28,32 @@ public class EmployeePage extends AppCompatActivity {
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference dbRef = database.getReference();
     private UserAccount user;
+    private String succursaleName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_page);
 
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("userId");
-
         TextView welcomeMessage = findViewById(R.id.welcomeEmploye);
 
-        dbRef.child("users").child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> snapshot) {
-                if (snapshot.getResult().exists()) {
+        user = UserAccount.getUserInstance();
+        welcomeMessage.setText(String.format(getString(R.string.bonjour), user.getPrenom()));
 
-                user = snapshot.getResult().getValue(UserAccount.class);
-                welcomeMessage.setText(String.format(getString(R.string.bonjour), user.getPrenom()));
-                } else {
-                    //some sort of error handling here
-                }
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        dbRef.child("succursales").child(user.getNomDeUtilisateur()).child("name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                succursaleName = snapshot.getValue(String.class);
             }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
         });
     }
 
@@ -58,20 +66,17 @@ public class EmployeePage extends AppCompatActivity {
 
     public void onChangeTime(View view) {
         Intent changeTimeIntent = new Intent(EmployeePage.this, SuccursaleTimePage.class);
-        //put extra values to get succursale's info, if needed
-        changeTimeIntent.putExtra("succursaleName", user.getNomDeUtilisateur());
         startActivity(changeTimeIntent);
     }
 
     public void onDemandeServices(View view) {
         Intent demandeServicesIntent = new Intent(EmployeePage.this, SuccursaleDemandsPage.class);
-        demandeServicesIntent.putExtra("succursaleName", user.getNomDeUtilisateur());
+        demandeServicesIntent.putExtra("succursaleName", succursaleName);
         startActivity(demandeServicesIntent);
     }
 
     public void onDetailsSuccursale(View view) {
         Intent detailsIntent = new Intent(EmployeePage.this, SuccursaleDetailsPage.class);
-        detailsIntent.putExtra("succursaleName", user.getNomDeUtilisateur());
         startActivity(detailsIntent);
     }
 

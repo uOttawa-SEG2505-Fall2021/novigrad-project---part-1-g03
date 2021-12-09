@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.novigrad.user.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +31,7 @@ public class AllServicesAvailPage extends AppCompatActivity {
     ListView listViewServices;
     List<Service> services;
     DatabaseReference databaseServices;
-    String succursaleName;
+    String succursaleAccountName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +42,14 @@ public class AllServicesAvailPage extends AppCompatActivity {
         services = new ArrayList<>();
 
         databaseServices = FirebaseDatabase.getInstance().getReference("services");
-
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if (extras != null) {
-                succursaleName = extras.getString("succursaleName");
-            }
-        }
+        succursaleAccountName = UserAccount.getUserInstance().getNomDeUtilisateur();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        final DatabaseReference databaseSuccursale = FirebaseDatabase.getInstance().getReference("succursales").child(succursaleName);
+        final DatabaseReference databaseSuccursale = FirebaseDatabase.getInstance().getReference("succursales").child(succursaleAccountName);
 
         databaseServices.addValueEventListener(new ValueEventListener() {
             @Override

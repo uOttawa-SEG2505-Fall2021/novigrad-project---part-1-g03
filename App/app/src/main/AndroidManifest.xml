@@ -61,6 +61,9 @@
             android:name=".ServiceDetailsPage"
             android:exported="true" />
         <activity
+            android:name=".ServiceSearch"
+            android:exported="true" />
+        <activity
             android:name=".LoginPage"
             android:exported="true">
             <intent-filter>

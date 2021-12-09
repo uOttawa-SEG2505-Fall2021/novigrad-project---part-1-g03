@@ -60,12 +60,9 @@ public class SuccursaleDemandsPage extends AppCompatActivity {
                 ArrayList<String> demandeIds = new ArrayList<>();
                 for(DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Demande demande = postSnapshot.getValue(Demande.class);
-                    System.out.println(demande);
-                    System.out.println(succursaleName);
                     if(demande.getNomSuccursaleDemande().equals(succursaleName)) {
                         demandes.add(demande);
                         demandeIds.add(postSnapshot.getKey());
-                        System.out.println(postSnapshot.getKey());
                     }
                 }
                 DemandeList demandeAdapter = new DemandeList(SuccursaleDemandsPage.this, demandes);
