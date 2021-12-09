@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.novigrad.user.UserAccount;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +29,7 @@ import java.util.HashMap;
 public class SuccursaleTimePage extends AppCompatActivity {
     // Initialize variable
 
-    String succursaleName;
+    String succursaleAccountName;
     DatabaseReference databaseSuccursale;
     Spinner daySelect;
     ListView dayIntervalList;
@@ -58,13 +59,8 @@ public class SuccursaleTimePage extends AppCompatActivity {
         btnEndTime = findViewById(R.id.timeSelectEnd);
         btnToggleOffday = findViewById(R.id.button3);
 
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if (extras != null) {
-                succursaleName = extras.getString("succursaleName");
-                databaseSuccursale = FirebaseDatabase.getInstance().getReference("succursales").child(succursaleName);
-            }
-        }
+        succursaleAccountName = UserAccount.getUserInstance().getNomDeUtilisateur();
+        databaseSuccursale = FirebaseDatabase.getInstance().getReference("succursales").child(succursaleAccountName);
 
         daySelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

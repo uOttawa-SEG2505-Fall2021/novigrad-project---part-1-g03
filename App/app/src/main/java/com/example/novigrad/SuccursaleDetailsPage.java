@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.novigrad.user.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -23,8 +24,6 @@ public class SuccursaleDetailsPage extends AppCompatActivity {
     private String succName;
     private String succAdresse;
 
-    //db variables
-    private String dbSuccursaleName;
     private DatabaseReference dbSucc;
 
     //UI elements
@@ -37,21 +36,16 @@ public class SuccursaleDetailsPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_succursale_details_page);
-        if(savedInstanceState == null){
-            Bundle extras = getIntent().getExtras();
-            if (extras != null){
-                dbSuccursaleName = extras.getString("succursaleName");
-            } else {
-                //some sort of error handling here ig?
-                finish();
-            }
-        }
+
+
+        //db variables
+        String succursaleAccountName = UserAccount.getUserInstance().getNomDeUtilisateur();
+        dbSucc = FirebaseDatabase.getInstance().getReference("succursales").child(succursaleAccountName);
 
         nameText = findViewById(R.id.newNameSucc);
         headerText = findViewById(R.id.succName);
         adresseText = findViewById(R.id.newAdresseSucc);
         adresseLabel = findViewById(R.id.adresseLabel);
-        dbSucc = FirebaseDatabase.getInstance().getReference("succursales").child(dbSuccursaleName);
 
         //auto-updates the name field
         dbSucc.child("name").addValueEventListener(new ValueEventListener() {

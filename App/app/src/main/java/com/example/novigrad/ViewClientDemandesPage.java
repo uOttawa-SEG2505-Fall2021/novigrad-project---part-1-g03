@@ -135,7 +135,6 @@ public class ViewClientDemandesPage extends AppCompatActivity {
         databaseDemandes.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                System.out.println("Stuff got updated");
                 clearDemandes();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Demande demande = postSnapshot.getValue(Demande.class);
