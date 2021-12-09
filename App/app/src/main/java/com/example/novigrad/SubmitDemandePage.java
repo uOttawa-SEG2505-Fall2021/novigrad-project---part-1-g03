@@ -66,10 +66,6 @@ public class SubmitDemandePage extends AppCompatActivity {
             } else {
                 //error handling
                 finish();
-
-                //testing
-//                servKey = "-MofyR4RKkazUR4ef6ap";
-//                succName = "Elmoville";
             }
         }
 
