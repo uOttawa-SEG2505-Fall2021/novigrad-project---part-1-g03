@@ -39,16 +39,17 @@ public class DemandeList extends ArrayAdapter<Demande> {
         TextView DemandeInfo = (TextView) listViewItem.findViewById(R.id.listItemName);
 
         Demande demande = demandes.get(position);
-        int statusInt = demande.getStatus();
-        String demandeStatus;
-        if(statusInt==0){
-            demandeStatus = "En attente";
-        } else if (statusInt==1){
-            demandeStatus = "Approuvée";
-        } else {
-            demandeStatus = "Rejetée";
-        }
-        DemandeInfo.setText(String.format(context.getString(R.string.InfosSurDemande), demande.getFirstName(), demande.getLastName(), demande.getNomDeUtilisateur(), demande.getNomDuServiceDemande(), demande.getNomSuccursaleDemande(), demandeStatus));
+//        int statusInt = demande.getStatus();
+//        String demandeStatus;
+//        if(statusInt==0){
+//            demandeStatus = "En attente";
+//        } else if (statusInt==1){
+//            demandeStatus = "Approuvée";
+//        } else {
+//            demandeStatus = "Rejetée";
+//        }
+        DemandeInfo.setText(String.format(context.getString(R.string.InfosSurDemande), demande.getFirstName(), demande.getLastName(), demande.getNomDeUtilisateur(), demande.getNomDuServiceDemande(), demande.getNomSuccursaleDemande(),
+                (demande.getStatus() == 0 ? "En attente" : demande.getStatus() == 1 ? "Approuvée" : "Rejetée")));
         return listViewItem;
     }
 }
