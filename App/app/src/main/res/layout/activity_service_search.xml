@@ -18,9 +18,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:orientation="vertical">
+
+            <Button
+                android:id="@+id/retour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/cardview_dark_background"
+                android:enabled="true"
+                android:onClick="onReturn"
+                android:text="Retour"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="11dp"
+                app:cornerRadius="10dp" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -87,7 +101,7 @@
             <ListView
                 android:id="@+id/dates_query"
                 android:layout_width="329dp"
-                android:layout_height="184dp"
+                android:layout_height="175dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp">
 
@@ -106,11 +120,23 @@
             <TextView
                 android:id="@+id/demande_cherchée"
                 android:layout_width="336dp"
-                android:layout_height="135dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="36dp"
                 android:textColor="@color/white" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text='Cliquez sur "Précédent" ou "Suivant" pour naviguer à travers les différents résultats de recherche'
+                android:textColor="@color/white"
+                android:textSize="14dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -150,6 +176,7 @@
                 android:layout_height="60dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/teal_700"
                 android:onClick="makeRequest"

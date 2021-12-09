@@ -226,7 +226,7 @@ public class ServiceSearch extends AppCompatActivity {
     private void updateDemandeView() {
         if(filteredDemands.isEmpty()){ displayedResult.setText(""); return;}
         SearchDemande displayed = filteredDemands.get(currentResult);
-        String evaluation = (succursaleNameToRatings.containsKey(displayed.getNomSuccursaleDemande()) ? Rating.getAverageRatingsAsString(succursaleNameToRatings.get(displayed.getNomSuccursaleDemande())) : "Il n'y a pas de évaluation pour ce succursale");
+        String evaluation = (succursaleNameToRatings.containsKey(displayed.getNomSuccursaleDemande()) ? Rating.getAverageRatingsAsString(succursaleNameToRatings.get(displayed.getNomSuccursaleDemande())) : "Il n'y a pas de évaluation pour cette succursale");
         String display = "Service: " + displayed.getNomDuServiceDemande() + "\nAdresse: " + displayed.getAddress() + "\nSuccursale: " + displayed.getNomSuccursaleDemande()
           + "\nÉvaluation: " + evaluation;
         displayedResult.setText(display);
@@ -313,8 +313,6 @@ public class ServiceSearch extends AppCompatActivity {
 
     }
 
-    // broken because I didn't understand how spinners worked
-
     private void filterResults() {
         // so that it only updates when time is fully entered
         int offset = 0;
@@ -348,6 +346,10 @@ public class ServiceSearch extends AppCompatActivity {
         //for testing
         filteredDemands = filtered;
 
+    }
+
+    public void onReturn(View view){
+        finish();
     }
 
 }

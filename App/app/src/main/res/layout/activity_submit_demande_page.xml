@@ -123,10 +123,6 @@
 
             <!--      Samy put the rating thing here      -->
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15dp" />
-
             <Button
                 android:id="@+id/submitDemande"
                 android:layout_width="match_parent"
