@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.novigrad.user.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,7 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Classe ServiceFournisPage qui nous permet de visualiser les services fournis par la succursale
@@ -34,11 +32,10 @@ import java.util.Map;
 public class ServicesFournisPage extends AppCompatActivity {
 
     ListView listViewServicesFournis;
-    String succursaleName;
     List<Service> services;
     HashMap<Service, String> serviceToServiceId;
     DatabaseReference databaseServices = FirebaseDatabase.getInstance().getReference("services");
-    DatabaseReference databaseSuccursale;
+    DatabaseReference dbSucc;
     TextView message;
 
     @Override
@@ -49,20 +46,16 @@ public class ServicesFournisPage extends AppCompatActivity {
         listViewServicesFournis = findViewById(R.id.listViewServicesFournis);
         message = (TextView) findViewById(R.id.details);
 
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if (extras != null) {
-                succursaleName = extras.getString("succursaleName");
-                databaseSuccursale = FirebaseDatabase.getInstance().getReference("succursales").child(succursaleName);
-            }
-        }
+        //db variables
+        String succursaleAccountName = UserAccount.getUserInstance().getNomDeUtilisateur();
+        dbSucc = FirebaseDatabase.getInstance().getReference("succursales").child(succursaleAccountName);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        databaseSuccursale.child("servicesFournis").addValueEventListener(new ValueEventListener() {
+        dbSucc.child("servicesFournis").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot succSnapshot) {
                 ArrayList<String> serviceIds = new ArrayList<>();
@@ -130,7 +123,7 @@ public class ServicesFournisPage extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int which) {
                                         //delete serviceRef here
 
-                                        databaseSuccursale.child("servicesFournis").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                        dbSucc.child("servicesFournis").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                                             @Override
                                             public void onComplete(@NonNull Task<DataSnapshot> succSnapshot) {
                                                 String serviceRefToDelete = serviceToServiceId.get(services.get(position));
@@ -140,7 +133,7 @@ public class ServicesFournisPage extends AppCompatActivity {
                                                     //if the serviceRef matches that of the service that was clicked...
                                                     if (serviceRefToDelete.equals(serviceRef)) {
                                                         //remove it
-                                                        databaseSuccursale.child("servicesFournis").child(serviceIdToServiceRefRef.get(serviceRefToDelete)).removeValue();
+                                                        dbSucc.child("servicesFournis").child(serviceIdToServiceRefRef.get(serviceRefToDelete)).removeValue();
                                                         dialog.dismiss();
                                                     }
                                                 }
@@ -179,7 +172,6 @@ public class ServicesFournisPage extends AppCompatActivity {
 
     public void onSeeAll(View view){
         Intent intent = new Intent(getApplicationContext(), AllServicesAvailPage.class);
-        intent.putExtra("succursaleName", succursaleName);
         startActivityForResult(intent, 0);
     }
 
