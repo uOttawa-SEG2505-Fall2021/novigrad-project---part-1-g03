@@ -20,6 +20,12 @@ OU
 Nom d'utilisateur: emptest
 Mot de passe: asdfjkl;
 
-Note: Pour tester l'application, veuillez ouvrir le fichier "App" dans Android Studio et non tout le répertoire Github. Veuillez tester l'application également avec comme AVD: soit Pixel 2 API 30, Pixel 3 API 30 ou Pixel 4 API 30, et un niveau minimum SDK de 26.
+Vous pouvez vous connecter aux comptes clients suivants pour accéder à des comptes ayant déjà soumis des demandes de services:
 
-Notez que la fonctionnalité d'approuver ou de rejeter les demandes de services ne supprime pas les demandes car il faut qu'on l'ajoute en Firebase manuellement, ce qui n'est pas pratique pour les démonstrations. Pour compléter cette fonctionnalité, nous avons besoin d'implémenter les fonctionnalités liées au client qui est le livrable 4.  
+Nom d'utilisateur: celinewmk
+Mot de passe: 123456
+OU
+Nom d'utilisateur: userclient
+Mot de passe: helloworld
+
+Note: Pour tester l'application, veuillez ouvrir le fichier "App" dans Android Studio et non tout le répertoire Github. Veuillez tester l'application également avec comme AVD: soit Pixel 2 API 30, Pixel 3 API 30 ou Pixel 4 API 30, et un niveau minimum SDK de 26.
