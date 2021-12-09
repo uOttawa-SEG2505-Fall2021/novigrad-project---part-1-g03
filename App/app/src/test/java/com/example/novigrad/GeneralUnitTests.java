@@ -7,6 +7,9 @@ import com.example.novigrad.user.AdminAccount;
 import com.example.novigrad.user.ClientAccount;
 import com.example.novigrad.user.EmployeeAccount;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Tests unitaires pour la création de compte admin, employé et client
  */
@@ -93,13 +96,13 @@ public class GeneralUnitTests {
     // test method that calculates average of ratings for a succursale
     @Test
     public void testRatingAverage() {
-        Rating rating1 = new Rating(5, "Novigrad Centrale");
-        Rating rating2 = new Rating(3, "Novigrad Centrale");
-        Rating rating3 = new Rating(4, "Novigrad Centrale");
-        Rating rating4 = new Rating(5, "Novigrad Centrale");
-        Rating rating5 = new Rating(3, "Novigrad Centrale");
-        Rating rating6 = new Rating(1, "Novigrad Centrale");
-        Rating[] ratings = new Rating[] {rating1, rating2, rating3, rating4, rating5, rating6};
+        List<Rating> ratings = new ArrayList<Rating>();
+        ratings.add(new Rating(5, "Novigrad Centrale"));
+        ratings.add(new Rating(3, "Novigrad Centrale"));
+        ratings.add(new Rating(4, "Novigrad Centrale"));
+        ratings.add(new Rating(5, "Novigrad Centrale"));
+        ratings.add(new Rating(3, "Novigrad Centrale"));
+        ratings.add(new Rating(1, "Novigrad Centrale"));
         double average = Rating.getAverageRatings(ratings);
         assertEquals(3.5, average, 0.1);
     }

@@ -8,6 +8,9 @@ import com.example.novigrad.user.EmployeeAccount;
 import com.example.novigrad.user.UserAccount;
 import com.example.novigrad.Demande;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Test unitaires pour les strings format utilisé dans notre application
  * */
@@ -55,13 +58,13 @@ public class StringFormatTests {
     // test affichage de la moyenne de la note d'une succursale
     @Test
     public void testRatingAverageString() {
-        Rating rating1 = new Rating(5, "Novigrad Centrale");
-        Rating rating2 = new Rating(3, "Novigrad Centrale");
-        Rating rating3 = new Rating(4, "Novigrad Centrale");
-        Rating rating4 = new Rating(5, "Novigrad Centrale");
-        Rating rating5 = new Rating(3, "Novigrad Centrale");
-        Rating rating6 = new Rating(1, "Novigrad Centrale");
-        Rating[] ratings = new Rating[] {rating1, rating2, rating3, rating4, rating5, rating6};
+        List<Rating> ratings = new ArrayList<Rating>();
+        ratings.add(new Rating(5, "Novigrad Centrale"));
+        ratings.add(new Rating(3, "Novigrad Centrale"));
+        ratings.add(new Rating(4, "Novigrad Centrale"));
+        ratings.add(new Rating(5, "Novigrad Centrale"));
+        ratings.add(new Rating(3, "Novigrad Centrale"));
+        ratings.add(new Rating(1, "Novigrad Centrale"));
         String averageString = Rating.getAverageRatingsAsString(ratings);
         assertEquals("3.5", averageString);
     }
